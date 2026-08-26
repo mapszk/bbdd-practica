@@ -1,0 +1,186 @@
+{
+  "version": 1,
+  "actualizado": "2026-08-26T20:30:30-0300",
+  "soluciones": {
+    "p1e1": {
+      "sql": "select cuit, razon_social, direccion, telefono, e_mail from empresas;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:28:54-0300",
+      "ultima_ejecucion": null
+    },
+    "p1e2": {
+      "sql": "select apellido, nombre, fecha_registro_agencia as 'FECHA INGRESO'\nfrom personas;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:29:18-0300",
+      "ultima_ejecucion": null
+    },
+    "p5e1": {
+      "sql": "",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-08-02T16:09:01-0300",
+      "ultima_ejecucion": null
+    },
+    "p5e2": {
+      "sql": "",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-08-23T15:09:57-0300",
+      "ultima_ejecucion": null
+    },
+    "p1e3": {
+      "sql": "select cod_titulo as \"Codigo\", desc_titulo as \"Descripcion\", tipo_titulo as \"Tipo\"\nfrom titulos",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:30:16-0300",
+      "ultima_ejecucion": null
+    },
+    "p1e4": {
+      "sql": "select CONCAT(nombre, \" \", apellido) as \"Apellido y Nombre\",\n\tfecha_nacimiento as \"Fecha Nac.\",\n    telefono as \"Teléfono\",\n    direccion as \"Dirección\"\nfrom personas\nwhere dni = 28675888;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:41:45-0300",
+      "ultima_ejecucion": null
+    },
+    "p1e5": {
+      "sql": "select CONCAT(nombre, \" \", apellido) as \"Apellido y Nombre\",\n\tfecha_nacimiento as \"Fecha Nac.\",\n    telefono as \"Teléfono\",\n    direccion as \"Dirección\"\nfrom personas\nwhere dni in (27890765, 29345777 , 31345778);",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:42:16-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e6": {
+      "sql": "select dni as \"Dni\", apellido, nombre, fecha_nacimiento, fecha_registro_agencia, direccion, telefono\nfrom personas\nwhere apellido like 'G%';",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:48:02-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e7": {
+      "sql": "select nombre, apellido, fecha_nacimiento\nfrom personas\nwhere fecha_nacimiento > '1979-12-31' and fecha_nacimiento < '2001-01-01';",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:51:57-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e8": {
+      "sql": "select cuit, cod_cargo, fecha_solicitud, anios_experiencia, edad_minima, edad_maxima, sexo\nfrom solicitudes_empresas\norder by fecha_solicitud asc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:53:18-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e9": {
+      "sql": "select dni as \"Dni\", cod_cargo, cuit, fecha_desde, ifnull(fecha_hasta, \"NULL\") as \"fecha_hasta\", ifnull(persona_contacto, \"NULL\") as \"persona_contacto\"\nfrom antecedentes\nwhere fecha_hasta is null\norder by fecha_desde;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T15:58:14-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e10": {
+      "sql": "select dni, cod_cargo, fecha_desde, fecha_hasta\nfrom antecedentes\nwhere fecha_hasta > '2013-12-31' or fecha_hasta < '2013-06-01'\norder by dni;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T16:07:03-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e11": {
+      "sql": "select nro_contrato as \"Nro Contrato\", dni as \"DNI\", sueldo as \"Salario\", cuit as \"CUIL\"\nfrom contratos\nwhere sueldo > 2000 and cuit in (\"30-10504876-5\", \"30-21098732-4\");",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T16:09:13-0300",
+      "ultima_ejecucion": null
+    },
+    "p1e12": {
+      "sql": "select cod_titulo, desc_titulo, tipo_titulo\nfrom titulos\nwhere desc_titulo like 'Tecnico%';",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T16:09:52-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e13": {
+      "sql": "select cuit, cod_cargo, fecha_solicitud, anios_experiencia, edad_minima, edad_maxima, sexo\nfrom solicitudes_empresas\nwhere sexo = \"Femenino\" or (fecha_solicitud > '2013-09-21' and cod_cargo = 6);",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T16:12:49-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p1e14": {
+      "sql": "select \n\tnro_contrato, \n    fecha_incorporacion as \"Fecha incorporacion\",\n    fecha_finalizacion_contrato, \n    fecha_caducidad, \n    sueldo, \n    porcentaje_comision, \n    dni, \n    cuit, \n    cod_cargo,\n    fecha_solicitud\nfrom contratos\nwhere sueldo > 2000 and fecha_caducidad is null;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-23T16:16:52-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p2e1": {
+      "sql": "select nombre, apellido, sueldo, p.dni\nfrom personas p\ninner join contratos c on p.dni = c.dni\nwhere c.nro_contrato = 5;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:22:30-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p2e2": {
+      "sql": "select c.dni, nro_contrato, fecha_incorporacion, fecha_solicitud, ifnull(fecha_caducidad, \"Sin fecha\")\nfrom contratos c\ninner join empresas e on c.cuit = e.cuit\nwhere e.razon_social in (\"Viejos Amigos\", \"Tráigame Eso\");",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:24:29-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide_orden_distinto"
+      }
+    },
+    "p2e3": {
+      "sql": "select razon_social, direccion, e_mail, desc_cargo, anios_experiencia\nfrom solicitudes_empresas sol\ninner join cargos car on sol.cod_cargo = car.cod_cargo\ninner join empresas emp on sol.cuit = emp.cuit;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:26:40-0300",
+      "ultima_ejecucion": null
+    },
+    "p2e4": {
+      "sql": "select p.dni, nombre, apellido, desc_titulo\nfrom personas p\ninner join personas_titulos pt on p.dni = pt.dni\ninner join titulos t on t.cod_titulo = pt.cod_titulo\nwhere t.desc_titulo = \"Bachiller\" or t.tipo_titulo = \"Educacion no formal\";",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:30:28-0300",
+      "ultima_ejecucion": null
+    },
+    "p2e5": {
+      "sql": "",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-08-26T20:30:30-0300",
+      "ultima_ejecucion": null
+    }
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Práctica SQL</title>
+<link rel="stylesheet" href="/static/estilos.css">
+<link rel="stylesheet" href="/static/vendor/codemirror/codemirror.min.css">
+<link rel="stylesheet" href="/static/vendor/codemirror/theme/dracula.min.css">
+<link rel="stylesheet" href="/static/vendor/codemirror/addon/hint/show-hint.min.css">
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Práctica SQL</h1>
+    <span class="pill" id="pill-mysql"><span class="dot gris"></span> conectando...</span>
+    <div class="sesiones-header" id="sesiones-header"></div>
+  </header>
+
+  <main>
+    <nav id="riel"></nav>
+
+    <section id="panel-consigna"></section>
+
+    <section id="panel-editor">
+      <div id="editor-caja"><textarea id="editor-fallback" class="editor-fallback" spellcheck="false"></textarea></div>
+      <div id="barra-editor">
+        <button id="btn-ejecutar" class="primario">▶ Ejecutar (Ctrl+Enter)</button>
+        <button id="btn-cancelar" disabled>Cancelar</button>
+        <span class="spacer"></span>
+        <label style="font-size:12px;color:var(--texto-tenue)">
+          <input type="checkbox" id="chk-group-by"> ONLY_FULL_GROUP_BY
+        </label>
+        <button id="btn-guardar">Guardar</button>
+      </div>
+      <div>
+        <div id="banner-estado" class="banner-estado"></div>
+        <div class="tabs" id="tabs">
+          <div class="tab activo" data-tab="resultado">Resultado</div>
+          <div class="tab" data-tab="esperado">Esperado</div>
+          <div class="tab" data-tab="comparacion">Comparación</div>
+          <div class="tab" data-tab="mensajes">Mensajes</div>
+          <div class="tab" data-tab="ideal">Solución ideal</div>
+        </div>
+        <div id="panel-resultados"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <button id="btn-anterior">◀ Anterior</button>
+    <span id="footer-info">–</span>
+    <button id="btn-siguiente">Siguiente ▶</button>
+  </footer>
+</div>
+
+<script src="/static/vendor/codemirror/codemirror.min.js"></script>
+<script src="/static/vendor/codemirror/mode/sql/sql.min.js"></script>
+<script src="/static/vendor/codemirror/addon/hint/show-hint.min.js"></script>
+<script src="/static/vendor/codemirror/addon/hint/sql-hint.min.js"></script>
+<script src="/static/vendor/codemirror/addon/edit/matchbrackets.min.js"></script>
+<script src="/static/vendor/codemirror/addon/edit/closebrackets.min.js"></script>
+<script src="/static/vendor/codemirror/addon/selection/active-line.min.js"></script>
+<script src="/static/er.js"></script>
+<script src="/static/soluciones.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+{
+  "p1e1": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        ["cuit", "razon_social", "direccion", "telefono", "e_mail"],
+        ["30-10504876-5", "Viejos Amigos", "Buenos Aires 4444", "4444444", "rrhh@viejosamigos.com.ar"],
+        ["30-15876543-4", "Reuniones Improvisadas", "Oroño 3333", "4576879", ""],
+        ["30-20987654-4", "Porciones Reducidas", "Viedma 1830", "4556677", ""],
+        ["30-21008765-5", "Traigame eso", "Zeballos 7456", "4455667", "traigameeso@gmail.com"],
+        ["30-21098732-4", "Informatiks srl", "Dorrego 2213 4 A", "4857339", "info@informatiks.biz"],
+        ["30-23456328-5", "Constructora Gaia S.A.", "Tucuman 649 PA", "4647125", ""]
+      ]
+    },
+    "notas": "El docx trae el CUIT de 'Viejos Amigos' como 30-110504876-5 (un dígito de más). La base real tiene 30-10504876-5. Corregido acá."
+  },
+  "p1e2": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        ["apellido", "nombre", "FECHA INGRESO"],
+        ["Garcia", "Eliseo", "2014-06-13"],
+        ["Lopez", "Stefanía", "2005-12-12"],
+        ["Wingdam", "Raul", "2014-07-15"],
+        ["Losteau", "Pedro", "2015-02-26"],
+        ["Guftafson", "Juana", "2014-08-12"],
+        ["Ruiz", "Aquiles", "2014-06-18"]
+      ]
+    },
+    "notas": "El docx trae fecha_registro_agencia con años 2007/2008 para casi todas las filas, pero la base real tiene esos mismos días y meses con años 2014/2015 (Lopez Stefanía es la única que ya coincidía, en 2005-12-12). Es un desfasaje de datos entre el docx y la base actual, no un error de la consulta. Corregido acá con los valores reales."
+  },
+  "p1e3": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        ["Codigo", "Descripcion", "Tipo"],
+        ["5", "Arquitecto", "Universitario"],
+        ["8", "Bachiller", "Secundario"],
+        ["2", "Diseñador de Interiores", "Terciario"],
+        ["6", "Entrenado de Lemures", "Educacion no formal"],
+        ["7", "Ing en Sist de Inf", "Universitario"],
+        ["4", "Payaso de Circo", "Educacion no formal"],
+        ["1", "Tecnico Electronico", "Secundario"],
+        ["3", "Tecnico Mecanico", "Secundario"]
+      ]
+    },
+    "notas": "El docx no traía ninguna tabla de salida esperada para este ejercicio (sólo decía 'guardar el query en un archivo .sql'). Se agregó la salida real de la tabla titulos ordenada por descripción, provista por el usuario."
+  },
+  "p1e7": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        ["nombre", "apellido", "fecha_nacimiento"],
+        ["Eliseo", "Garcia", "1981-01-10"],
+        ["Stefanía", "Lopez", "1982-05-20"],
+        ["Raul", "Wingdam", "1983-03-01"],
+        ["Pedro", "Losteau", "1982-08-25"],
+        ["Juana", "Guftafson", "1984-07-02"],
+        ["Aquiles", "Ruiz", "1982-02-01"]
+      ]
+    },
+    "notas": "El docx traía 'Juana y Guftafson' como \"'Juana\" / \"Guftafson'\" -- comillas simples sueltas repartidas entre las celdas de nombre y apellido, un artefacto de la extracción de la tabla de Word. Corregido a 'Juana' / 'Guftafson' sin comillas."
+  },
+  "p1e9": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        ["Dni", "cod_cargo", "cuit", "fecha_desde", "fecha_hasta", "persona_contacto"],
+        ["27890765", "2", "30-20987654-4", "2005-03-01", "NULL", "Belen Arisa"],
+        ["29345777", "4", "30-15876543-4", "2013-01-01", "NULL", "Armando Esteban Quito"],
+        ["30987654", "6", "30-10504876-5", "2014-04-15", "NULL", "NULL"],
+        ["31345778", "7", "30-23456328-5", "2014-06-01", "NULL", "Alicia Ramos"]
+      ]
+    },
+    "notas": "El docx trae fecha_desde de 3 de las 4 filas con años 2006/2007, pero la base real tiene esos mismos días y meses corridos exactamente 7 años hacia adelante (2013/2014). La primera fila (27890765, 2005-03-01) no se movió y ya coincidía. Es el mismo desfasaje de datos visto en otros ejercicios (p1e2, p1e6), no un error de la consulta. Corregido con los valores reales."
+  }
+}

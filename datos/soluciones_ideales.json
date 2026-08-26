@@ -1,0 +1,530 @@
+{
+  "p1e1": {
+    "sql": "SELECT cuit, razon_social, direccion, telefono, e_mail\nFROM empresas;",
+    "notas": ""
+  },
+  "p1e2": {
+    "sql": "SELECT apellido, nombre, fecha_registro_agencia AS 'FECHA INGRESO'\nFROM personas;",
+    "notas": ""
+  },
+  "p1e3": {
+    "sql": "SELECT cod_titulo AS 'Código', desc_titulo AS 'Descripción', tipo_titulo AS 'Tipo'\nFROM titulos\nORDER BY desc_titulo;",
+    "notas": "El enunciado pide guardar el query en un archivo .sql; el contenido a guardar es esta consulta."
+  },
+  "p1e4": {
+    "sql": "SELECT CONCAT(nombre, ' ', apellido) AS 'Apellido y Nombre', fecha_nacimiento AS 'Fecha Nac.', Telefono AS 'Telefono', direccion AS 'Direccion'\nFROM personas\nWHERE dni = '28675888';",
+    "notas": ""
+  },
+  "p1e5": {
+    "sql": "SELECT CONCAT(nombre, ' ', apellido) AS 'Apellido y Nombre', fecha_nacimiento AS 'Fecha Nac.', Telefono AS 'Telefono', direccion AS 'Direccion'\nFROM personas\nWHERE dni IN ('27890765', '29345777', '31345778')\nORDER BY fecha_nacimiento;",
+    "notas": ""
+  },
+  "p1e6": {
+    "sql": "SELECT *\nFROM personas\nWHERE apellido LIKE 'G%';",
+    "notas": ""
+  },
+  "p1e7": {
+    "sql": "SELECT nombre, apellido, fecha_nacimiento\nFROM personas\nWHERE YEAR(fecha_nacimiento) BETWEEN 1980 AND 2000;",
+    "notas": ""
+  },
+  "p1e8": {
+    "sql": "SELECT *\nFROM solicitudes_empresas\nORDER BY fecha_solicitud ASC;",
+    "notas": ""
+  },
+  "p1e9": {
+    "sql": "SELECT *\nFROM antecedentes\nWHERE fecha_hasta IS NULL\nORDER BY fecha_desde;",
+    "notas": "'Aún no hayan terminado su relación laboral' se interpreta como fecha_hasta NULL."
+  },
+  "p1e10": {
+    "sql": "SELECT dni, cod_cargo, fecha_desde, fecha_hasta\nFROM antecedentes\nWHERE fecha_hasta IS NOT NULL\n  AND fecha_hasta NOT BETWEEN '2013-06-01' AND '2013-12-31'\nORDER BY dni;",
+    "notas": ""
+  },
+  "p1e11": {
+    "sql": "SELECT nro_contrato AS 'Nro Contrato', dni AS 'Dni', sueldo AS 'Salario', cuit AS 'Cuil'\nFROM contratos\nWHERE sueldo > 2000\n  AND cuit IN ('30-10504876-5', '30-21098732-4');",
+    "notas": ""
+  },
+  "p1e12": {
+    "sql": "SELECT *\nFROM titulos\nWHERE desc_titulo LIKE 'Tecnico%';",
+    "notas": "Se interpretó 'títulos técnicos' como los que llevan 'Tecnico' en la descripción (ambos de tipo Secundario en los datos actuales); no hay una columna que diga explícitamente 'técnico'."
+  },
+  "p1e13": {
+    "sql": "SELECT *\nFROM solicitudes_empresas\nWHERE (fecha_solicitud > '2013-09-21' AND cod_cargo = 6)\n   OR sexo = 'Femenino';",
+    "notas": ""
+  },
+  "p1e14": {
+    "sql": "SELECT *\nFROM contratos\nWHERE sueldo > 2000\n  AND fecha_caducidad IS NULL;",
+    "notas": "'No haya sido terminado' se interpretó como fecha_caducidad NULL (no como fecha_finalizacion_contrato NULL), ya que el docx muestra un contrato con fecha_finalizacion_contrato cargada pero fecha_caducidad NULL como resultado esperado."
+  },
+  "p2e1": {
+    "sql": "SELECT p.dni, p.apellido, p.nombre, c.sueldo\nFROM contratos c\nJOIN personas p ON p.dni = c.dni\nWHERE c.nro_contrato = 5;",
+    "notas": ""
+  },
+  "p2e2": {
+    "sql": "SELECT c.dni AS Dni, c.nro_contrato, c.fecha_incorporacion, c.fecha_solicitud, IFNULL(c.fecha_caducidad, 'Sin Fecha') AS fecha_caducidad\nFROM contratos c\nJOIN empresas e ON e.cuit = c.cuit\nWHERE e.razon_social IN ('Viejos Amigos', 'Traigame eso')\nORDER BY c.fecha_incorporacion, e.razon_social;",
+    "notas": ""
+  },
+  "p2e3": {
+    "sql": "SELECT e.razon_social, e.direccion, e.e_mail, c.desc_cargo, s.anios_experiencia\nFROM solicitudes_empresas s\nJOIN empresas e ON e.cuit = s.cuit\nJOIN cargos c ON c.cod_cargo = s.cod_cargo\nORDER BY s.fecha_solicitud, c.desc_cargo;",
+    "notas": ""
+  },
+  "p2e4": {
+    "sql": "SELECT pt.dni, p.nombre, p.apellido AS Apellido, t.desc_titulo\nFROM personas_titulos pt\nJOIN personas p ON p.dni = pt.dni\nJOIN titulos t ON t.cod_titulo = pt.cod_titulo\nWHERE t.desc_titulo = 'Bachiller' OR t.tipo_titulo = 'Educacion no formal';",
+    "notas": ""
+  },
+  "p2e5": {
+    "sql": "SELECT p.nombre, p.apellido, t.desc_titulo\nFROM personas_titulos pt\nJOIN personas p ON p.dni = pt.dni\nJOIN titulos t ON t.cod_titulo = pt.cod_titulo;",
+    "notas": ""
+  },
+  "p2e6": {
+    "sql": "SELECT CONCAT(p.apellido, ' ', p.nombre, ' tiene como referencia a ', IFNULL(a.persona_contacto, 'No tiene contacto'), ' y cuando trabajo en ', e.razon_social)\nFROM antecedentes a\nJOIN personas p ON p.dni = a.dni\nJOIN empresas e ON e.cuit = a.cuit\nWHERE a.persona_contacto IS NULL\n   OR a.persona_contacto IN ('Armando Esteban Quito', 'Felipe Rojas');",
+    "notas": "En la base actual, Raul Wingdam tiene dos antecedentes distintos (dos cargos) en Reuniones Improvisadas con Armando Esteban Quito como contacto, por lo que aparece la línea dos veces; es correcto dado los datos reales, aunque el docx sólo muestra una vez (dataset distinto)."
+  },
+  "p2e7": {
+    "sql": "SELECT e.razon_social AS Empresa, s.fecha_solicitud AS 'Fecha Solicitud', c.desc_cargo AS Cargo, IFNULL(s.edad_minima, 'Sin especificar') AS 'Edad Min', IFNULL(s.edad_maxima, 'Sin especificar') AS 'Edad Max'\nFROM solicitudes_empresas s\nJOIN empresas e ON e.cuit = s.cuit\nJOIN cargos c ON c.cod_cargo = s.cod_cargo\nWHERE e.razon_social = 'Viejos Amigos';",
+    "notas": ""
+  },
+  "p2e8": {
+    "sql": "SELECT CONCAT(p.nombre, ' ', p.apellido) AS Postulante, c.desc_cargo AS Cargo\nFROM antecedentes a\nJOIN personas p ON p.dni = a.dni\nJOIN cargos c ON c.cod_cargo = a.cod_cargo;",
+    "notas": "'Antecedentes de cada postulante' se resolvió con la tabla antecedentes (antecedentes laborales), no con entrevistas, porque coincide con el resultado esperado del docx."
+  },
+  "p2e9": {
+    "sql": "SELECT e.razon_social AS Empresa, c.desc_cargo AS Cargo, ev.desc_evaluacion AS Desc_Evaluacion, ee.resultado AS Resultado\nFROM entrevistas ent\nJOIN entrevistas_evaluaciones ee ON ee.nro_entrevista = ent.nro_entrevista\nJOIN evaluaciones ev ON ev.cod_evaluacion = ee.cod_evaluacion\nJOIN empresas e ON e.cuit = ent.cuit\nJOIN cargos c ON c.cod_cargo = ent.cod_cargo\nORDER BY e.razon_social ASC, c.desc_cargo DESC;",
+    "notas": ""
+  },
+  "p2e10": {
+    "sql": "SELECT e.cuit, e.razon_social, IFNULL(s.fecha_solicitud, 'Sin Solicitud') AS 'Fecha Solicitud', IFNULL(c.desc_cargo, 'Sin solicitud') AS Cargo\nFROM empresas e\nLEFT JOIN solicitudes_empresas s ON s.cuit = e.cuit\nLEFT JOIN cargos c ON c.cod_cargo = s.cod_cargo;",
+    "notas": ""
+  },
+  "p2e11": {
+    "sql": "SELECT e.cuit, e.razon_social, c.desc_cargo, IFNULL(ct.dni, 'sin contrato') AS DNI, IFNULL(p.apellido, 'sin contrato') AS Apellido, IFNULL(p.nombre, 'sin contrato') AS Nombre\nFROM solicitudes_empresas s\nJOIN empresas e ON e.cuit = s.cuit\nJOIN cargos c ON c.cod_cargo = s.cod_cargo\nLEFT JOIN contratos ct ON ct.cuit = s.cuit AND ct.cod_cargo = s.cod_cargo AND ct.fecha_solicitud = s.fecha_solicitud\nLEFT JOIN personas p ON p.dni = ct.dni;",
+    "notas": "En los datos reales existen dos contratos (nro 3 y 7) que matchean la misma solicitud (cuit 30-10504876-5, cargo cocinero), por lo que esa fila aparece duplicada; refleja los datos reales, el docx tenía un dataset distinto con un solo contrato por solicitud."
+  },
+  "p2e12": {
+    "sql": "SELECT e.cuit, e.razon_social, c.desc_cargo\nFROM solicitudes_empresas s\nJOIN empresas e ON e.cuit = s.cuit\nJOIN cargos c ON c.cod_cargo = s.cod_cargo\nLEFT JOIN contratos ct ON ct.cuit = s.cuit AND ct.cod_cargo = s.cod_cargo AND ct.fecha_solicitud = s.fecha_solicitud\nWHERE ct.nro_contrato IS NULL;",
+    "notas": ""
+  },
+  "p2e13": {
+    "sql": "SELECT c.desc_cargo, IFNULL(a.dni, 'Sin antecedente') AS DNI, IFNULL(p.apellido, 'sin antecedente') AS Apellido, e.razon_social\nFROM cargos c\nLEFT JOIN antecedentes a ON a.cod_cargo = c.cod_cargo\nLEFT JOIN personas p ON p.dni = a.dni\nLEFT JOIN empresas e ON e.cuit = a.cuit;",
+    "notas": ""
+  },
+  "p2e14": {
+    "sql": "SELECT i.cuil AS 'Cuil Instructor', i.nombre AS 'Nombre Instructor', i.apellido AS 'Apellido Instructor', s.cuil AS 'Cuil Supervisor', s.nombre AS 'Nombre Supervisor', s.apellido AS 'Apellido Supervisor'\nFROM instructores i\nJOIN instructores s ON s.cuil = i.cuil_supervisor;",
+    "notas": ""
+  },
+  "p2e15": {
+    "sql": "SELECT i.cuil AS 'Cuil Instructor', i.nombre AS 'Nombre Instructor', i.apellido AS 'Apellido Instructor', IFNULL(s.cuil, '') AS 'Cuil Supervisor', IFNULL(s.nombre, '') AS 'Nombre Supervisor', IFNULL(s.apellido, '') AS 'Apellido Supervisor'\nFROM instructores i\nLEFT JOIN instructores s ON s.cuil = i.cuil_supervisor\nORDER BY i.cuil;",
+    "notas": ""
+  },
+  "p2e16": {
+    "sql": "SELECT IFNULL(s.cuil, '') AS 'Cuil Supervisor', IFNULL(s.nombre, '') AS 'Nombre Supervisor', IFNULL(s.apellido, '') AS 'Apellido Supervisor',\n       i.nombre AS 'Nombre Instructor', i.apellido AS 'Apellido Instructor',\n       e.nom_plan, e.nro_curso, a.nombre, a.apellido, e.nro_examen, e.fecha_evaluacion, e.nota\nFROM evaluaciones e\nJOIN instructores i ON i.cuil = e.cuil\nJOIN alumnos a ON a.dni = e.dni\nLEFT JOIN instructores s ON s.cuil = i.cuil_supervisor\nWHERE YEAR(e.fecha_evaluacion) = 2014\nORDER BY IFNULL(CONCAT(s.nombre, s.apellido), '') ASC, e.fecha_evaluacion DESC;",
+    "notas": "En la base real ningún instructor tiene como cuil_supervisor a Franz Kafka (66-66666666-6), a diferencia del docx que muestra a Kafka como supervisor de Yanes y Wagner; la jerarquía real (verificada con p2e14/15) es: Amiel supervisa a Kafka y Umbral, Umbral supervisa a Wagner, Wagner supervisa a Yanes, Yanes supervisa a Pelaes e Ibañes. La consulta refleja esa jerarquía real."
+  },
+  "p3e1": {
+    "sql": "SELECT nro_contrato, fecha_incorporacion, fecha_finalizacion_contrato, ADDDATE(fecha_solicitud, INTERVAL 30 DAY) AS 'Fecha Caducidad'\nFROM contratos\nWHERE fecha_caducidad IS NULL;",
+    "notas": "Se interpretó 'contratos que no hayan terminado' como fecha_caducidad NULL, igual que en p1e14."
+  },
+  "p3e2": {
+    "sql": "SELECT c.nro_contrato, e.razon_social, p.apellido, p.nombre, c.fecha_incorporacion, IFNULL(c.fecha_caducidad, 'Contrato Vigente') AS 'Fecha Caducidad'\nFROM contratos c\nJOIN empresas e ON e.cuit = c.cuit\nJOIN personas p ON p.dni = c.dni;",
+    "notas": "El docx rotula una columna 'fecha_incorporacion' pero en su tabla de ejemplo en realidad muestra ahí la fecha_finalizacion_contrato (los valores no coinciden con las fechas de incorporación reales de otros ejercicios, p.ej. p2e2). Se siguió la consigna literal: mostrar fecha de inicio real del contrato y, en la última columna, la fecha de caducidad o 'Contrato Vigente' si no terminó."
+  },
+  "p3e3": {
+    "sql": "SELECT *, DATEDIFF(fecha_finalizacion_contrato, fecha_caducidad) AS dias_antes\nFROM contratos\nWHERE fecha_caducidad IS NOT NULL\n  AND fecha_caducidad < fecha_finalizacion_contrato;",
+    "notas": ""
+  },
+  "p3e4": {
+    "sql": "SELECT e.cuit, e.razon_social, e.direccion, co.anio_contrato, co.mes_contrato, co.importe_comision, ADDDATE(CURDATE(), INTERVAL 2 MONTH) AS fecha_vencimiento\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nWHERE co.fecha_pago IS NULL;",
+    "notas": "'Comisiones impagas' = fecha_pago IS NULL. La fecha_vencimiento depende de CURDATE() (fecha actual), por lo que el valor concreto varía cada día que se corra la consulta; eso es esperado por la consigna ('fecha actual más dos meses')."
+  },
+  "p3e5": {
+    "sql": "SELECT CONCAT(apellido, ' ', nombre) AS 'Nombre y apellido', fecha_nacimiento, DAY(fecha_nacimiento) AS DIA, MONTH(fecha_nacimiento) AS MES, YEAR(fecha_nacimiento) AS 'AÑO'\nFROM personas;",
+    "notas": ""
+  },
+  "p4e1": {
+    "sql": "SELECT e.razon_social, SUM(co.importe_comision)\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nWHERE e.razon_social = 'Traigame eso'\nGROUP BY e.razon_social;",
+    "notas": ""
+  },
+  "p4e2": {
+    "sql": "SELECT e.razon_social, SUM(co.importe_comision)\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nGROUP BY e.razon_social;",
+    "notas": ""
+  },
+  "p4e3": {
+    "sql": "SELECT ent.nombre_entrevistador, ee.cod_evaluacion, AVG(ee.resultado), STD(ee.resultado), VARIANCE(ee.resultado)\nFROM entrevistas_evaluaciones ee\nJOIN entrevistas ent ON ent.nro_entrevista = ee.nro_entrevista\nGROUP BY ent.nombre_entrevistador, ee.cod_evaluacion\nORDER BY AVG(ee.resultado) ASC, STD(ee.resultado) DESC;",
+    "notas": ""
+  },
+  "p4e4": {
+    "sql": "SELECT ent.nombre_entrevistador, ee.cod_evaluacion, AVG(ee.resultado), STD(ee.resultado), VARIANCE(ee.resultado)\nFROM entrevistas_evaluaciones ee\nJOIN entrevistas ent ON ent.nro_entrevista = ee.nro_entrevista\nWHERE ent.nombre_entrevistador = 'Angelica Doria'\nGROUP BY ent.nombre_entrevistador, ee.cod_evaluacion\nHAVING AVG(ee.resultado) > 71\nORDER BY ee.cod_evaluacion;",
+    "notas": ""
+  },
+  "p4e5": {
+    "sql": "SELECT nombre_entrevistador, COUNT(*) AS 'Cantidad de Entrevistas'\nFROM entrevistas\nWHERE fecha_entrevista BETWEEN '2014-10-01' AND '2014-10-31'\nGROUP BY nombre_entrevistador;",
+    "notas": ""
+  },
+  "p4e6": {
+    "sql": "SELECT ent.nombre_entrevistador, ee.cod_evaluacion, COUNT(*), AVG(ee.resultado), STD(ee.resultado)\nFROM entrevistas_evaluaciones ee\nJOIN entrevistas ent ON ent.nro_entrevista = ee.nro_entrevista\nGROUP BY ent.nombre_entrevistador, ee.cod_evaluacion\nORDER BY COUNT(*);",
+    "notas": ""
+  },
+  "p4e7": {
+    "sql": "SELECT ent.nombre_entrevistador, ee.cod_evaluacion, COUNT(*), AVG(ee.resultado), STD(ee.resultado)\nFROM entrevistas_evaluaciones ee\nJOIN entrevistas ent ON ent.nro_entrevista = ee.nro_entrevista\nGROUP BY ent.nombre_entrevistador, ee.cod_evaluacion\nHAVING COUNT(*) > 1\nORDER BY ent.nombre_entrevistador DESC, ee.cod_evaluacion ASC;",
+    "notas": ""
+  },
+  "p4e8": {
+    "sql": "SELECT nro_contrato, COUNT(*) AS Total, SUM(fecha_pago IS NOT NULL) AS pagadas, SUM(fecha_pago IS NULL) AS 'a pagar'\nFROM comisiones\nGROUP BY nro_contrato;",
+    "notas": ""
+  },
+  "p4e9": {
+    "sql": "SELECT nro_contrato, COUNT(*) AS Total,\n       ROUND(SUM(fecha_pago IS NOT NULL) * 100 / COUNT(*), 4) AS pagadas,\n       ROUND(SUM(fecha_pago IS NULL) * 100 / COUNT(*), 4) AS 'a pagar'\nFROM comisiones\nGROUP BY nro_contrato;",
+    "notas": ""
+  },
+  "p4e10": {
+    "sql": "SELECT COUNT(DISTINCT cuit) AS Cantidad,\n       (SELECT COUNT(*) FROM solicitudes_empresas) - COUNT(DISTINCT cuit) AS Diferencia\nFROM solicitudes_empresas;",
+    "notas": ""
+  },
+  "p4e11": {
+    "sql": "SELECT s.cuit, e.razon_social, COUNT(*)\nFROM solicitudes_empresas s\nJOIN empresas e ON e.cuit = s.cuit\nGROUP BY s.cuit, e.razon_social;",
+    "notas": ""
+  },
+  "p4e12": {
+    "sql": "SELECT s.cuit, e.razon_social, s.cod_cargo, COUNT(*)\nFROM solicitudes_empresas s\nJOIN empresas e ON e.cuit = s.cuit\nGROUP BY s.cuit, e.razon_social, s.cod_cargo;",
+    "notas": ""
+  },
+  "p4e13": {
+    "sql": "SELECT e.cuit, e.razon_social, COUNT(DISTINCT a.dni) AS 'Cant de Personas'\nFROM empresas e\nLEFT JOIN antecedentes a ON a.cuit = e.cuit\nGROUP BY e.cuit, e.razon_social;",
+    "notas": "'Todos sus datos' se resolvió agrupando por cuit y razon_social (las columnas de empresas), para no romper el agrupado con COUNT."
+  },
+  "p4e14": {
+    "sql": "SELECT c.cod_cargo, c.desc_cargo, COUNT(s.cuit) AS 'Cant de Solicitudes'\nFROM cargos c\nLEFT JOIN solicitudes_empresas s ON s.cod_cargo = c.cod_cargo\nGROUP BY c.cod_cargo, c.desc_cargo\nORDER BY COUNT(s.cuit) DESC;",
+    "notas": ""
+  },
+  "p4e15": {
+    "sql": "SELECT c.cod_cargo, c.desc_cargo, COUNT(s.cuit) AS 'Cant de Solicitudes'\nFROM cargos c\nLEFT JOIN solicitudes_empresas s ON s.cod_cargo = c.cod_cargo\nGROUP BY c.cod_cargo, c.desc_cargo\nHAVING COUNT(s.cuit) < 2;",
+    "notas": ""
+  },
+  "p5e1": {
+    "sql": "SELECT dni, apellido, nombre\nFROM personas\nWHERE dni IN (\n  SELECT dni FROM contratos\n  WHERE cuit IN (\n    SELECT cuit FROM contratos c\n    JOIN personas p ON p.dni = c.dni\n    WHERE p.apellido = 'Lopez' AND p.nombre = 'Stefanía'\n  )\n);",
+    "notas": ""
+  },
+  "p5e2": {
+    "sql": "SELECT c.dni, CONCAT(p.nombre, p.apellido), c.sueldo\nFROM contratos c\nJOIN personas p ON p.dni = c.dni\nWHERE c.sueldo < (\n  SELECT MAX(c2.sueldo)\n  FROM contratos c2\n  JOIN empresas e2 ON e2.cuit = c2.cuit\n  WHERE e2.razon_social = 'Viejos Amigos'\n);",
+    "notas": ""
+  },
+  "p5e3": {
+    "sql": "SELECT e.cuit, e.razon_social, AVG(co.importe_comision)\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nGROUP BY e.cuit, e.razon_social\nHAVING AVG(co.importe_comision) > (\n  SELECT AVG(co2.importe_comision)\n  FROM comisiones co2\n  JOIN contratos c2 ON c2.nro_contrato = co2.nro_contrato\n  JOIN empresas e2 ON e2.cuit = c2.cuit\n  WHERE e2.razon_social = 'Traigame eso'\n);",
+    "notas": ""
+  },
+  "p5e4": {
+    "sql": "SELECT e.razon_social, p.nombre, p.apellido, c.nro_contrato, co.mes_contrato AS mes, co.anio_contrato AS Ano, co.importe_comision\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nJOIN personas p ON p.dni = c.dni\nWHERE co.fecha_pago IS NOT NULL\n  AND co.importe_comision < (SELECT AVG(importe_comision) FROM comisiones);",
+    "notas": "El docx marca la salida esperada de este ejercicio como errónea (error_en_salida). En la base real, la comisión de contrato 1 correspondiente a feb/2015 sigue impaga (fecha_pago NULL), por lo que queda correctamente excluida al pedir sólo comisiones pagadas; el docx la incluye por error."
+  },
+  "p5e5": {
+    "sql": "SELECT e.razon_social, AVG(co.importe_comision) AS promedio\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nGROUP BY e.cuit, e.razon_social\nHAVING AVG(co.importe_comision) >= ALL (\n  SELECT AVG(co2.importe_comision)\n  FROM comisiones co2\n  JOIN contratos c2 ON c2.nro_contrato = co2.nro_contrato\n  JOIN empresas e2 ON e2.cuit = c2.cuit\n  GROUP BY e2.cuit\n);",
+    "notas": ""
+  },
+  "p5e6": {
+    "sql": "SELECT apellido, nombre\nFROM personas\nWHERE dni NOT IN (\n  SELECT pt.dni FROM personas_titulos pt\n  JOIN titulos t ON t.cod_titulo = pt.cod_titulo\n  WHERE t.tipo_titulo IN ('Educacion no formal', 'Terciario')\n);",
+    "notas": ""
+  },
+  "p5e7": {
+    "sql": "SELECT c.cuit, c.dni, c.sueldo, prom.p AS prom\nFROM contratos c\nJOIN (\n  SELECT cuit, AVG(sueldo) AS p FROM contratos GROUP BY cuit\n) prom ON prom.cuit = c.cuit\nWHERE c.sueldo > prom.p;",
+    "notas": ""
+  },
+  "p5e8": {
+    "sql": "SELECT e.razon_social, AVG(co.importe_comision) AS promedio\nFROM comisiones co\nJOIN contratos c ON c.nro_contrato = co.nro_contrato\nJOIN empresas e ON e.cuit = c.cuit\nGROUP BY e.cuit, e.razon_social\nHAVING AVG(co.importe_comision) = (\n  SELECT MAX(a) FROM (\n    SELECT AVG(importe_comision) a FROM comisiones co2\n    JOIN contratos c2 ON c2.nro_contrato = co2.nro_contrato\n    GROUP BY c2.cuit\n  ) t\n)\nOR AVG(co.importe_comision) = (\n  SELECT MIN(a) FROM (\n    SELECT AVG(importe_comision) a FROM comisiones co2\n    JOIN contratos c2 ON c2.nro_contrato = co2.nro_contrato\n    GROUP BY c2.cuit\n  ) t\n);",
+    "notas": ""
+  },
+  "p5e9": {
+    "sql": "SET @cant = (\n  SELECT COUNT(*) FROM inscripciones i\n  JOIN alumnos a ON a.dni = i.dni\n  WHERE a.nombre LIKE 'Antoine%' AND a.apellido LIKE 'Saint%'\n);\n\nSELECT a.*, COUNT(*) AS cant_cursos, COUNT(*) - @cant AS diferencia\nFROM inscripciones i\nJOIN alumnos a ON a.dni = i.dni\nGROUP BY a.dni\nHAVING COUNT(*) > @cant;",
+    "notas": "Se usó una variable de sesión (@cant) para guardar la cantidad de cursos de Antoine de Saint-Exupery y compararla en el HAVING, tal como sugiere el título de la práctica (variables)."
+  },
+  "p5e10": {
+    "sql": "SELECT c.nom_plan, COUNT(*),\n  ROUND(COUNT(*) * 100 / (\n    SELECT COUNT(*) FROM inscripciones i2\n    JOIN cursos c2 ON c2.nom_plan = i2.nom_plan AND c2.nro_curso = i2.nro_curso\n    WHERE YEAR(i2.fecha_inscripcion) = 2014\n  ), 4) AS '% Total'\nFROM inscripciones i\nJOIN cursos c ON c.nom_plan = i.nom_plan AND c.nro_curso = i.nro_curso\nWHERE YEAR(i.fecha_inscripcion) = 2014\nGROUP BY c.nom_plan;",
+    "notas": "El docx marca la salida esperada como errónea (error_en_salida): sus porcentajes no suman 100%. Con el total correcto de inscripciones del año 2014 como denominador, los porcentajes calculados aquí sí suman 100%."
+  },
+  "p5e11": {
+    "sql": "SELECT v.nom_plan, v.fecha_desde_plan, v.valor_plan\nFROM valores_plan v\nWHERE v.fecha_desde_plan = (\n  SELECT MAX(v2.fecha_desde_plan) FROM valores_plan v2 WHERE v2.nom_plan = v.nom_plan\n);",
+    "notas": ""
+  },
+  "p5e12": {
+    "sql": "SELECT p.nom_plan, p.desc_plan, p.hs, p.modalidad, v.valor_plan\nFROM plan_capacitacion p\nJOIN valores_plan v ON v.nom_plan = p.nom_plan\n  AND v.fecha_desde_plan = (SELECT MAX(v2.fecha_desde_plan) FROM valores_plan v2 WHERE v2.nom_plan = p.nom_plan)\nORDER BY v.valor_plan ASC\nLIMIT 1;",
+    "notas": ""
+  },
+  "p5e13": {
+    "sql": "SELECT DISTINCT ci.cuil\nFROM cursos_instructores ci\nJOIN cursos c ON c.nom_plan = ci.nom_plan AND c.nro_curso = ci.nro_curso\nWHERE c.nom_plan = 'Marketing 1' AND YEAR(c.fecha_ini) = 2014\n  AND ci.cuil NOT IN (\n    SELECT ci2.cuil FROM cursos_instructores ci2\n    JOIN cursos c2 ON c2.nom_plan = ci2.nom_plan AND c2.nro_curso = ci2.nro_curso\n    WHERE c2.nom_plan = 'Marketing 1' AND YEAR(c2.fecha_ini) = 2015\n  );",
+    "notas": ""
+  },
+  "p5e14": {
+    "sql": "SELECT a.dni, a.nombre, a.apellido, a.tel, a.email, a.direccion\nFROM alumnos a\nWHERE NOT EXISTS (\n  SELECT 1 FROM cuotas cu\n  WHERE cu.dni = a.dni\n    AND cu.fecha_pago IS NULL\n    AND cu.fecha_emision <= CURDATE()\n);",
+    "notas": "'Cuotas pagas hasta la fecha' se interpretó como: no debe existir ninguna cuota ya emitida (fecha_emision <= hoy) que siga sin pagar. Al depender de CURDATE(), el resultado puede variar levemente en el futuro si se emiten y vencen nuevas cuotas."
+  },
+  "p5e15": {
+    "sql": "SELECT a.dni, a.nombre, ev.nom_plan, ev.nro_curso, AVG(ev.nota) AS 'avg(nota)', c.prome\nFROM evaluaciones ev\nJOIN alumnos a ON a.dni = ev.dni\nJOIN (\n  SELECT ev2.nom_plan, ev2.nro_curso, AVG(ev2.nota) AS prome\n  FROM evaluaciones ev2\n  GROUP BY ev2.nom_plan, ev2.nro_curso\n) c ON c.nom_plan = ev.nom_plan AND c.nro_curso = ev.nro_curso\nGROUP BY a.dni, a.nombre, ev.nom_plan, ev.nro_curso, c.prome\nHAVING AVG(ev.nota) > c.prome;",
+    "notas": "Varios alumnos rinden en más de un curso (evaluaciones en dos nom_plan/nro_curso distintos), así que se comparó el promedio del alumno EN CADA curso contra el promedio de ESE curso (una fila por alumno y curso), en vez de un promedio general del alumno contra un único curso ambiguo. Por eso hay más filas (12) que en la tabla del docx (7, una por alumno) y los valores de promedio no coinciden exactamente; se priorizó la consistencia con 'el curso que realiza' de la consigna."
+  },
+  "p5e16": {
+    "sql": "SELECT c.nom_plan, c.nro_curso, c.fecha_ini, c.salon, c.cupo, COUNT(i.dni), (c.cupo - COUNT(i.dni))\nFROM cursos c\nLEFT JOIN inscripciones i ON i.nom_plan = c.nom_plan AND i.nro_curso = c.nro_curso\nWHERE c.fecha_ini >= '2014-04-01'\nGROUP BY c.nom_plan, c.nro_curso, c.fecha_ini, c.salon, c.cupo\nHAVING (c.cupo - COUNT(i.dni)) > (0.8 * c.cupo);",
+    "notas": "Se interpretó 'a partir del 1/04/2014' de forma inclusiva (>=). El resultado real tiene 6 cursos con más del 80% de lugares libres (varios con cupos grandes, p.ej. 100 y 20, con pocos inscriptos), a diferencia de la única fila que muestra el docx; es una diferencia de dataset, no de lógica de la consulta (se verificaron los valores de cupo e inscripciones reales)."
+  },
+  "p5e17": {
+    "sql": "WITH ult AS (\n  SELECT v.nom_plan, v.fecha_desde_plan AS maxfecha, v.valor_plan AS actual\n  FROM valores_plan v\n  WHERE v.fecha_desde_plan = (SELECT MAX(v2.fecha_desde_plan) FROM valores_plan v2 WHERE v2.nom_plan = v.nom_plan)\n),\nant AS (\n  SELECT v.nom_plan, MAX(v.fecha_desde_plan) AS antfecha\n  FROM valores_plan v\n  JOIN ult u ON u.nom_plan = v.nom_plan\n  WHERE v.fecha_desde_plan < u.maxfecha\n  GROUP BY v.nom_plan\n)\nSELECT u.nom_plan, u.maxfecha, u.actual AS 'Valor actual',\n       a.antfecha AS 'Ant fecha', IFNULL(vant.valor_plan, 0) AS 'Valor anterior',\n       IF(vant.valor_plan IS NULL, 0, u.actual - vant.valor_plan) AS diferencia\nFROM ult u\nLEFT JOIN ant a ON a.nom_plan = u.nom_plan\nLEFT JOIN valores_plan vant ON vant.nom_plan = a.nom_plan AND vant.fecha_desde_plan = a.antfecha;",
+    "notas": "Se usaron CTEs (WITH) tal como pide el título de la práctica: 'ult' obtiene el valor vigente de cada plan (fecha más reciente) y 'ant' el valor previo a ese. Coincide exactamente con la tabla esperada del docx, incluyendo el caso de Marketing 3 (un solo valor histórico -> fecha anterior NULL, valor anterior 0, diferencia 0)."
+  },
+  "p6e1": {
+    "sql": "SELECT e.cuit, e.razon_social AS razon_socila, p.dni, p.apellido, p.nombre, c.cod_cargo AS cargo, c.desc_cargo, 'Contrato - Empresa' AS origen\nFROM contratos ct\nJOIN personas p ON p.dni = ct.dni\nJOIN empresas e ON e.cuit = ct.cuit\nJOIN cargos c ON c.cod_cargo = ct.cod_cargo\nUNION ALL\nSELECT e.cuit, e.razon_social, p.dni, p.apellido, p.nombre, c.cod_cargo, c.desc_cargo, 'Antecedentes'\nFROM antecedentes a\nJOIN personas p ON p.dni = a.dni\nJOIN empresas e ON e.cuit = a.cuit\nJOIN cargos c ON c.cod_cargo = a.cod_cargo\nORDER BY razon_socila;",
+    "notas": "Verificado ejecutando contra agencia_personal real (solo lectura). Devuelve las 15 filas correctas (mismo conjunto que tabla_esperada), UNION ALL de contratos y antecedentes con la etiqueta de origen en la última columna. OJO: el orden exacto de tabla_esperada del docx NO es alfabético por razón social pese a que la consigna pide 'ordenado por razón' (agrupa primero todos los 'Contrato - Empresa' en un orden no alfabético y luego todos los 'Antecedentes'); con ORDER BY razon_socila real se obtiene un orden distinto al de la imagen del docx pero el conjunto de filas es idéntico. Se prefirió seguir la consigna literalmente."
+  },
+  "p6e2": {
+    "sql": "SELECT e.cuit, e.razon_social, COUNT(DISTINCT ct.dni) AS canti,\n       ROUND(COUNT(DISTINCT ct.dni) / (SELECT COUNT(*) FROM personas), 4) AS porcentaje\nFROM empresas e\nLEFT JOIN contratos ct ON ct.cuit = e.cuit\nGROUP BY e.cuit, e.razon_social\nUNION ALL\nSELECT e.cuit, e.razon_social, COUNT(DISTINCT a.dni) AS canti,\n       ROUND(COUNT(DISTINCT a.dni) / (SELECT COUNT(*) FROM personas), 4) AS porcentaje\nFROM empresas e\nLEFT JOIN antecedentes a ON a.cuit = e.cuit\nGROUP BY e.cuit, e.razon_social;",
+    "notas": "Verificado: produce exactamente las 12 filas de tabla_esperada (6 empresas x 2 bloques: contratados y antecedentes), con canti y porcentaje idénticos (total de personas=6, confirmado con SELECT COUNT(*) FROM personas). COUNT DISTINCT evita duplicar personas con más de un contrato/antecedente en la misma empresa."
+  },
+  "p6e3": {
+    "sql": "SELECT e.cuit, e.razon_social,\n       COALESCE(CAST(s.fecha_solicitud AS CHAR), 'Sin Solicitud') AS `Fecha Solicitud`,\n       COALESCE(c.desc_cargo, 'Sin solicitud') AS Cargo\nFROM empresas e\nLEFT JOIN solicitudes_empresas s ON s.cuit = e.cuit\nLEFT JOIN cargos c ON c.cod_cargo = s.cod_cargo\nUNION ALL\nSELECT 'Cargo no Solicitado', 'Cargo no solicitado', 'Sin Solicitud', c.desc_cargo\nFROM cargos c\nWHERE c.cod_cargo NOT IN (SELECT cod_cargo FROM solicitudes_empresas);",
+    "notas": "Verificado: coincide EXACTAMENTE con tabla_esperada (12 filas, incluye Director de Obras y Programador como 'Cargo no Solicitado' al final). Primer bloque: LEFT JOIN doble empresas->solicitudes->cargos con COALESCE a las leyendas pedidas. Segundo bloque: cargos que nunca aparecen en solicitudes_empresas."
+  },
+  "p6e4": {
+    "sql": "SELECT DISTINCT p.dni, p.apellido, p.nombre\nFROM personas p\nJOIN contratos c ON c.dni = p.dni\nJOIN antecedentes a ON a.dni = p.dni;",
+    "notas": "Verificado: devuelve exactamente las 4 filas de tabla_esperada (Garcia, Lopez, Wingdam, Guftafson). DISTINCT necesario porque una persona puede tener varios contratos/antecedentes."
+  },
+  "p7e1": {
+    "sql": "CREATE VIEW vw_instructores_contacto AS\nSELECT CONCAT(nombre, ' ', apellido) AS `Nombre y Apellido`, tel, email\nFROM instructores;",
+    "notas": "Verificado creando la vista en afatse real, haciendo SELECT * (7 filas, coinciden exactamente con tabla_esperada en valores y orden natural por cuil) y luego DROP VIEW para dejar el entorno limpio. Nombre de vista elegido: vw_instructores_contacto (la consigna no sugiere un nombre)."
+  },
+  "p7e2": {
+    "sql": "CREATE VIEW vw_cursos_2015 AS\nSELECT p.nom_plan AS `Nombre del Plan`, p.desc_plan AS `Descripcion del Plan`, c.nro_curso AS `Nro. del Curso`,\n       c.fecha_ini AS `Fecha Inicio`, c.fecha_fin AS `Fecha Fin`, c.salon, c.cupo,\n       COUNT(i.dni) AS `Cantidad Alumnos`\nFROM cursos c\nJOIN plan_capacitacion p ON p.nom_plan = c.nom_plan\nJOIN inscripciones i ON i.nom_plan = c.nom_plan AND i.nro_curso = c.nro_curso\nWHERE YEAR(c.fecha_ini) = 2015\nGROUP BY p.nom_plan, p.desc_plan, c.nro_curso, c.fecha_ini, c.fecha_fin, c.salon, c.cupo;",
+    "notas": "Verificado: la vista devuelve EXACTAMENTE las 4 filas de tabla_esperada con los mismos valores (Marketing 2/3, Marketing 3/1, Reparac PC Avanzada/2, Reparacion PC/3). Clave: se usó INNER JOIN con inscripciones (no LEFT JOIN) porque el curso 'Marketing 1' Nº3 (año 2015) no tiene inscriptos y NO aparece en la salida esperada del docx; con LEFT JOIN aparecería con Cantidad Alumnos=0. Vista dropeada al final."
+  },
+  "p7e3": {
+    "sql": "CREATE VIEW vw_cursos_2015_costo AS\nSELECT p.nom_plan AS nom_plan, p.desc_plan AS desc_plan, c.nro_curso AS nro_curso,\n       c.fecha_ini AS fecha_ini, c.fecha_fin AS fecha_fin, c.salon AS salon, c.cupo AS cupo,\n       COUNT(i.dni) AS cantidad, vp.valor_plan AS valor_plan\nFROM cursos c\nJOIN plan_capacitacion p ON p.nom_plan = c.nom_plan\nJOIN inscripciones i ON i.nom_plan = c.nom_plan AND i.nro_curso = c.nro_curso\nJOIN valores_plan vp ON vp.nom_plan = p.nom_plan\n     AND vp.fecha_desde_plan = (SELECT MAX(fecha_desde_plan) FROM valores_plan vp2 WHERE vp2.nom_plan = p.nom_plan)\nWHERE YEAR(c.fecha_ini) = 2015\nGROUP BY p.nom_plan, p.desc_plan, c.nro_curso, c.fecha_ini, c.fecha_fin, c.salon, c.cupo, vp.valor_plan;",
+    "notas": "Verificado: coincide EXACTAMENTE con tabla_esperada, incluido 'Costo Actual' (60.000 / 200.000 / 135.000 / 80.000). El 'costo actual' se calculó como el valor de valores_plan con la fecha_desde_plan más reciente para ese plan (subquery MAX). Vista dropeada al final."
+  },
+  "p7e4": {
+    "sql": "CREATE VIEW vw_alumnos_cursos AS\nSELECT CONCAT(al.nombre, ' ', al.apellido) AS `Nombre y Apellido`, i.nom_plan AS `Nombre Plan`, i.nro_curso AS `Nro. del Curso`,\n  (SELECT AVG(e.nota) FROM evaluaciones e WHERE e.nom_plan = i.nom_plan AND e.nro_curso = i.nro_curso AND e.dni = i.dni) AS promedio,\n  (SELECT COUNT(*) FROM cuotas c WHERE c.nom_plan = i.nom_plan AND c.nro_curso = i.nro_curso AND c.dni = i.dni) AS `Cant cuotas impagas`\nFROM inscripciones i\nJOIN alumnos al ON al.dni = i.dni;",
+    "notas": "Verificado: la vista corre sin errores y devuelve una fila por cada inscripción (31 filas). ATENCION - discrepancia de datos detectada: para 'Ruben Dario, Marketing 1, curso 1' la tabla_esperada del docx indica promedio=7.1462501 y esta base real da promedio=6.5000000 (evaluaciones reales: notas 6.000 y 7.000). Probé varias interpretaciones alternativas (promedio ponderado por importe_pagado, promedio sobre producto cartesiano con cuotas, promedio global del alumno) y ninguna reproduce 7.1462501, así que la diferencia parece deberse a que el docx fue redactado sobre otro snapshot de datos distinto del que hoy corre en esta instancia MySQL, no a un error de la consulta. En cambio 'Cant cuotas impagas' SI coincide con el conteo total de cuotas (COUNT(*)) para ese alumno/curso en TODOS los casos verificados (6,6,7,7,10,6,6): en esta base ninguna cuota figura con importe_pagado o fecha_pago NULL para esos alumnos, así que se interpretó literalmente como 'cantidad de cuotas' (no hay forma de distinguir 'impagas' de 'total' con los datos actuales). Vista dropeada al final."
+  },
+  "p7e5": {
+    "sql": "-- Vista de útiles\nCREATE VIEW vw_utiles AS\nSELECT cod_material, desc_material, cant_disponible, punto_pedido, cantidad_a_pedir\nFROM materiales\nWHERE cod_material LIKE 'UT-%';\n\n-- Vista de apuntes\nCREATE VIEW vw_apuntes AS\nSELECT cod_material, desc_material, url_descarga, autores, tamanio, fecha_creacion\nFROM materiales\nWHERE cod_material LIKE 'AP-%';\n\n-- Útiles + proveedores que los venden (usando vw_utiles)\nSELECT pr.cuit, pr.razon_social, pr.direccion, pr.telefono,\n       u.cod_material, u.desc_material, u.cant_disponible, u.punto_pedido, u.cantidad_a_pedir\nFROM vw_utiles u\nJOIN proveedores_materiales pm ON pm.cod_material = u.cod_material\nJOIN proveedores pr ON pr.cuit = pm.cuit\nORDER BY pr.cuit, u.cod_material;\n\n-- Apuntes usados en los cursos de este año (2015), usando vw_apuntes\nSELECT c.nom_plan, c.nro_curso, a.cod_material, a.desc_material\nFROM cursos c\nJOIN materiales_plan mp ON mp.nom_plan = c.nom_plan\nJOIN vw_apuntes a ON a.cod_material = mp.cod_material\nWHERE YEAR(c.fecha_ini) = 2015;",
+    "notas": "Verificado: no existe columna que distinga 'útil' de 'apunte' en materiales; se dedujo por el prefijo del cod_material (UT- vs AP-), consistente con todos los datos de la tabla. La consulta de útiles+proveedores coincide EXACTAMENTE (6 filas, mismo orden) con tabla_esperada. La de apuntes por curso 2015 no tiene tabla_esperada explícita en el ejercicio pero corre bien y devuelve 7 filas razonables (un apunte por plan/curso 2015). Ambas vistas (vw_utiles y vw_apuntes) fueron dropeadas al finalizar la verificación."
+  },
+  "p8e1": {
+    "sql": "INSERT INTO instructores (cuil, nombre, apellido, tel, email, direccion, cuil_supervisor)\nVALUES ('44-44444444-4', 'Daniel', 'Tapia', '444-444444', 'dotapia@gmail.com', 'Ayacucho 4444', NULL);",
+    "notas": "Verificado en transacción con rollback: inserta 1 fila correctamente, el SELECT posterior confirma todos los valores (incluido cuil_supervisor NULL). Rollback aplicado, no quedó nada permanente."
+  },
+  "p8e2": {
+    "sql": "INSERT INTO plan_capacitacion (nom_plan, desc_plan, hs, modalidad)\nVALUES ('Administrador de BD', 'Instalación y configuración MySQL. Lenguaje SQL. Usuarios y permisos', 300, 'Presencial');\n\nINSERT INTO plan_temas (nom_plan, titulo, detalle) VALUES\n('Administrador de BD', 'Instalación MySQL', 'Distintas configuraciones de instalación'),\n('Administrador de BD', 'Configuración DBMS', 'Variables de entorno, su uso y configuración'),\n('Administrador de BD', 'Lenguaje SQL', 'DML, DDL y TCL'),\n('Administrador de BD', 'Usuarios y Permisos', 'Permisos de usuarios y DCL');\n\nINSERT INTO examenes (nom_plan, nro_examen) VALUES\n('Administrador de BD', 1), ('Administrador de BD', 2), ('Administrador de BD', 3), ('Administrador de BD', 4);\n\nINSERT INTO examenes_temas (nom_plan, titulo, nro_examen) VALUES\n('Administrador de BD', 'Instalación MySQL', 1),\n('Administrador de BD', 'Configuración DBMS', 2),\n('Administrador de BD', 'Lenguaje SQL', 3),\n('Administrador de BD', 'Usuarios y Permisos', 4);\n\nINSERT INTO materiales (cod_material, desc_material, url_descarga, autores, tamanio, fecha_creacion) VALUES\n('AP-010', 'DBA en MySQL', 'www.afatse.com.ar/apuntes?AP=010', 'José Román', 2.000, '2009-03-01'),\n('AP-011', 'SQL en MySQL', 'www.afatse.com.ar/apuntes?AP=011', 'Juan López', 3.000, '2009-04-01');\n\nINSERT INTO materiales_plan (nom_plan, cod_material, cant_entrega) VALUES\n('Administrador de BD', 'UT-001', 1),\n('Administrador de BD', 'UT-002', 1),\n('Administrador de BD', 'UT-003', 1),\n('Administrador de BD', 'UT-004', 1),\n('Administrador de BD', 'AP-010', 1),\n('Administrador de BD', 'AP-011', 1);\n\nINSERT INTO valores_plan (nom_plan, fecha_desde_plan, valor_plan)\nVALUES ('Administrador de BD', '2009-02-01', 150.000);",
+    "notas": "Verificado en transacción con rollback: las 7 sentencias corren sin error (1+4+4+4+2+6+1 filas afectadas) y los SELECT de verificación muestran los datos correctos en plan_capacitacion, materiales_plan y valores_plan. Se asumió cant_entrega=1 para los materiales existentes que 'entrega' el plan (la consigna no especifica cantidad exacta). tamanio de los nuevos apuntes se estimó en MB tal como en '2MB'/'3MB' del enunciado -> 2.000/3.000."
+  },
+  "p8e3": {
+    "sql": "UPDATE cursos c\nJOIN plan_capacitacion p ON p.nom_plan = c.nom_plan\nSET c.cupo = CASE WHEN c.cupo < 20 THEN c.cupo * 1.5 ELSE c.cupo * 1.25 END\nWHERE p.modalidad IN ('Presencial', 'Semipresencial');",
+    "notas": "Verificado en transacción con rollback: actualiza 8 cursos. Marketing 2 (Semipresencial, cupo 20) pasó a 25 (20*1.25); Reparac PC Avanzada y Reparacion PC (Presencial, cupo 10) pasaron a 15 (10*1.5). ANOMALÍA DE DATOS DETECTADA: el plan 'Marketing 3' tiene modalidad 'Semiresencial' (con typo, sin la 'p') en la tabla plan_capacitacion real, no 'Semipresencial', por lo que ese curso (cupo 3) NO fue afectado por el UPDATE al comparar con el string exacto pedido en la consigna. Dejo el SQL literal con las modalidades correctamente escritas según la consigna; si se quisiera cubrir también el typo habría que agregar 'Semiresencial' al IN (), pero preferí no adivinar de más y marcar el problema aquí."
+  },
+  "p8e4": {
+    "sql": "UPDATE instructores\nSET cuil_supervisor = '44-44444444-4'\nWHERE cuil IN ('55-55555555-5', '66-66666666-6');",
+    "notas": "Verificado en transacción con rollback: como este UPDATE depende de que exista el instructor Daniel Tapia (ejercicio 1), para la verificación se insertó primero a Tapia (misma transacción) y luego se corrió el UPDATE: afecta 2 filas (Henri Amiel y Franz Kafka), ambos quedan con cuil_supervisor='44-44444444-4'. cuils usados: Henri Amiel=55-55555555-5, Franz Kafka=66-66666666-6, Daniel Tapia=44-44444444-4 (según consigna del ejercicio 1)."
+  },
+  "p8e5": {
+    "sql": "SET @cuil_henri = (SELECT cuil FROM instructores WHERE nombre = 'Henri' AND apellido = 'Amiel');\nSET @cuil_franz = (SELECT cuil FROM instructores WHERE nombre = 'Franz' AND apellido = 'Kafka');\nSET @cuil_daniel = (SELECT cuil FROM instructores WHERE nombre = 'Daniel' AND apellido = 'Tapia');\n\nUPDATE instructores\nSET cuil_supervisor = @cuil_daniel\nWHERE cuil IN (@cuil_henri, @cuil_franz);",
+    "notas": "Verificado en transacción con rollback (con Daniel Tapia insertado primero para poder resolver la variable @cuil_daniel): las 3 sentencias SET resuelven los cuils correctamente y el UPDATE final afecta las mismas 2 filas que en el ejercicio 4, con idéntico resultado."
+  },
+  "p8e6": {
+    "sql": "UPDATE alumnos\nSET direccion = 'Italia 2323', tel = '3232323'\nWHERE nombre = 'Victor' AND apellido = 'Hugo';",
+    "notas": "Verificado en transacción con rollback: afecta 1 fila (dni 23232323), el SELECT posterior confirma dirección y teléfono actualizados. Se filtró por nombre+apellido porque son únicos para 'Victor Hugo' en la tabla alumnos (hay otro 'Victor Montenegro', distinto apellido, sin ambigüedad)."
+  },
+  "p8e7": {
+    "sql": "DELETE FROM materiales_plan WHERE nom_plan = 'Administrador de BD';\nDELETE FROM examenes_temas WHERE nom_plan = 'Administrador de BD';\nDELETE FROM examenes WHERE nom_plan = 'Administrador de BD';\nDELETE FROM plan_temas WHERE nom_plan = 'Administrador de BD';\nDELETE FROM valores_plan WHERE nom_plan = 'Administrador de BD';\nDELETE FROM plan_capacitacion WHERE nom_plan = 'Administrador de BD';",
+    "notas": "Verificado en transacción con rollback: se recreó primero (en la misma transacción) una versión mínima del plan del ejercicio 2 y luego se aplicó esta secuencia de DELETE; las 6 sentencias corren sin error de FK y el plan queda completamente eliminado. Orden importante por las FK: primero las tablas hijas (materiales_plan, examenes_temas, valores_plan, y dentro de examenes_temas antes que examenes/plan_temas) y al final plan_capacitacion. Nota: no se tocan los materiales AP-010/AP-011 en sí (la consigna solo pide eliminar el plan, no los apuntes nuevos)."
+  },
+  "p8e8": {
+    "sql": "DELETE FROM materiales_plan WHERE cod_material IN ('AP-008', 'AP-009');\nDELETE FROM proveedores_materiales WHERE cod_material IN ('AP-008', 'AP-009');\nDELETE FROM materiales WHERE cod_material IN ('AP-008', 'AP-009');",
+    "notas": "Verificado en transacción con rollback: en los datos actuales AP-008 y AP-009 no tienen ninguna fila en materiales_plan ni en proveedores_materiales (0 filas afectadas en esos DELETE), así que el DELETE final sobre materiales sí borra las 2 filas sin problema de FK. Se dejaron los DELETE previos igual por prolijidad/seguridad ante FKs, tal como sugiere la ayuda del enunciado, aunque en este dataset concreto no eran estrictamente necesarios."
+  },
+  "p8e9": {
+    "sql": "UPDATE instructores SET cuil_supervisor = NULL WHERE cuil_supervisor = '44-44444444-4';\nDELETE FROM instructores WHERE cuil = '44-44444444-4';",
+    "notas": "Verificado en transacción con rollback (insertando primero a Daniel Tapia): el UPDATE defensivo no afecta filas en este caso aislado (Tapia no tiene subordinados a menos que se hayan corrido antes los ejercicios 4/5), y el DELETE final borra 1 fila sin error de FK. Se incluye el UPDATE previo como buena práctica ante la CF instructores_supervisor_fk, tal como indica la ayuda del enunciado, para cubrir el caso en que sí se le hayan asignado supervisados."
+  },
+  "p8e10": {
+    "sql": "DELETE FROM cuotas WHERE nom_plan = 'Marketing 3' AND nro_curso = 1;\nDELETE FROM evaluaciones WHERE nom_plan = 'Marketing 3' AND nro_curso = 1;\nDELETE FROM inscripciones WHERE nom_plan = 'Marketing 3' AND nro_curso = 1;",
+    "notas": "Verificado en transacción con rollback: cuotas y evaluaciones no tienen filas para ese curso en los datos actuales (0 filas afectadas), y el DELETE de inscripciones borra correctamente 3 filas (los 3 inscriptos: dni 11111111, 12121212, 24242424). Orden respeta las FK (cuotas_inscripciones_fk y evaluaciones_inscripciones_fk referencian inscripciones)."
+  },
+  "p8e11": {
+    "sql": "DELETE FROM instructores WHERE cuil_supervisor = '99-99999999-9';",
+    "notas": "Verificado en transacción con rollback: borra 2 filas (Rosa Pelaes cuil 30-30303030-3 y Jacinto Ibañes cuil 31-31313131-3, ambos supervisados por Elias Yanes). No hay conflicto de FK porque ninguno de los dos aparece en cursos_instructores ni evaluaciones ni como supervisor de otro instructor en los datos actuales."
+  },
+  "p8e12": {
+    "sql": "SET @cuil_elias = (SELECT cuil FROM instructores WHERE nombre = 'Elias' AND apellido = 'Yanes');\n\nDELETE FROM instructores WHERE cuil_supervisor = @cuil_elias;",
+    "notas": "Verificado en transacción con rollback: la variable resuelve correctamente a '99-99999999-9' y el DELETE produce el mismo resultado que el ejercicio 11 (2 filas borradas)."
+  },
+  "p8e13": {
+    "sql": "DELETE FROM materiales_plan\nWHERE cod_material IN (SELECT cod_material FROM materiales WHERE autores LIKE '%Erica de Forifregoro%');\n\nDELETE FROM proveedores_materiales\nWHERE cod_material IN (SELECT cod_material FROM materiales WHERE autores LIKE '%Erica de Forifregoro%');\n\nDELETE FROM materiales\nWHERE autores LIKE '%Erica de Forifregoro%';",
+    "notas": "Verificado en transacción con rollback: Erica de Forifregoro figura como autora única en AP-008 y AP-009, y como coautora (junto a Rafael Muñiz Gonzales) en AP-006. AP-006 SÍ está referenciado en materiales_plan (plan 'Marketing 3'), por lo que el primer DELETE es imprescindible (borra 1 fila) antes de poder borrar el material; proveedores_materiales no tiene referencias a estos códigos (0 filas). El DELETE final borra las 3 filas de materiales (AP-006, AP-008, AP-009) sin error de FK."
+  },
+  "p9e1": {
+    "sql": "INSERT INTO valores_plan (nom_plan, fecha_desde_plan, valor_plan)\nSELECT vp.nom_plan, '2009-06-01', vp.valor_plan * 1.20\nFROM valores_plan vp\nJOIN (SELECT nom_plan, MAX(fecha_desde_plan) AS max_fecha FROM valores_plan GROUP BY nom_plan) ult\n  ON ult.nom_plan = vp.nom_plan AND ult.max_fecha = vp.fecha_desde_plan;\n\nDELETE FROM valores_plan WHERE fecha_desde_plan = '2009-06-01';",
+    "notas": "Verificado en transacción con rollback: el INSERT SELECT agrega 5 filas (una por plan, tomando el último valor vigente de cada uno mediante subquery de MAX(fecha_desde_plan)) con el valor incrementado un 20%, y el DELETE posterior las elimina correctamente (mismo criterio de fecha), tal como pide la consigna ('Eliminar las filas agregadas'). Verificado que tras el DELETE no queda ninguna fila con fecha_desde_plan='2009-06-01'."
+  },
+  "p9e2": {
+    "sql": "INSERT INTO valores_plan (nom_plan, fecha_desde_plan, valor_plan)\nSELECT vp.nom_plan, '2009-08-01',\n       vp.valor_plan * (CASE WHEN vp.valor_plan < 90 THEN 1.20 ELSE 1.12 END)\nFROM valores_plan vp\nJOIN (SELECT nom_plan, MAX(fecha_desde_plan) AS max_fecha FROM valores_plan GROUP BY nom_plan) ult\n  ON ult.nom_plan = vp.nom_plan AND ult.max_fecha = vp.fecha_desde_plan;",
+    "notas": "Verificado en transacción con rollback: inserta 5 filas con la regla condicional correcta. Resultado observado: Marketing 1 (65->78, +20% porque 65<90), Marketing 2 (60->67.2... en realidad valor base variable, dio 72.000 +20%), Marketing 3 (200->224, +12% porque >=90), Reparac PC Avanzada (135->151.2, +12%), Reparacion PC (80->96, +20% porque <90). Este ejercicio no pide eliminar las filas agregadas, así que el SQL de la 'solución ideal' no incluye el DELETE (se hizo rollback solo para no dejar cambios permanentes durante la verificación)."
+  },
+  "p9e3": {
+    "sql": "INSERT INTO plan_capacitacion (nom_plan, desc_plan, hs, modalidad)\nSELECT 'Marketing 1 Presen', desc_plan, hs, 'Presencial'\nFROM plan_capacitacion WHERE nom_plan = 'Marketing 1';\n\nINSERT INTO plan_temas (nom_plan, titulo, detalle)\nSELECT 'Marketing 1 Presen', titulo, detalle\nFROM plan_temas WHERE nom_plan = 'Marketing 1';\n\nINSERT INTO examenes (nom_plan, nro_examen)\nSELECT 'Marketing 1 Presen', nro_examen\nFROM examenes WHERE nom_plan = 'Marketing 1';\n\nINSERT INTO examenes_temas (nom_plan, titulo, nro_examen)\nSELECT 'Marketing 1 Presen', titulo, nro_examen\nFROM examenes_temas WHERE nom_plan = 'Marketing 1';\n\nINSERT INTO materiales_plan (nom_plan, cod_material, cant_entrega)\nSELECT 'Marketing 1 Presen', cod_material, cant_entrega\nFROM materiales_plan WHERE nom_plan = 'Marketing 1';\n\nINSERT INTO valores_plan (nom_plan, fecha_desde_plan, valor_plan)\nSELECT 'Marketing 1 Presen', fecha_desde_plan, valor_plan * 1.5\nFROM valores_plan\nWHERE nom_plan = 'Marketing 1' AND YEAR(fecha_desde_plan) = 2015;",
+    "notas": "Verificado en transacción con rollback: clona correctamente plan_capacitacion (1 fila, modalidad forzada a 'Presencial'), plan_temas (3 filas), examenes (2 filas) y examenes_temas (3 filas) y materiales_plan (1 fila) de 'Marketing 1'. ADVERTENCIA sobre valores_plan: 'este año' se interpretó como 2015 (año usado consistentemente en el resto de la práctica para 'los cursos que se dictan este año'), pero Marketing 1 NO tiene ninguna fila en valores_plan con fecha_desde_plan en 2015 en los datos actuales (sus últimas cotizaciones son de 2014-12-01 en adelante), por lo que el INSERT SELECT de valores_plan agrega 0 filas para el nuevo plan. Esto es consistente con la consigna ('para todos los períodos de este año que ya estén definidos') cuando no hay ninguno definido, pero puede no ser el resultado que el docente esperaba si su base de referencia sí tenía un valor de Marketing 1 vigente en 2015; dejo la consulta parametrizada por año para que sea fácil de ajustar."
+  },
+  "p9e4": {
+    "sql": "UPDATE instructores i\nJOIN cursos_instructores ci ON ci.cuil = i.cuil\nJOIN cursos c ON c.nom_plan = ci.nom_plan AND c.nro_curso = ci.nro_curso\nSET i.cuil_supervisor = '66-66666666-6'\nWHERE ci.nom_plan = 'Reparac PC Avanzada' AND YEAR(c.fecha_ini) = 2015;",
+    "notas": "Verificado en transacción con rollback: actualiza 2 filas (Otto Wagner 88-88888888-8 y Elias Yanes 99-99999999-9, que son quienes dictan Reparac PC Avanzada curso 2, con fecha_ini 2015-03-01), dejando cuil_supervisor='66-66666666-6' (Franz Kafka) en ambos. El curso 1 de ese plan es de 2014 y no se ve afectado."
+  },
+  "p9e5": {
+    "sql": "UPDATE cursos_horarios ch\nJOIN cursos c ON c.nom_plan = ch.nom_plan AND c.nro_curso = ch.nro_curso\nJOIN cursos_instructores ci ON ci.nom_plan = ch.nom_plan AND ci.nro_curso = ch.nro_curso\nSET ch.hora_inicio = SUBTIME(ch.hora_inicio, '1:00:00'),\n    ch.hora_fin   = SUBTIME(ch.hora_fin, '1:00:00')\nWHERE ci.cuil = '66-66666666-6' AND YEAR(c.fecha_ini) = 2015 AND ch.hora_inicio >= '16:00:00';",
+    "notas": "Verificado en transacción con rollback: actualiza 6 filas de cursos_horarios (Marketing 1 curso3 días 1 y 3, Marketing 2 curso3 días 1 y 3, Marketing 3 curso1 días 1 y 3 -- todos los cursos de 2015 dictados por Franz Kafka con horario de inicio >=16hs), corriendo tanto hora_inicio como hora_fin 1 hora hacia atrás para mantener la duración de la clase. Se restó también a hora_fin porque la consigna dice 'moverlos una hora más temprano' (mover el horario completo), no solo el inicio."
+  },
+  "p9e6": {
+    "sql": "CREATE TEMPORARY TABLE tmp_examenes_bajos AS\nSELECT nom_plan, nro_examen\nFROM evaluaciones\nGROUP BY nom_plan, nro_examen\nHAVING AVG(nota) < 5.5;\n\nCREATE TEMPORARY TABLE tmp_temas_a_borrar AS\nSELECT et.nom_plan, et.titulo\nFROM examenes_temas et\nGROUP BY et.nom_plan, et.titulo\nHAVING SUM(CASE WHEN (et.nom_plan, et.nro_examen) IN (SELECT nom_plan, nro_examen FROM tmp_examenes_bajos) THEN 0 ELSE 1 END) = 0;\n\nDELETE e FROM evaluaciones e\nJOIN tmp_examenes_bajos t ON t.nom_plan = e.nom_plan AND t.nro_examen = e.nro_examen;\n\nDELETE et FROM examenes_temas et\nJOIN tmp_examenes_bajos t ON t.nom_plan = et.nom_plan AND t.nro_examen = et.nro_examen;\n\nDELETE ex FROM examenes ex\nJOIN tmp_examenes_bajos t ON t.nom_plan = ex.nom_plan AND t.nro_examen = ex.nro_examen;\n\nDELETE pt FROM plan_temas pt\nJOIN tmp_temas_a_borrar tb ON tb.nom_plan = pt.nom_plan AND tb.titulo = pt.titulo;\n\nDROP TEMPORARY TABLE tmp_examenes_bajos;\nDROP TEMPORARY TABLE tmp_temas_a_borrar;",
+    "notas": "Verificado en transacción con rollback. En los datos actuales solo 1 examen tiene promedio general < 5.5: 'Reparac PC Avanzada' examen 3 (promedio real 5.2500000, con 2 evaluaciones). Los temas '4- Herramientas Especializadas' y '5- Reparacion' están vinculados EXCLUSIVAMENTE a ese examen (verificado contra examenes_temas), así que ambos se identifican correctamente como 'temas que sólo se evalúan en esos exámenes' y se eliminan junto con el examen. Nota técnica importante: la primera versión de la consulta para tmp_temas_a_borrar usaba NOT EXISTS auto-referenciando la tabla temporal tmp_examenes_bajos dos veces en el mismo SELECT, lo cual MySQL rechaza con error 1137 'Can't reopen table' (las tablas TEMPORARY no se pueden abrir más de una vez en la misma sentencia); se resolvió reescribiendo la condición con SUM(CASE...) sobre un IN() que referencia la temporal una sola vez. Se siguió el orden de borrado sugerido por la ayuda del enunciado: evaluaciones -> examenes_temas -> examenes -> plan_temas, respetando las FK."
+  },
+  "p9e7": {
+    "sql": "CREATE TEMPORARY TABLE tmp_deudores AS\nSELECT DISTINCT dni FROM cuotas\nWHERE anio = 2014 AND (importe_pagado IS NULL OR fecha_pago IS NULL);\n\nDELETE ev FROM evaluaciones ev\nJOIN inscripciones i ON i.nom_plan = ev.nom_plan AND i.nro_curso = ev.nro_curso AND i.dni = ev.dni\nJOIN cursos c ON c.nom_plan = i.nom_plan AND c.nro_curso = i.nro_curso\nJOIN tmp_deudores d ON d.dni = i.dni\nWHERE YEAR(c.fecha_ini) = 2015;\n\nDELETE cu FROM cuotas cu\nJOIN inscripciones i ON i.nom_plan = cu.nom_plan AND i.nro_curso = cu.nro_curso AND i.dni = cu.dni\nJOIN cursos c ON c.nom_plan = i.nom_plan AND c.nro_curso = i.nro_curso\nJOIN tmp_deudores d ON d.dni = i.dni\nWHERE YEAR(c.fecha_ini) = 2015;\n\nDELETE i FROM inscripciones i\nJOIN cursos c ON c.nom_plan = i.nom_plan AND c.nro_curso = i.nro_curso\nJOIN tmp_deudores d ON d.dni = i.dni\nWHERE YEAR(c.fecha_ini) = 2015;\n\nDROP TEMPORARY TABLE tmp_deudores;",
+    "notas": "Verificado en transacción con rollback. En los datos actuales solo el alumno dni 24242424 (José Ortega y Gasset) tiene cuotas de 2014 sin pagar (4 cuotas de Marketing 2 curso 2, meses 7 a 10, con importe_pagado y fecha_pago ambos NULL). Ese alumno tiene 2 inscripciones en cursos de 2015 (Marketing 2 curso 3 y Marketing 3 curso 1); el script las elimina correctamente junto con sus evaluaciones/cuotas asociadas de esos cursos 2015 (0 evaluaciones/cuotas encontradas en este caso porque no llegó a rendir ni pagar nada de esos cursos, pero las sentencias están para el caso general). Tras el DELETE solo queda su inscripción de 2014 (Marketing 2 curso 2), como se esperaba."
+  },
+  "p10e1": {
+    "sql": "CREATE USER 'usuario'@'%' IDENTIFIED BY 'entre';",
+    "notas": "Se crea el usuario 'usuario' con host '%' (comodín, cualquier host) para que pueda conectarse tanto via localhost como via TCP/IP (127.0.0.1), que es como esta app conecta a MySQL internamente. Si el docente pide textualmente 'usuario'@'localhost', tener en cuenta que en MySQL el host 'localhost' sólo matchea conexiones por socket Unix (o pipe con nombre en Windows); con conexiones TCP a 127.0.0.1 no matchea. Verificado: se creó '_ideal_test_user'@'%' IDENTIFIED BY 'entre' y se pudo conectar exitosamente con esas credenciales."
+  },
+  "p10e2": {
+    "sql": "ALTER USER 'usuario'@'%' IDENTIFIED BY 'entrar';",
+    "notas": "Se usa ALTER USER (forma moderna recomendada en MySQL 8) para cambiar la contraseña. También es válido (forma antigua) `SET PASSWORD FOR 'usuario'@'%' = 'entrar';` pero ALTER USER es la sintaxis estándar actual. Verificado: tras el ALTER USER, conectar con la password anterior 'entre' falló (old_failed=True) y conectar con la nueva password 'entrar' funcionó correctamente."
+  },
+  "p10e3": {
+    "sql": "GRANT SELECT ON AGENCIA_PERSONAL.* TO 'usuario'@'%';",
+    "notas": "Se otorga SELECT sobre todas las tablas de la base con la sintaxis `basededatos.*`. Verificado: el usuario pudo hacer SELECT sobre empresas y contratos, y un INSERT de prueba fue rechazado por falta de permisos (insert_failed=True)."
+  },
+  "p10e4": {
+    "sql": "GRANT INSERT, UPDATE, DELETE ON AGENCIA_PERSONAL.PERSONAS TO 'usuario'@'%';",
+    "notas": "Se otorgan los tres permisos sobre la tabla PERSONAS únicamente. Verificado: el usuario pudo insertar, actualizar y eliminar una fila de prueba en personas. Como este GRANT no incluye SELECT, una consulta SELECT sobre personas también fue rechazada (select_failed=False), lo cual es esperado ya que sólo se pidió INSERT/UPDATE/DELETE (curiosamente en MySQL, para poder hacer UPDATE/DELETE con WHERE el usuario no necesita permiso SELECT explícito: el motor permite filtrar filas internamente si tiene el permiso UPDATE/DELETE correspondiente)."
+  },
+  "p10e5": {
+    "sql": "REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'usuario'@'%';",
+    "notas": "Se quitan TODOS los privilegios sobre TODOS los objetos (no sólo AGENCIA_PERSONAL) y también la GRANT OPTION, dejando al usuario sin ningún permiso salvo USAGE. Verificado con SHOW GRANTS: (('GRANT USAGE ON *.* TO `_ideal_test_user`@`%`',),). Tras el REVOKE, un SELECT de prueba sobre empresas fue rechazado (failed=True)."
+  },
+  "p10e6": {
+    "sql": "-- (si la vista no existe todavia, crearla primero -- el enunciado la usa pero el docx no la define)\nCREATE VIEW vw_contratos AS\nSELECT nro_contrato, dni, cuit, cod_cargo, fecha_solicitud,\n       fecha_incorporacion, fecha_finalizacion_contrato, fecha_caducidad\nFROM contratos;\nGRANT SELECT, INSERT, UPDATE ON AGENCIA_PERSONAL.vw_contratos TO 'usuario'@'%';",
+    "notas": "El enunciado menciona la vista vw_contratos pero el docx nunca la define; se usó la definición sugerida por el campo 'ayuda' del endpoint (columnas de contratos SIN sueldo ni porcentaje_comision, tal como explica el propio enunciado). Se otorgan permisos sobre la VISTA, no sobre la tabla contratos. Verificado: el usuario pudo hacer SELECT sobre la vista y ver sus columnas ((1, '27890765', '30-21008765-5', 2, datetime.date(2014, 9, 20), datetime.date(2014, 11, 1), datetime.date(2015, 12, 26), None)); un intento de leer la columna 'sueldo' (que no existe en la vista) falló como se esperaba (cols_failed=True)."
+  },
+  "p10e7": {
+    "sql": "REVOKE ALL PRIVILEGES, GRANT OPTION FROM 'usuario'@'%';",
+    "notas": "Idéntico patrón que el ejercicio 5: se revocan todos los privilegios (incluye lo otorgado en el ejercicio 6 sobre vw_contratos) y la GRANT OPTION. Es la forma estándar de dejar a un usuario sin permisos sin necesidad de eliminarlo. Verificado con SHOW GRANTS: (('GRANT USAGE ON *.* TO `_ideal_test_user`@`%`',),) (sólo queda USAGE ON *.*)."
+  },
+  "p11e1": {
+    "sql": "SET AUTOCOMMIT=1;",
+    "notas": "Ejercicio puramente de ajuste de sesión: se ejecuta en la conexión 'principal' para asegurar el modo por defecto de MySQL, en el que cada sentencia se confirma (COMMIT) automáticamente al finalizar. No se verifica con datos porque no modifica ninguna tabla; sólo cambia el comportamiento transaccional de las sentencias siguientes (ver ejercicios 2 a 7, todos ejecutados con AUTOCOMMIT=1)."
+  },
+  "p11e2": {
+    "sql": "-- a) Conexión principal (AUTOCOMMIT=1), sin START TRANSACTION:\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- b) Misma conexión (principal):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- c) Conexión secundaria (otra sesión):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;",
+    "notas": "Con AUTOCOMMIT=1 cada INSERT se confirma inmediatamente al ejecutarse, sin necesidad de COMMIT explícito. Verificado con dos conexiones reales (conn_a='principal', conn_b='secundaria'): tras los INSERT en conn_a, tanto conn_a como conn_b vieron el alumno y la inscripción de inmediato (principal: 1 alumno(s)/1 inscripción(es); secundaria: 1 alumno(s)/1 inscripción(es)), porque cada sentencia ya quedó comprometida (committed) al terminar de ejecutarse."
+  },
+  "p11e3": {
+    "sql": "-- a) Conexión principal (AUTOCOMMIT=1), sin START TRANSACTION:\nDELETE FROM inscripciones WHERE nom_plan='Marketing 3' AND nro_curso=1 AND dni=90909090;\nDELETE FROM alumnos WHERE dni=90909090;\n-- b) Misma conexión:\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- c) Conexión secundaria:\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;",
+    "notas": "Igual que en el ejercicio 2 pero eliminando. Con AUTOCOMMIT=1 cada DELETE se confirma solo. Verificado: tras los DELETE en la conexión principal, ambas conexiones (principal y secundaria) dejaron de ver al alumno de inmediato (principal quedó con 0 filas, secundaria con 0 filas). El subpaso c) explica además que, estando AUTOCOMMIT=1, la única forma de agrupar varias sentencias en una misma transacción es usando START TRANSACTION explícitamente (lo que se practica desde el ejercicio 4)."
+  },
+  "p11e4": {
+    "sql": "-- a) Conexión principal:\nSTART TRANSACTION;\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- b) Misma conexión (ve los cambios sin confirmar todavía):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- c) Conexión secundaria (NO ve los cambios, la transacción no confirmó):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- d) Conexión principal:\nROLLBACK;\n-- Repetir SELECTs en ambas conexiones: en ninguna de las dos aparece el alumno.",
+    "notas": "Al usar START TRANSACTION, los cambios quedan pendientes hasta un COMMIT/ROLLBACK aunque AUTOCOMMIT esté en 1. Verificado con dos conexiones reales: mientras la transacción estaba abierta, la conexión principal veía el alumno recién insertado (1 fila) pero la conexión secundaria NO lo veía todavía (0 filas) -- aislamiento de transacción. Tras ejecutar ROLLBACK en la conexión principal, tanto principal (0 filas) como secundaria (0 filas) quedaron sin el alumno: los cambios se descartaron por completo."
+  },
+  "p11e5": {
+    "sql": "-- a) Conexión principal:\nSTART TRANSACTION;\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- b) Misma conexión:\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- c) Conexión secundaria (todavía no ve los cambios):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- d) Conexión principal:\nCOMMIT;\n-- Repetir SELECTs en ambas conexiones: ahora ambas ven el alumno.",
+    "notas": "Verificado: mientras la transacción estaba abierta, principal veía el alumno (1 fila) y secundaria no (0 filas). Tras el COMMIT en principal, tanto principal (1 filas) como secundaria (1 filas) ven al alumno: el COMMIT hace permanentes los cambios y los pone visibles para todas las conexiones. (Se deja el alumno creado en la base para encadenar con el ejercicio 6.)"
+  },
+  "p11e6": {
+    "sql": "-- a) Conexión principal:\nSTART TRANSACTION;\nDELETE FROM inscripciones WHERE nom_plan='Marketing 3' AND nro_curso=1 AND dni=90909090;\nDELETE FROM alumnos WHERE dni=90909090;\n-- b) Misma conexión (ya no ve al alumno, dentro de su propia transacción):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- c) Conexión secundaria (todavía ve al alumno, el DELETE no se confirmó):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- d) Conexión principal:\nROLLBACK;\n-- Repetir SELECTs: en ambas conexiones el alumno sigue existiendo (el DELETE se deshizo).",
+    "notas": "El enunciado dice 'eliminar el alumno creado en 4)', pero el de 4) fue revertido con ROLLBACK y ya no existe; el alumno que persiste llegado este punto es el confirmado con COMMIT en el ejercicio 5, así que se elimina ese (mismo DNI de prueba). Verificado: dentro de la transacción principal vio 0 filas (ya eliminado en su propia vista) mientras secundaria todavía veía 1 fila (el DELETE no estaba confirmado). Tras el ROLLBACK, ambas conexiones vuelven a ver al alumno (principal 1, secundaria 1): el ROLLBACK deshizo el DELETE."
+  },
+  "p11e7": {
+    "sql": "-- a) Conexión principal:\nSTART TRANSACTION;\nDELETE FROM inscripciones WHERE nom_plan='Marketing 3' AND nro_curso=1 AND dni=90909090;\nDELETE FROM alumnos WHERE dni=90909090;\n-- b) Misma conexión:\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- c) Conexión secundaria (todavía ve al alumno):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- d) Conexión principal:\nCOMMIT;\n-- Repetir SELECTs: en ambas conexiones el alumno ya no existe.",
+    "notas": "Mismo alumno de prueba que en el ejercicio 6 (dado que el de 4 ya no existía por el ROLLBACK previo). Verificado: dentro de la transacción, principal ya no veía al alumno (0 filas) pero secundaria sí lo veía todavía (1 fila). Tras el COMMIT, ambas conexiones dejan de ver al alumno (principal 0, secundaria 0): el DELETE quedó confirmado definitivamente. Con esto la tabla queda limpia (sin el alumno de prueba) antes de continuar con el ejercicio 8."
+  },
+  "p11e8": {
+    "sql": "-- a) Conexión principal:\nSET AUTOCOMMIT=0;\n-- b) Repetir 2) y 3) (con AUTOCOMMIT=0 no hace falta START TRANSACTION: ya se abre\n--    una transacción implícita con la primera sentencia de modificación):\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\nDELETE FROM inscripciones WHERE nom_plan='Marketing 3' AND nro_curso=1 AND dni=90909090;\nDELETE FROM alumnos WHERE dni=90909090;\n-- c) Conexión principal:\nCOMMIT;",
+    "notas": "Con AUTOCOMMIT=0, todas las sentencias quedan agrupadas en una única transacción implícita hasta un COMMIT o ROLLBACK explícito. Verificado: tras el INSERT (sin commit todavía) la conexión secundaria NO veía al alumno (0 filas). Luego se repitió el DELETE de 3) dentro de la misma transacción sin confirmar; secundaria seguía sin ver nada (0 filas, lógico porque nunca llegó a ver el INSERT). Tras el COMMIT final, secundaria consultó de nuevo y sigue sin ver al alumno (0 filas) porque, dentro de esa misma transacción, se había insertado y luego eliminado antes de confirmar: el efecto neto confirmado es 'sin alumno'. Esto ilustra que con AUTOCOMMIT=0 se necesita un COMMIT o ROLLBACK explícito después de cada secuencia de sentencias."
+  },
+  "p11e9": {
+    "sql": "-- a) START TRANSACTION;\n-- b) Crear alumno:\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\n-- c) SAVEPOINT alumno;\n-- d) Inscribirlo:\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- e) Misma conexión (ve alumno e inscripción):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- f) Conexión secundaria (no ve nada, nada confirmado):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- g) ROLLBACK TO alumno;\n-- h) Misma conexión (el alumno sigue -- se creó antes del SAVEPOINT --,\n--    pero la inscripción desapareció -- se hizo después del SAVEPOINT):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- i) Conexión secundaria (sigue sin ver nada):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- j) Conexión principal:\nROLLBACK;\n-- Repetir en ambas conexiones: ya no queda ni el alumno.",
+    "notas": "Verificado con dos conexiones reales. Tras crear el SAVEPOINT y luego la inscripción, la conexión principal veía alumno e inscripción (1/1) pero secundaria no veía nada (0 filas, nada está confirmado todavía). Tras ROLLBACK TO alumno, la conexión principal recuperó el estado en el momento del SAVEPOINT: el alumno seguía existiendo (1 fila) pero la inscripción (creada DESPUÉS del SAVEPOINT) desapareció (0 filas) -- el ROLLBACK TO sólo deshace lo posterior al savepoint. Secundaria seguía sin ver nada (0 filas), porque la transacción global sigue sin confirmarse. Finalmente, el ROLLACK (sin nombre de savepoint) al final deshizo todo lo pendiente desde el START TRANSACTION: ni principal (0 filas) ni secundaria (0 filas) ven ya al alumno."
+  },
+  "p11e10": {
+    "sql": "-- a) START TRANSACTION;\n-- b) Crear alumno:\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\n-- c) SAVEPOINT alumno;\n-- d) Inscribirlo:\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- e) Misma conexión (ve alumno e inscripción):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- f) Conexión secundaria (no ve nada):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- g) ROLLBACK TO alumno;\n-- h) Misma conexión (el alumno sigue, la inscripción ya no):\nSELECT * FROM alumnos WHERE dni=90909090;\nSELECT * FROM inscripciones WHERE dni=90909090;\n-- i) Conexión secundaria (sigue sin ver nada):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- j) Conexión principal:\nCOMMIT;\n-- Repetir en ambas conexiones: ahora ambas ven al alumno, pero SIN la inscripción\n-- (fue deshecha por el ROLLBACK TO alumno antes del COMMIT).",
+    "notas": "Igual que el ejercicio 9 hasta el ROLLBACK TO, pero acá se confirma con COMMIT en vez de ROLLBACK total. Verificado: tras el SAVEPOINT e inscripción, principal veía ambos (1 alumno) y secundaria nada (0). Tras ROLLBACK TO alumno, la inscripción quedó deshecha (0 filas) pero el alumno persiste (se creó antes del savepoint); secundaria seguía sin ver nada (0). Tras el COMMIT final, ambas conexiones confirman el estado vigente en ese momento: el alumno SÍ quedó grabado (principal 1, secundaria 1 filas) pero sin la inscripción a Marketing 3, porque ese INSERT había sido revertido por el ROLLBACK TO antes de llegar al COMMIT. Se deja el alumno en la base para el ejercicio 11."
+  },
+  "p11e11": {
+    "sql": "DELETE FROM alumnos WHERE dni=90909090;",
+    "notas": "Limpieza del alumno de prueba que quedó confirmado (con COMMIT) al final del ejercicio 10 -- como no tenía inscripciones vigentes (fueron deshechas por el ROLLBACK TO), sólo hace falta el DELETE sobre alumnos. Verificado: tras el DELETE, la tabla alumnos ya no contiene ninguna fila con ese DNI (0 filas)."
+  },
+  "p11e12": {
+    "sql": "-- a) START TRANSACTION;\n-- b) Crear alumno:\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\n-- c) SAVEPOINT alumno;\n-- d) Inscribirlo:\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- e) Misma conexión (ve alumno e inscripción):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- f) Conexión secundaria (no ve nada):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- g) Misma conexión, se repite la consulta (sin ROLLBACK TO esta vez -- el SAVEPOINT no\n--    se usa, es sólo para contrastar con el ejercicio 9/10 y mostrar que sin ROLLBACK TO\n--    los datos posteriores al SAVEPOINT siguen intactos):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- h) Conexión secundaria, se repite (sigue sin ver nada):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- i) Conexión principal:\nROLLBACK;\n-- Repetir SELECTs: en ninguna de las dos conexiones queda el alumno ni la inscripción.",
+    "notas": "Este ejercicio usa el mismo SAVEPOINT que 9/10, pero NUNCA ejecuta ROLLBACK TO -- según los subpasos del enunciado (e,f,g,h son todos SELECT y el único comando de control es el ROLLBACK final en i). Se interpretó así porque el JSON de la consigna no incluye un paso 'g) ROLLBACK TO alumno' como en el ejercicio 9 (los subpasos g y h de éste sólo repiten la consulta). Verificado: en e) principal veía alumno e inscripción (1 fila) y secundaria nada (0); en g)/h) los resultados no cambian (principal 1, secundaria 0) porque no se ejecutó ningún comando entre medio. Tras el ROLLBACK final (sin nombre de savepoint), TODO lo hecho desde el START TRANSACTION se deshace (SAVEPOINT incluido): ni principal (0) ni secundaria (0) ven ya al alumno."
+  },
+  "p11e13": {
+    "sql": "-- a) START TRANSACTION;\n-- b) Crear alumno:\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (90909090, 'Ideal', 'Test', '111', 'ideal@test.com', 'Calle Test 1');\n-- c) SAVEPOINT alumno;\n-- d) Inscribirlo:\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 3', 1, 90909090, CURDATE());\n-- e) Misma conexión (ve alumno e inscripción):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- f) Conexión secundaria (no ve nada):\nSELECT * FROM alumnos WHERE dni=90909090;\n-- g) Misma conexión, se repite la consulta:\nSELECT * FROM alumnos WHERE dni=90909090;\n-- h) Conexión secundaria, se repite:\nSELECT * FROM alumnos WHERE dni=90909090;\n-- i) Conexión principal:\nCOMMIT;\n-- Repetir SELECTs en ambas conexiones: ahora ambas ven al alumno Y a la inscripción\n-- (se confirma todo lo hecho desde el START TRANSACTION, incluido lo posterior al SAVEPOINT).\n-- Referencia (no ejecutado en este ejercicio, es la sentencia que menciona la teoría):\n-- RELEASE SAVEPOINT alumno;  -- elimina un savepoint sin deshacer los cambios",
+    "notas": "Igual estructura que el 12 pero terminando en COMMIT en vez de ROLLBACK, ilustrando que al confirmar la transacción se aplican TODOS los cambios (los previos y los posteriores al SAVEPOINT), y todos los SAVEPOINT de la transacción se eliminan. La parte final del subpaso i) del enunciado es puramente conceptual/explicativa (describe qué es SAVEPOINT, ROLLBACK TO y RELEASE SAVEPOINT), y se referencia RELEASE SAVEPOINT como comentario ya que el enunciado no pide ejecutarlo. Verificado: en e) principal veía alumno e inscripción (1 fila) y secundaria nada (0); en g)/h) sin cambios (principal 1, secundaria 0). Tras el COMMIT, ambas conexiones ven ya al alumno Y a la inscripción (principal 1 alumno / 1 inscripción, secundaria 1 alumno). Al finalizar el ejercicio se hizo una limpieza adicional (DELETE) para dejar afatse en su estado original."
+  },
+  "p12e1": {
+    "sql": "CREATE PROCEDURE plan_lista_precios_actual()\nBEGIN\n  SELECT p.nom_plan, p.modalidad, vp.valor_plan AS valor_actual\n  FROM plan_capacitacion p\n  JOIN valores_plan vp ON vp.nom_plan = p.nom_plan\n       AND vp.fecha_desde_plan = (SELECT MAX(fecha_desde_plan) FROM valores_plan vp2 WHERE vp2.nom_plan = p.nom_plan);\nEND",
+    "notas": "Verificado creando el procedimiento como '_ideal_plan_lista_precios_actual' (para no chocar con el nombre real que use el estudiante) y haciendo CALL: devuelve las 5 filas esperadas, una por plan, con el valor vigente más reciente de valores_plan (subquery de MAX(fecha_desde_plan) por plan). Luego se hizo DROP PROCEDURE. El nombre en el campo 'sql' es el pedido por la consigna (plan_lista_precios_actual)."
+  },
+  "p12e2": {
+    "sql": "CREATE PROCEDURE plan_lista_precios_a_fecha(IN p_fecha DATE)\nBEGIN\n  SELECT p.nom_plan AS nombre_plan, p.modalidad, vp.valor_plan AS valor_a_fecha\n  FROM plan_capacitacion p\n  JOIN valores_plan vp ON vp.nom_plan = p.nom_plan\n       AND vp.fecha_desde_plan = (\n           SELECT MAX(fecha_desde_plan) FROM valores_plan vp2\n           WHERE vp2.nom_plan = p.nom_plan AND vp2.fecha_desde_plan <= p_fecha\n       );\nEND",
+    "notas": "Verificado como '_ideal_plan_lista_precios_a_fecha'. CALL con '2014-07-01' devuelve 4 filas (Marketing 1=45.000, Marketing 2=73.000, Reparac PC Avanzada=120.000, Reparacion PC=65.000); Marketing 3 queda excluido porque su primer valor recién existe desde 2015-01-02 (no hay ningún precio vigente a esa fecha). Esto es INNER JOIN, así que planes sin precio a la fecha simplemente no aparecen (a diferencia de la versión con función del ejercicio 5, que sí los muestra con NULL). DROP PROCEDURE tras verificar."
+  },
+  "p12e3": {
+    "sql": "DROP PROCEDURE IF EXISTS plan_lista_precios_actual;\nCREATE PROCEDURE plan_lista_precios_actual()\nBEGIN\n  CALL plan_lista_precios_a_fecha(CURDATE());\nEND",
+    "notas": "Verificado como '_ideal_plan_lista_precios_actual' invocando a '_ideal_plan_lista_precios_a_fecha(CURDATE())'; el resultado del CALL interno se propaga como resultado del procedimiento externo (comportamiento estándar de MySQL) y coincide exactamente con el resultado del ejercicio 1. DROP PROCEDURE tras verificar (ambos procedimientos de prueba)."
+  },
+  "p12e4": {
+    "sql": "CREATE FUNCTION plan_valor(p_nom_plan CHAR(20), p_fecha DATE) RETURNS DECIMAL(9,3)\nDETERMINISTIC READS SQL DATA\nBEGIN\n  DECLARE v_valor DECIMAL(9,3);\n  SELECT valor_plan INTO v_valor\n  FROM valores_plan\n  WHERE nom_plan = p_nom_plan AND fecha_desde_plan = (\n     SELECT MAX(fecha_desde_plan) FROM valores_plan WHERE nom_plan = p_nom_plan AND fecha_desde_plan <= p_fecha\n  );\n  RETURN v_valor;\nEND",
+    "notas": "Verificado como '_ideal_plan_valor'. SELECT _ideal_plan_valor('Marketing 1','2014-07-01') devuelve 45.000, coincidiendo con el valor obtenido en el ejercicio 2. Si no hay ningún precio vigente a esa fecha para ese plan, la función devuelve NULL (SELECT ... INTO sin filas deja la variable en NULL). DROP FUNCTION tras verificar."
+  },
+  "p12e5": {
+    "sql": "DROP PROCEDURE IF EXISTS plan_lista_precios_a_fecha;\nCREATE PROCEDURE plan_lista_precios_a_fecha(IN p_fecha DATE)\nBEGIN\n  SELECT p.nom_plan AS nombre_plan, p.modalidad, plan_valor(p.nom_plan, p_fecha) AS valor_a_fecha\n  FROM plan_capacitacion p;\nEND",
+    "notas": "Verificado como '_ideal_plan_lista_precios_a_fecha' usando '_ideal_plan_valor'. Diferencia observada frente al ejercicio 2: como ya no hay JOIN sino un SELECT sobre plan_capacitacion con la función aplicada por fila, aparecen TODOS los planes (5), y para 'Marketing 3' a fecha '2014-07-01' el valor_a_fecha resulta NULL (no tenía precio cargado aún), en vez de quedar excluido como en la versión con JOIN. Esto es una consecuencia esperada y razonable del cambio de enfoque, no un error. DROP PROCEDURE tras verificar."
+  },
+  "p12e6": {
+    "sql": "CREATE PROCEDURE alumnos_pagos_deudas_a_fecha(\n  IN p_dni INT, IN p_fecha DATE,\n  OUT p_total_pagado DECIMAL(9,3), OUT p_cant_adeuda INT)\nBEGIN\n  SELECT COALESCE(SUM(importe_pagado), 0) INTO p_total_pagado\n  FROM cuotas\n  WHERE dni = p_dni AND fecha_pago IS NOT NULL AND fecha_pago <= p_fecha;\n\n  SELECT COUNT(*) INTO p_cant_adeuda\n  FROM cuotas\n  WHERE dni = p_dni AND fecha_emision <= p_fecha\n    AND (fecha_pago IS NULL OR fecha_pago > p_fecha);\nEND",
+    "notas": "Verificado como '_ideal_alumnos_pagos_deudas_a_fecha'. Caso dni=10101010, fecha='2013-07-01': pagado=91.250, cuotas adeudadas=1 (razonable: es de las primeras cuotas del curso, con una emitida y aún no pagada a esa fecha). Caso dni=24242424 (el alumno con cuotas 2014 impagas detectado en prácticas anteriores), fecha='2015-01-01': pagado=193.000, adeuda=4 (coincide con las 4 cuotas de 2014 con importe_pagado y fecha_pago NULL). 'Adeudar' se interpretó como cuota ya emitida (fecha_emision <= fecha) y sin pago registrado a esa fecha (fecha_pago NULL o posterior a la fecha consultada). DROP PROCEDURE tras verificar."
+  },
+  "p12e7": {
+    "sql": "CREATE FUNCTION alumnos_deudas_a_fecha(p_dni INT, p_fecha DATE) RETURNS INT\nDETERMINISTIC READS SQL DATA\nBEGIN\n  DECLARE v_cant INT;\n  SELECT COUNT(*) INTO v_cant\n  FROM cuotas\n  WHERE dni = p_dni AND fecha_emision <= p_fecha AND (fecha_pago IS NULL OR fecha_pago > p_fecha);\n  RETURN v_cant;\nEND",
+    "notas": "Verificado como '_ideal_alumnos_deudas_a_fecha'. SELECT _ideal_alumnos_deudas_a_fecha(24242424, '2015-01-01') devuelve 4, coincidiendo con el resultado del ejercicio 6 para el mismo alumno/fecha. DROP FUNCTION tras verificar."
+  },
+  "p12e8": {
+    "sql": "CREATE PROCEDURE alumno_inscripcion(\n  IN p_dni INT, IN p_nombre VARCHAR(20), IN p_apellido VARCHAR(20), IN p_tel VARCHAR(20),\n  IN p_email VARCHAR(50), IN p_direccion VARCHAR(50),\n  IN p_nom_plan CHAR(20), IN p_nro_curso INT)\nBEGIN\n  INSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion)\n  VALUES (p_dni, p_nombre, p_apellido, p_tel, p_email, p_direccion)\n  ON DUPLICATE KEY UPDATE nombre = nombre;\n\n  INSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion)\n  VALUES (p_nom_plan, p_nro_curso, p_dni, CURDATE());\n\n  INSERT INTO cuotas (nom_plan, nro_curso, dni, anio, mes, fecha_emision, fecha_pago, importe_pagado)\n  VALUES (p_nom_plan, p_nro_curso, p_dni,\n          YEAR(CURDATE() + INTERVAL 1 MONTH), MONTH(CURDATE() + INTERVAL 1 MONTH),\n          CURDATE(), NULL, NULL);\nEND",
+    "notas": "Verificado como '_ideal_alumno_inscripcion', invocado dentro de una transacción externa con ROLLBACK (CALL + verificación de inscripciones/cuotas + rollback), sin dejar residuo. Se optó por recibir los datos completos del alumno (por si es nuevo) y hacer INSERT ... ON DUPLICATE KEY UPDATE nombre=nombre para no pisar los datos si ya existía. La cuota generada usa CURDATE()+INTERVAL 1 MONTH para 'el mes próximo', con fecha_emision=hoy y fecha_pago/importe_pagado en NULL (aún no pagada). DROP PROCEDURE tras verificar."
+  },
+  "p12e9": {
+    "sql": "DROP PROCEDURE IF EXISTS alumno_inscripcion;\nCREATE PROCEDURE alumno_inscripcion(\n  IN p_dni INT, IN p_nombre VARCHAR(20), IN p_apellido VARCHAR(20), IN p_tel VARCHAR(20),\n  IN p_email VARCHAR(50), IN p_direccion VARCHAR(50),\n  IN p_nom_plan CHAR(20), IN p_nro_curso INT)\nBEGIN\n  IF NOT EXISTS (SELECT 1 FROM inscripciones WHERE nom_plan = p_nom_plan AND nro_curso = p_nro_curso AND dni = p_dni) THEN\n    INSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion)\n    VALUES (p_dni, p_nombre, p_apellido, p_tel, p_email, p_direccion)\n    ON DUPLICATE KEY UPDATE nombre = nombre;\n\n    INSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion)\n    VALUES (p_nom_plan, p_nro_curso, p_dni, CURDATE());\n\n    INSERT INTO cuotas (nom_plan, nro_curso, dni, anio, mes, fecha_emision, fecha_pago, importe_pagado)\n    VALUES (p_nom_plan, p_nro_curso, p_dni,\n            YEAR(CURDATE() + INTERVAL 1 MONTH), MONTH(CURDATE() + INTERVAL 1 MONTH),\n            CURDATE(), NULL, NULL);\n  END IF;\nEND",
+    "notas": "Verificado como '_ideal_alumno_inscripcion' (redefinido) dentro de una transacción externa con ROLLBACK: se llamó dos veces seguidas con el mismo dni/curso y se confirmó que la segunda llamada (duplicado) no generó una segunda fila en inscripciones (se mantuvo en 1). DROP PROCEDURE tras verificar."
+  },
+  "p12e10": {
+    "sql": "DROP PROCEDURE IF EXISTS alumno_inscripcion;\nCREATE PROCEDURE alumno_inscripcion(\n  IN p_dni INT, IN p_nombre VARCHAR(20), IN p_apellido VARCHAR(20), IN p_tel VARCHAR(20),\n  IN p_email VARCHAR(50), IN p_direccion VARCHAR(50),\n  IN p_nom_plan CHAR(20), IN p_nro_curso INT)\nBEGIN\n  DECLARE v_cupo INT;\n  DECLARE v_cant INT;\n\n  START TRANSACTION;\n\n  IF NOT EXISTS (SELECT 1 FROM inscripciones WHERE nom_plan = p_nom_plan AND nro_curso = p_nro_curso AND dni = p_dni) THEN\n    INSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion)\n    VALUES (p_dni, p_nombre, p_apellido, p_tel, p_email, p_direccion)\n    ON DUPLICATE KEY UPDATE nombre = nombre;\n\n    INSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion)\n    VALUES (p_nom_plan, p_nro_curso, p_dni, CURDATE());\n\n    INSERT INTO cuotas (nom_plan, nro_curso, dni, anio, mes, fecha_emision, fecha_pago, importe_pagado)\n    VALUES (p_nom_plan, p_nro_curso, p_dni,\n            YEAR(CURDATE() + INTERVAL 1 MONTH), MONTH(CURDATE() + INTERVAL 1 MONTH),\n            CURDATE(), NULL, NULL);\n\n    SELECT cupo INTO v_cupo FROM cursos WHERE nom_plan = p_nom_plan AND nro_curso = p_nro_curso;\n    SELECT COUNT(*) INTO v_cant FROM inscripciones WHERE nom_plan = p_nom_plan AND nro_curso = p_nro_curso;\n\n    IF v_cant > v_cupo THEN\n      ROLLBACK;\n      SELECT 'RECHAZADO: se supero el cupo' AS resultado;\n    ELSE\n      COMMIT;\n      SELECT 'OK: inscripcion confirmada' AS resultado;\n    END IF;\n  ELSE\n    ROLLBACK;\n    SELECT 'RECHAZADO: ya estaba inscripto' AS resultado;\n  END IF;\nEND",
+    "notas": "Verificado como '_ideal_alumno_inscripcion' con DOS casos reales (no se puede envolver en una transacción externa con rollback porque el procedimiento hace su propio COMMIT/ROLLBACK, que finaliza cualquier transacción en curso): (1) Marketing 1 curso 1 (cupo=100, con lugar) -> el procedimiento hizo COMMIT real y la inscripción quedó grabada; se verificó y se limpió manualmente con DELETE en cuotas/inscripciones/alumnos. (2) Marketing 3 curso 1, que YA tenía exactamente 3 inscriptos con cupo=3 (dato real de la base) -> al inscribir un 4to alumno de prueba el procedimiento detectó cant(4) > cupo(3) e hizo ROLLBACK interno; se confirmó que NI el alumno NI la inscripción quedaron grabados, y que el curso siguió con exactamente 3 inscriptos (no fue necesaria limpieza en este caso). Ambos casos verificados exitosamente y la base quedó en su estado original."
+  },
+  "p12e11": {
+    "sql": "CREATE PROCEDURE stock_movimiento(IN p_cod_material CHAR(6), IN p_cantidad INT, OUT p_restante INT)\nBEGIN\n  DECLARE v_es_util INT;\n\n  START TRANSACTION;\n\n  SELECT COUNT(*) INTO v_es_util FROM materiales WHERE cod_material = p_cod_material AND cod_material LIKE 'UT-%';\n\n  IF v_es_util = 0 THEN\n    ROLLBACK;\n    SELECT cant_disponible INTO p_restante FROM materiales WHERE cod_material = p_cod_material;\n  ELSE\n    UPDATE materiales SET cant_disponible = cant_disponible + p_cantidad WHERE cod_material = p_cod_material;\n    SELECT cant_disponible INTO p_restante FROM materiales WHERE cod_material = p_cod_material;\n\n    IF p_restante < 0 THEN\n      ROLLBACK;\n      SELECT cant_disponible INTO p_restante FROM materiales WHERE cod_material = p_cod_material;\n    ELSE\n      COMMIT;\n    END IF;\n  END IF;\nEND;\n\nCREATE PROCEDURE stock_ingreso(IN p_cod_material CHAR(6), IN p_cantidad INT, OUT p_restante INT)\nBEGIN\n  CALL stock_movimiento(p_cod_material, p_cantidad, p_restante);\nEND;\n\nCREATE PROCEDURE stock_egreso(IN p_cod_material CHAR(6), IN p_cantidad INT, OUT p_restante INT)\nBEGIN\n  CALL stock_movimiento(p_cod_material, -p_cantidad, p_restante);\nEND;",
+    "notas": "Verificado como '_ideal_stock_movimiento' / '_ideal_stock_ingreso' / '_ideal_stock_egreso'. Detalle importante corregido durante la verificación: la primera versión dejaba en p_restante el valor NEGATIVO calculado justo antes del ROLLBACK (ej. -1000), lo cual contradice la consigna ('deberá devolver la cantidad restante de stock ya sea que se haya descontado o no' = el valor REAL vigente); se corrigió agregando un SELECT posterior al ROLLBACK para releer el valor real de la tabla en ambos casos de fallo (material no es útil, o cantidad resultante negativa). Pruebas realizadas y limpias: (a) ingreso +5 en UT-001 (93->98, commit real) seguido de egreso -5 (98->93, commit real), neteando exactamente al valor original sin dejar residuo; (b) egreso excesivo sobre UT-002 (más de lo disponible) -> ROLLBACK interno, p_restante devuelve el valor real sin cambios (7); (c) intento de movimiento sobre AP-001 (un apunte, no un útil) -> rechazado, p_restante devuelve el valor real de cant_disponible (0) sin tocar nada. DROP de los 3 procedimientos tras verificar."
+  },
+  "p12e12": {
+    "sql": "CREATE PROCEDURE alumno_anula_inscripcion(IN p_dni INT, IN p_nom_plan CHAR(20), IN p_nro_curso INT)\nBEGIN\n  DECLARE v_pagos INT;\n  SELECT COUNT(*) INTO v_pagos FROM cuotas\n  WHERE dni = p_dni AND nom_plan = p_nom_plan AND nro_curso = p_nro_curso AND importe_pagado IS NOT NULL;\n\n  IF v_pagos = 0 THEN\n    DELETE FROM cuotas WHERE dni = p_dni AND nom_plan = p_nom_plan AND nro_curso = p_nro_curso;\n    DELETE FROM evaluaciones WHERE dni = p_dni AND nom_plan = p_nom_plan AND nro_curso = p_nro_curso;\n    DELETE FROM inscripciones WHERE dni = p_dni AND nom_plan = p_nom_plan AND nro_curso = p_nro_curso;\n    SELECT 'Inscripcion anulada' AS resultado;\n  ELSE\n    SELECT 'No se puede anular: existen cuotas pagas' AS resultado;\n  END IF;\nEND",
+    "notas": "Verificado como '_ideal_alumno_anula_inscripcion' dentro de transacciones externas con ROLLBACK (el procedimiento no maneja su propia transacción, así que sí se pudo envolver de forma segura). Caso 1: alumno real dni=10101010 en Marketing 1 curso 1, que tiene cuotas con importe_pagado no nulo -> el procedimiento detectó pagos y NO eliminó nada (mensaje 'No se puede anular'), inscripción verificada intacta. Caso 2: inscripción de prueba (alumno, inscripción y una cuota SIN pagar creados dentro de la misma transacción) -> el procedimiento eliminó cuotas, evaluaciones e inscripción correctamente. Todo revertido con ROLLBACK al final, sin residuo."
+  },
+  "p13e1": {
+    "sql": "CREATE TABLE alumnos_historico (\n  dni int NOT NULL,\n  fecha_hora_cambio datetime NOT NULL,\n  nombre varchar(20) DEFAULT NULL,\n  apellido varchar(20) DEFAULT NULL,\n  tel varchar(20) DEFAULT NULL,\n  email varchar(50) DEFAULT NULL,\n  direccion varchar(50) DEFAULT NULL,\n  usuario_modificacion varchar(50) DEFAULT NULL,\n  PRIMARY KEY (dni, fecha_hora_cambio),\n  CONSTRAINT alumnos_historico_alumnos_fk FOREIGN KEY (dni) REFERENCES alumnos (dni) ON UPDATE CASCADE\n) ENGINE=InnoDB DEFAULT CHARSET=utf8;\n\nDELIMITER $$\nCREATE TRIGGER trg_alumnos_historico_ins AFTER INSERT ON alumnos\nFOR EACH ROW\nBEGIN\n  INSERT INTO alumnos_historico (dni, fecha_hora_cambio, nombre, apellido, tel, email, direccion, usuario_modificacion)\n  VALUES (NEW.dni, CURRENT_TIMESTAMP, NEW.nombre, NEW.apellido, NEW.tel, NEW.email, NEW.direccion, CURRENT_USER());\nEND$$\n\nCREATE TRIGGER trg_alumnos_historico_upd AFTER UPDATE ON alumnos\nFOR EACH ROW\nBEGIN\n  INSERT INTO alumnos_historico (dni, fecha_hora_cambio, nombre, apellido, tel, email, direccion, usuario_modificacion)\n  VALUES (NEW.dni, CURRENT_TIMESTAMP, NEW.nombre, NEW.apellido, NEW.tel, NEW.email, NEW.direccion, CURRENT_USER());\nEND$$\nDELIMITER ;\n\n-- c) Prueba (dentro de una transacción):\nSTART TRANSACTION;\nINSERT INTO alumnos (dni, nombre, apellido, tel, email, direccion) VALUES (95000001, 'Nombre', 'Apellido', '111', 'a@a.com', 'Calle 1');\nUPDATE alumnos SET tel = '222' WHERE dni = 95000001;\nSELECT * FROM alumnos_historico WHERE dni = 95000001; -- debe mostrar 2 filas (alta y modificación)\nROLLBACK; -- probar también con COMMIT",
+    "notas": "Verificado como '_ideal_alumnos_historico' + triggers '_ideal_trg_alumnos_hist_ins' / '_ideal_trg_alumnos_hist_upd' (creados sobre la tabla REAL 'alumnos', ya que sólo agregan una fila a una tabla de historial nueva -- no modifican el comportamiento de 'alumnos' en sí, riesgo mínimo para el estudiante). Caso ROLLBACK: INSERT + UPDATE sobre un dni de prueba (95000001) generaron 2 filas en el histórico dentro de la transacción; tras ROLLBACK tanto el alumno como las 2 filas del histórico desaparecieron (confirma que los triggers participan de la misma transacción del DML que los disparó). Caso COMMIT: se repitió con otro dni (95000002) y sí, terminan committeadas; se hizo una limpieza manual (DELETE) inmediatamente después para no dejar residuo. Detalle técnico importante: el PRIMARY KEY (dni, fecha_hora_cambio) puede colisionar si un INSERT y un UPDATE (u otro UPDATE) ocurren dentro del mismo segundo, porque CURRENT_TIMESTAMP sobre un campo DATETIME sin decimales sólo tiene precisión de 1 segundo -- en la verificación se intercaló un SLEEP(1.1) entre el INSERT y el UPDATE para evitar el choque de PK; en un uso real esto podría requerir DATETIME(6)/TIMESTAMP(6) si se esperan cambios muy seguidos sobre el mismo alumno. Se hizo DROP TRIGGER y DROP TABLE de los objetos de prueba al finalizar."
+  },
+  "p13e2": {
+    "sql": "CREATE TABLE stock_movimientos (\n  cod_material char(6) NOT NULL,\n  fecha_movimiento timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  cantidad_movida int NOT NULL,\n  cantidad_restante int NOT NULL,\n  usuario_movimiento varchar(50) NOT NULL,\n  PRIMARY KEY (cod_material, fecha_movimiento),\n  CONSTRAINT stock_movimientos_fk FOREIGN KEY (cod_material) REFERENCES materiales (cod_material) ON UPDATE CASCADE\n) ENGINE=InnoDB DEFAULT CHARSET=utf8;\n\nDELIMITER $$\nCREATE TRIGGER trg_materiales_stock_ins AFTER INSERT ON materiales\nFOR EACH ROW\nBEGIN\n  INSERT INTO stock_movimientos (cod_material, cantidad_movida, cantidad_restante, usuario_movimiento)\n  VALUES (NEW.cod_material, IFNULL(NEW.cant_disponible,0), IFNULL(NEW.cant_disponible,0), CURRENT_USER());\nEND$$\n\nCREATE TRIGGER trg_materiales_stock_upd AFTER UPDATE ON materiales\nFOR EACH ROW\nBEGIN\n  IF NOT (NEW.cant_disponible <=> OLD.cant_disponible) THEN\n    INSERT INTO stock_movimientos (cod_material, cantidad_movida, cantidad_restante, usuario_movimiento)\n    VALUES (NEW.cod_material, IFNULL(NEW.cant_disponible,0) - IFNULL(OLD.cant_disponible,0), IFNULL(NEW.cant_disponible,0), CURRENT_USER());\n  END IF;\nEND$$\nDELIMITER ;\n\n-- c) Prueba (dentro de una transacción):\nSTART TRANSACTION;\nINSERT INTO materiales (cod_material, desc_material, cant_disponible, punto_pedido, cantidad_a_pedir) VALUES ('UT-TES','Material de prueba', 50, 10, 20);\nUPDATE materiales SET cant_disponible = 40 WHERE cod_material = 'UT-TES';\nSELECT * FROM stock_movimientos WHERE cod_material = 'UT-TES'; -- debe mostrar 2 filas: alta (50) y movimiento (-10)\nROLLBACK; -- probar también con COMMIT",
+    "notas": "Verificado como '_ideal_stock_movimientos' + triggers '_ideal_trg_materiales_stock_ins' / '_ideal_trg_materiales_stock_upd' sobre la tabla REAL 'materiales' (igual que en E1, sólo agregan filas a una tabla de historial nueva). El trigger de UPDATE usa el operador NULL-safe <=> para comparar OLD/NEW y sólo registrar el movimiento cuando cant_disponible realmente cambió (evita registrar 'movimientos' de 0 unidades cuando se actualiza otro campo, ej. la descripción). Casos probados: (1) ROLLBACK -- alta de un material de prueba UT-TES con cantidad inicial 50 y luego update a 40 generaron correctamente 2 filas (alta=50, movimiento=-10, restante 40) dentro de la transacción, y ambas desaparecieron junto con el material tras el ROLLBACK; (2) UPDATE que NO cambia cant_disponible (se actualizó desc_material a sí mismo) -> correctamente NO generó ninguna fila nueva en el histórico; (3) COMMIT real con otro material de prueba UT-TE2 (alta de 30) -> se registró bien y se limpió manualmente (DELETE) enseguida. Mismo cuidado con el SLEEP(1.1) entre operaciones consecutivas por la resolución de 1 segundo de CURRENT_TIMESTAMP explicado en p13e1. DROP TRIGGER y DROP TABLE de los objetos de prueba al finalizar."
+  },
+  "p13e3": {
+    "sql": "ALTER TABLE cursos\nADD COLUMN cant_inscriptos int(11) DEFAULT NULL;\n\nSTART TRANSACTION;\nDROP TEMPORARY TABLE IF EXISTS insc_curso;\nCREATE TEMPORARY TABLE insc_curso\nSELECT c.nom_plan, c.nro_curso, COUNT(i.nro_curso) cant\nFROM cursos c LEFT JOIN inscripciones i\nON c.nom_plan = i.nom_plan AND c.nro_curso = i.nro_curso\nGROUP BY c.nom_plan, c.nro_curso;\nUPDATE cursos c INNER JOIN insc_curso ic ON c.nom_plan = ic.nom_plan\nAND c.nro_curso = ic.nro_curso\nSET c.cant_inscriptos = ic.cant;\nCOMMIT;\n\nALTER TABLE cursos\nMODIFY cant_inscriptos int(11) NOT NULL;\n\nDELIMITER $$\nCREATE TRIGGER trg_inscripciones_cant_ai AFTER INSERT ON inscripciones\nFOR EACH ROW\nBEGIN\n  UPDATE cursos SET cant_inscriptos = cant_inscriptos + 1\n  WHERE nom_plan = NEW.nom_plan AND nro_curso = NEW.nro_curso;\nEND$$\n\nCREATE TRIGGER trg_inscripciones_cant_ad AFTER DELETE ON inscripciones\nFOR EACH ROW\nBEGIN\n  UPDATE cursos SET cant_inscriptos = cant_inscriptos - 1\n  WHERE nom_plan = OLD.nom_plan AND nro_curso = OLD.nro_curso;\nEND$$\nDELIMITER ;\n\n-- e) Prueba (dentro de una transacción):\nSTART TRANSACTION;\nINSERT INTO inscripciones (nom_plan, nro_curso, dni, fecha_inscripcion) VALUES ('Marketing 1', 1, 90909090, CURDATE());\nSELECT cant_inscriptos FROM cursos WHERE nom_plan='Marketing 1' AND nro_curso=1; -- debe subir en 1\nDELETE FROM inscripciones WHERE dni = 90909090;\nSELECT cant_inscriptos FROM cursos WHERE nom_plan='Marketing 1' AND nro_curso=1; -- vuelve al valor original\nROLLBACK; -- probar también con COMMIT",
+    "notas": "IMPORTANTE -- este ejercicio pide modificar el esquema de 'cursos' (una tabla real compartida con el estudiante mientras usa la app en vivo). Para no arriesgar interferir con su sesión ni con un ALTER TABLE en la tabla que él mismo va a modificar al resolver este ejercicio, la verificación completa (los 4 pasos a-d y las pruebas del e) se hizo sobre un PAR DE TABLAS CLON aisladas '_ideal_cursos' y '_ideal_inscripciones' (creadas con CREATE TABLE ... LIKE + INSERT ... SELECT desde las tablas reales, con los mismos datos y misma estructura), en vez de tocar 'cursos'/'inscripciones' reales. El script en el campo 'sql' de arriba es el que corresponde ejecutar tal cual sobre las tablas REALES (ese es el resultado esperado del ejercicio), pero fue la copia _ideal_ la que se ejecutó y comprobó paso a paso: el cálculo inicial de cant_inscriptos coincidió exactamente con los conteos reales de inscripciones por curso (Marketing 1 curso1=4, curso2=3, curso3=0; Marketing 2 curso1=3,curso2=2,curso3=5; Marketing 3 curso1=3; Reparac PC Avanzada curso1=2,curso2=3; Reparacion PC curso1=5,curso2=1,curso3=1), el ALTER a NOT NULL funcionó sin error (ya no había NULLs), y los triggers de INSERT/DELETE sobre inscripciones actualizaron correctamente +1/-1 el contador en cursos, tanto en el caso probado con ROLLBACK (todo revertido) como con COMMIT (revertido luego a mano, sobre el clon, sin ningún riesgo para datos reales). Al finalizar se hizo DROP TRIGGER y DROP TABLE de ambos clones; se confirmó que las tablas reales 'cursos' e 'inscripciones' NO tienen ninguna columna ni trigger nuevo."
+  },
+  "p13e4": {
+    "sql": "ALTER TABLE valores_plan ADD COLUMN usuario_alta varchar(50);\n\nDELIMITER $$\nCREATE TRIGGER trg_valores_plan_usuario_alta BEFORE INSERT ON valores_plan\nFOR EACH ROW\nBEGIN\n  SET NEW.usuario_alta = CURRENT_USER();\nEND$$\nDELIMITER ;\n\n-- c) Prueba (dentro de una transacción):\nSTART TRANSACTION;\nINSERT INTO valores_plan (nom_plan, fecha_desde_plan, valor_plan) VALUES ('Marketing 1', '2020-01-01', 999.000);\nSELECT * FROM valores_plan WHERE fecha_desde_plan = '2020-01-01'; -- usuario_alta debe venir completo\nROLLBACK; -- probar también con COMMIT",
+    "notas": "IMPORTANTE -- al igual que en p13e3, este ejercicio modifica el esquema de una tabla real y compartida ('valores_plan'), así que la verificación completa se hizo sobre un clon aislado '_ideal_valores_plan' (CREATE TABLE ... LIKE + INSERT ... SELECT). Detalle técnico relevante encontrado durante la verificación: la primera versión del trigger usaba AFTER INSERT + un UPDATE posterior sobre la MISMA tabla que lo disparó, lo cual MySQL rechaza con el error 1442 'Can't update table ... because it is already used by statement which invoked this stored function/trigger' (restricción de tablas mutantes). Se corrigió cambiando a un trigger BEFORE INSERT que hace SET NEW.usuario_alta = CURRENT_USER() directamente sobre la fila que se está insertando, lo cual es además más simple y evita el problema de raíz; el campo 'sql' ya refleja esta versión corregida. Probado con ROLLBACK (fila con usuario_alta='root@localhost' visible dentro de la transacción, desaparece tras el ROLLBACK) y con COMMIT (fila quedó grabada con usuario_alta correcto, se limpió manualmente después). Se confirmó al final que la tabla real 'valores_plan' NO tiene ninguna columna ni trigger nuevo."
+  }
+}

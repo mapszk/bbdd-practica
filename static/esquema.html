@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Esquema de la base</title>
+<link rel="stylesheet" href="/static/estilos.css">
+</head>
+<body>
+<script>
+  // Marca a er.js que esta pestaña es standalone (sin el resto de la app):
+  // oculta los botones "Cerrar" y "Abrir en otra pestaña" que no tienen
+  // sentido acá.
+  window.__ER_STANDALONE__ = true;
+</script>
+<script src="/static/er.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const db = params.get("db") || "afatse";
+  ER.abrir(db);
+</script>
+</body>
+</html>
