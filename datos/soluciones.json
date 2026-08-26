@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizado": "2026-08-26T20:30:30-0300",
+  "actualizado": "2026-08-26T20:30:43-0300",
   "soluciones": {
     "p1e1": {
       "sql": "select cuit, razon_social, direccion, telefono, e_mail from empresas;",
@@ -172,14 +172,14 @@
       "sql": "select p.dni, nombre, apellido, desc_titulo\nfrom personas p\ninner join personas_titulos pt on p.dni = pt.dni\ninner join titulos t on t.cod_titulo = pt.cod_titulo\nwhere t.desc_titulo = \"Bachiller\" or t.tipo_titulo = \"Educacion no formal\";",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-08-26T20:30:28-0300",
+      "actualizado": "2026-08-26T20:30:36-0300",
       "ultima_ejecucion": null
     },
     "p2e5": {
-      "sql": "",
+      "sql": "select nombre, apellido, desc_titulo\nfrom personas p\ninner join personas_titulos pt on p.dni = pt.dni\ninner join titulos t on t.cod_titulo = pt.cod_titulo\nwhere t.desc_titulo = \"Bachiller\" or t.tipo_titulo = \"Educacion no formal\";",
       "estado": "borrador",
       "notas": "",
-      "actualizado": "2026-08-26T20:30:30-0300",
+      "actualizado": "2026-08-26T20:30:43-0300",
       "ultima_ejecucion": null
     }
   }
