@@ -163,16 +163,13 @@ def api_ejercicio(p: int, e: int):
         raise HTTPException(404, "Ejercicio no encontrado")
     soluciones_todas = solutions.obtener_todas()["soluciones"]
     mi_solucion = soluciones_todas.get(ejercicio["id"])
-    # La solución ideal sólo se entrega si el ejercicio ya está marcado
-    # resuelto -- para no arruinar el intento por curiosear la respuesta.
-    resuelto = bool(mi_solucion and mi_solucion.get("estado") == "resuelto")
     return {
         **ejercicio,
         "practica_titulo": practica["titulo"],
         "practica_preambulo": practica["preambulo"],
         "total_en_practica": len(practica["ejercicios"]),
         "solucion": mi_solucion,
-        "solucion_ideal": solutions.obtener_ideal(ejercicio["id"]) if resuelto else None,
+        "solucion_ideal": solutions.obtener_ideal(ejercicio["id"]),
     }
 
 
@@ -404,8 +401,7 @@ def api_soluciones_detalle():
     for practica in datos["practicas"]:
         for ej in practica["ejercicios"]:
             sol = soluciones.get(ej["id"])
-            resuelto = bool(sol and sol.get("estado") == "resuelto")
-            ideal = solutions.obtener_ideal(ej["id"]) if resuelto else None
+            ideal = solutions.obtener_ideal(ej["id"])
             out.append(
                 {
                     "id": ej["id"],
@@ -467,6 +463,18 @@ def api_esquema_mermaid(db: str):
         raise HTTPException(404, "Base desconocida")
     esquema_datos = schema.esquema_completo(db)
     return JSONResponse({"mermaid": schema.a_mermaid(esquema_datos)})
+
+
+@app.get("/api/esquema/{db}/{tabla}/filas")
+def api_esquema_filas(db: str, tabla: str, limite: int = 200, offset: int = 0):
+    if db not in config.DUMPS:
+        raise HTTPException(404, "Base desconocida")
+    limite = max(1, min(limite, 1000))
+    offset = max(0, offset)
+    try:
+        return schema.obtener_filas(db, tabla, limite, offset)
+    except ValueError as e:
+        raise HTTPException(404, str(e))
 
 
 @app.get("/api/esquema/{db}/layout")

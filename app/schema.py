@@ -169,6 +169,26 @@ def obtener_objetos(db: str) -> dict:
     return {"vistas": vistas, "rutinas": rutinas, "triggers": triggers}
 
 
+def obtener_filas(db: str, tabla: str, limite: int = 200, offset: int = 0) -> dict:
+    """Devuelve filas de una tabla para inspección visual. `tabla` se valida
+    contra INFORMATION_SCHEMA antes de interpolarla en el SQL (no se puede
+    parametrizar un nombre de tabla con placeholders normales)."""
+    nombres_validos = {t["nombre"] for t in obtener_tablas(db)}
+    if tabla not in nombres_validos:
+        raise ValueError(f"Tabla desconocida: {tabla}")
+
+    conn = _conectar(db)
+    try:
+        with conn.cursor(pymysql.cursors.DictCursor) as cur:
+            cur.execute(f"SELECT COUNT(*) AS total FROM `{tabla}`")
+            total = cur.fetchone()["total"]
+            cur.execute(f"SELECT * FROM `{tabla}` LIMIT %s OFFSET %s", (limite, offset))
+            filas = cur.fetchall()
+    finally:
+        conn.close()
+    return {"tabla": tabla, "total": total, "filas": filas}
+
+
 def esquema_completo(db: str) -> dict:
     tablas = obtener_tablas(db)
     declaradas, inferidas = obtener_fks(db)

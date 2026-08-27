@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "actualizado": "2026-08-26T20:30:43-0300",
+  "actualizado": "2026-08-26T21:07:55-0300",
   "soluciones": {
     "p1e1": {
       "sql": "select cuit, razon_social, direccion, telefono, e_mail from empresas;",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-08-26T20:28:54-0300",
+      "actualizado": "2026-08-26T20:59:26-0300",
       "ultima_ejecucion": null
     },
     "p1e2": {
@@ -176,10 +176,41 @@
       "ultima_ejecucion": null
     },
     "p2e5": {
-      "sql": "select nombre, apellido, desc_titulo\nfrom personas p\ninner join personas_titulos pt on p.dni = pt.dni\ninner join titulos t on t.cod_titulo = pt.cod_titulo\nwhere t.desc_titulo = \"Bachiller\" or t.tipo_titulo = \"Educacion no formal\";",
+      "sql": "select nombre, apellido, desc_titulo\nfrom personas p\ninner join personas_titulos pt on p.dni = pt.dni\ninner join titulos t on t.cod_titulo = pt.cod_titulo;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:30:49-0300",
+      "ultima_ejecucion": null
+    },
+    "p2e6": {
+      "sql": "SELECT CONCAT(\n  p.apellido, \n  ' ', \n  p.nombre,\n  ' tiene como referencia a ', \n  IFNULL(a.persona_contacto, 'No tiene contacto'), \n  ' y cuando trabajo en ',\n  e.razon_social\n)\nFROM antecedentes a\nJOIN personas p ON p.dni = a.dni\nJOIN empresas e ON e.cuit = a.cuit\nWHERE a.persona_contacto IS NULL\n   OR a.persona_contacto IN ('Armando Esteban Quito', 'Felipe Rojas');",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T20:59:31-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p2e7": {
+      "sql": "select \n\trazon_social as \"Empresa\", \n    fecha_solicitud as \"Fecha Solicitud\", \n    desc_cargo as \"Cargo\",\n    ifnull(edad_minima, \"sin especificar\") as \"Edad Min\",\n    ifnull(edad_maxima, \"sin especificar\") as \"Edad Max\"\nfrom solicitudes_empresas sol\ninner join empresas e on sol.cuit = e.cuit\ninner join cargos c on sol.cod_cargo = c.cod_cargo\nwhere e.razon_social = \"Viejos amigos\";",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T21:02:33-0300",
+      "ultima_ejecucion": null
+    },
+    "p2e8": {
+      "sql": "select \n\tconcat(nombre, \" \", apellido) as \"Postulante (nombre y apellido)\",\n    desc_cargo as \"Cargo (descripcion del cargo)\"\nfrom antecedentes a\ninner join personas p on a.dni = p.dni\ninner join cargos c on c.cod_cargo = a.cod_cargo;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-08-26T21:06:10-0300",
+      "ultima_ejecucion": null
+    },
+    "p2e9": {
+      "sql": "select \n\trazon_social as \"Empresa\",\n    desc_cargo as \"Cargo\",\n    desc_evaluacion as \"Desc_Evaluacion\",\n    resultado as \"Resultado\"\nfrom solicitudes_empresas sol\ninner join entrevistas e on sol.nr",
       "estado": "borrador",
       "notas": "",
-      "actualizado": "2026-08-26T20:30:43-0300",
+      "actualizado": "2026-08-26T21:07:55-0300",
       "ultima_ejecucion": null
     }
   }

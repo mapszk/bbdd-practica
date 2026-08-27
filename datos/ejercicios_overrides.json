@@ -3,13 +3,55 @@
     "tabla_esperada": {
       "tipo": "resultado",
       "filas": [
-        ["cuit", "razon_social", "direccion", "telefono", "e_mail"],
-        ["30-10504876-5", "Viejos Amigos", "Buenos Aires 4444", "4444444", "rrhh@viejosamigos.com.ar"],
-        ["30-15876543-4", "Reuniones Improvisadas", "Oroño 3333", "4576879", ""],
-        ["30-20987654-4", "Porciones Reducidas", "Viedma 1830", "4556677", ""],
-        ["30-21008765-5", "Traigame eso", "Zeballos 7456", "4455667", "traigameeso@gmail.com"],
-        ["30-21098732-4", "Informatiks srl", "Dorrego 2213 4 A", "4857339", "info@informatiks.biz"],
-        ["30-23456328-5", "Constructora Gaia S.A.", "Tucuman 649 PA", "4647125", ""]
+        [
+          "cuit",
+          "razon_social",
+          "direccion",
+          "telefono",
+          "e_mail"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "Buenos Aires 4444",
+          "4444444",
+          "rrhh@viejosamigos.com.ar"
+        ],
+        [
+          "30-15876543-4",
+          "Reuniones Improvisadas",
+          "Oroño 3333",
+          "4576879",
+          ""
+        ],
+        [
+          "30-20987654-4",
+          "Porciones Reducidas",
+          "Viedma 1830",
+          "4556677",
+          ""
+        ],
+        [
+          "30-21008765-5",
+          "Traigame eso",
+          "Zeballos 7456",
+          "4455667",
+          "traigameeso@gmail.com"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "Dorrego 2213 4 A",
+          "4857339",
+          "info@informatiks.biz"
+        ],
+        [
+          "30-23456328-5",
+          "Constructora Gaia S.A.",
+          "Tucuman 649 PA",
+          "4647125",
+          ""
+        ]
       ]
     },
     "notas": "El docx trae el CUIT de 'Viejos Amigos' como 30-110504876-5 (un dígito de más). La base real tiene 30-10504876-5. Corregido acá."
@@ -18,13 +60,41 @@
     "tabla_esperada": {
       "tipo": "resultado",
       "filas": [
-        ["apellido", "nombre", "FECHA INGRESO"],
-        ["Garcia", "Eliseo", "2014-06-13"],
-        ["Lopez", "Stefanía", "2005-12-12"],
-        ["Wingdam", "Raul", "2014-07-15"],
-        ["Losteau", "Pedro", "2015-02-26"],
-        ["Guftafson", "Juana", "2014-08-12"],
-        ["Ruiz", "Aquiles", "2014-06-18"]
+        [
+          "apellido",
+          "nombre",
+          "FECHA INGRESO"
+        ],
+        [
+          "Garcia",
+          "Eliseo",
+          "2014-06-13"
+        ],
+        [
+          "Lopez",
+          "Stefanía",
+          "2005-12-12"
+        ],
+        [
+          "Wingdam",
+          "Raul",
+          "2014-07-15"
+        ],
+        [
+          "Losteau",
+          "Pedro",
+          "2015-02-26"
+        ],
+        [
+          "Guftafson",
+          "Juana",
+          "2014-08-12"
+        ],
+        [
+          "Ruiz",
+          "Aquiles",
+          "2014-06-18"
+        ]
       ]
     },
     "notas": "El docx trae fecha_registro_agencia con años 2007/2008 para casi todas las filas, pero la base real tiene esos mismos días y meses con años 2014/2015 (Lopez Stefanía es la única que ya coincidía, en 2005-12-12). Es un desfasaje de datos entre el docx y la base actual, no un error de la consulta. Corregido acá con los valores reales."
@@ -33,15 +103,51 @@
     "tabla_esperada": {
       "tipo": "resultado",
       "filas": [
-        ["Codigo", "Descripcion", "Tipo"],
-        ["5", "Arquitecto", "Universitario"],
-        ["8", "Bachiller", "Secundario"],
-        ["2", "Diseñador de Interiores", "Terciario"],
-        ["6", "Entrenado de Lemures", "Educacion no formal"],
-        ["7", "Ing en Sist de Inf", "Universitario"],
-        ["4", "Payaso de Circo", "Educacion no formal"],
-        ["1", "Tecnico Electronico", "Secundario"],
-        ["3", "Tecnico Mecanico", "Secundario"]
+        [
+          "Codigo",
+          "Descripcion",
+          "Tipo"
+        ],
+        [
+          "5",
+          "Arquitecto",
+          "Universitario"
+        ],
+        [
+          "8",
+          "Bachiller",
+          "Secundario"
+        ],
+        [
+          "2",
+          "Diseñador de Interiores",
+          "Terciario"
+        ],
+        [
+          "6",
+          "Entrenado de Lemures",
+          "Educacion no formal"
+        ],
+        [
+          "7",
+          "Ing en Sist de Inf",
+          "Universitario"
+        ],
+        [
+          "4",
+          "Payaso de Circo",
+          "Educacion no formal"
+        ],
+        [
+          "1",
+          "Tecnico Electronico",
+          "Secundario"
+        ],
+        [
+          "3",
+          "Tecnico Mecanico",
+          "Secundario"
+        ]
       ]
     },
     "notas": "El docx no traía ninguna tabla de salida esperada para este ejercicio (sólo decía 'guardar el query en un archivo .sql'). Se agregó la salida real de la tabla titulos ordenada por descripción, provista por el usuario."
@@ -50,28 +156,1848 @@
     "tabla_esperada": {
       "tipo": "resultado",
       "filas": [
-        ["nombre", "apellido", "fecha_nacimiento"],
-        ["Eliseo", "Garcia", "1981-01-10"],
-        ["Stefanía", "Lopez", "1982-05-20"],
-        ["Raul", "Wingdam", "1983-03-01"],
-        ["Pedro", "Losteau", "1982-08-25"],
-        ["Juana", "Guftafson", "1984-07-02"],
-        ["Aquiles", "Ruiz", "1982-02-01"]
+        [
+          "nombre",
+          "apellido",
+          "fecha_nacimiento"
+        ],
+        [
+          "Eliseo",
+          "Garcia",
+          "1981-01-10"
+        ],
+        [
+          "Stefanía",
+          "Lopez",
+          "1982-05-20"
+        ],
+        [
+          "Raul",
+          "Wingdam",
+          "1983-03-01"
+        ],
+        [
+          "Pedro",
+          "Losteau",
+          "1982-08-25"
+        ],
+        [
+          "Juana",
+          "Guftafson",
+          "1984-07-02"
+        ],
+        [
+          "Aquiles",
+          "Ruiz",
+          "1982-02-01"
+        ]
       ]
     },
     "notas": "El docx traía 'Juana y Guftafson' como \"'Juana\" / \"Guftafson'\" -- comillas simples sueltas repartidas entre las celdas de nombre y apellido, un artefacto de la extracción de la tabla de Word. Corregido a 'Juana' / 'Guftafson' sin comillas."
+  },
+  "p2e6": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "CONCAT(apellido, nombre, persona_contacto, razon_social)"
+        ],
+        [
+          "Wingdam Raul tiene como referencia a Armando Esteban Quito y cuando trabajo en Reuniones Improvisadas"
+        ],
+        [
+          "Wingdam Raul tiene como referencia a Armando Esteban Quito y cuando trabajo en Reuniones Improvisadas"
+        ],
+        [
+          "Guftafson Juana tiene como referencia a No tiene contacto y cuando trabajo en Viejos Amigos"
+        ],
+        [
+          "Guftafson Juana tiene como referencia a Felipe Rojas y cuando trabajo en Informatiks srl"
+        ]
+      ]
+    },
+    "notas": "El docx trae esta línea de Raul Wingdam una sola vez, pero en la base real tiene dos antecedentes distintos (cod_cargo 4 y 5) en Reuniones Improvisadas con el mismo persona_contacto (Armando Esteban Quito), así que un JOIN correcto contra antecedentes la devuelve duplicada. Corregido acá agregando la fila repetida para que coincida con los datos reales cargados."
   },
   "p1e9": {
     "tabla_esperada": {
       "tipo": "resultado",
       "filas": [
-        ["Dni", "cod_cargo", "cuit", "fecha_desde", "fecha_hasta", "persona_contacto"],
-        ["27890765", "2", "30-20987654-4", "2005-03-01", "NULL", "Belen Arisa"],
-        ["29345777", "4", "30-15876543-4", "2013-01-01", "NULL", "Armando Esteban Quito"],
-        ["30987654", "6", "30-10504876-5", "2014-04-15", "NULL", "NULL"],
-        ["31345778", "7", "30-23456328-5", "2014-06-01", "NULL", "Alicia Ramos"]
+        [
+          "Dni",
+          "cod_cargo",
+          "cuit",
+          "fecha_desde",
+          "fecha_hasta",
+          "persona_contacto"
+        ],
+        [
+          "27890765",
+          "2",
+          "30-20987654-4",
+          "2005-03-01",
+          "NULL",
+          "Belen Arisa"
+        ],
+        [
+          "29345777",
+          "4",
+          "30-15876543-4",
+          "2013-01-01",
+          "NULL",
+          "Armando Esteban Quito"
+        ],
+        [
+          "30987654",
+          "6",
+          "30-10504876-5",
+          "2014-04-15",
+          "NULL",
+          "NULL"
+        ],
+        [
+          "31345778",
+          "7",
+          "30-23456328-5",
+          "2014-06-01",
+          "NULL",
+          "Alicia Ramos"
+        ]
       ]
     },
     "notas": "El docx trae fecha_desde de 3 de las 4 filas con años 2006/2007, pero la base real tiene esos mismos días y meses corridos exactamente 7 años hacia adelante (2013/2014). La primera fila (27890765, 2005-03-01) no se movió y ya coincidía. Es el mismo desfasaje de datos visto en otros ejercicios (p1e2, p1e6), no un error de la consulta. Corregido con los valores reales."
+  },
+  "p2e1": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "dni",
+          "apellido",
+          "nombre",
+          "sueldo"
+        ],
+        [
+          "29345777",
+          "Wingdam",
+          "Raul",
+          "2063.000"
+        ]
+      ]
+    },
+    "notas": "El docx trae los mismos datos pero con las columnas en otro orden (nombre, apellido, sueldo, dni) que no coincide con el orden pedido en la consigna (DNI, Apellido, Nombre, sueldo); se corrige el orden para que coincida con la consulta ideal."
+  },
+  "p2e11": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "cuit",
+          "razon_social",
+          "desc_cargo",
+          "DNI",
+          "Apellido",
+          "Nombre"
+        ],
+        [
+          "30-21008765-5",
+          "Traigame eso",
+          "cadete",
+          "sin contrato",
+          "sin contrato",
+          "sin contrato"
+        ],
+        [
+          "30-21008765-5",
+          "Traigame eso",
+          "mozo",
+          "27890765",
+          "Garcia",
+          "Eliseo"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "cocinero",
+          "28675888",
+          "Lopez",
+          "Stefanía"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "cocinero",
+          "28675888",
+          "Lopez",
+          "Stefanía"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "organizador de eventos",
+          "29345777",
+          "Wingdam",
+          "Raul"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "decorador",
+          "29345777",
+          "Wingdam",
+          "Raul"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "Jefe de Desarrollo",
+          "sin contrato",
+          "sin contrato",
+          "sin contrato"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "Jefe de Desarrollo",
+          "30987654",
+          "Guftafson",
+          "Juana"
+        ]
+      ]
+    },
+    "notas": "En los datos reales existen dos contratos (nro 3 y 7) que matchean la misma solicitud (cuit 30-10504876-5, cargo cocinero), por lo que esa fila aparece duplicada; el docx tenía un dataset distinto con un solo contrato por solicitud. Corregido con las 8 filas reales."
+  },
+  "p2e16": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "Cuil Supervisor",
+          "Nombre Supervisor",
+          "Apellido Supervisor",
+          "Nombre Instructor",
+          "Apellido Instructor",
+          "nom_plan",
+          "nro_curso",
+          "nombre",
+          "apellido",
+          "nro_examen",
+          "fecha_evaluacion",
+          "nota"
+        ],
+        [
+          "",
+          "",
+          "",
+          "Henri",
+          "Amiel",
+          "Marketing 1",
+          "2",
+          "Jorge",
+          "Bucay",
+          "2",
+          "2014-09-29",
+          "6.890"
+        ],
+        [
+          "",
+          "",
+          "",
+          "Henri",
+          "Amiel",
+          "Marketing 1",
+          "2",
+          "Laura",
+          "Morante",
+          "2",
+          "2014-09-29",
+          "8.000"
+        ],
+        [
+          "",
+          "",
+          "",
+          "Henri",
+          "Amiel",
+          "Marketing 1",
+          "2",
+          "Laura",
+          "Morante",
+          "1",
+          "2014-06-15",
+          "6.000"
+        ],
+        [
+          "77-77777777-7",
+          "Francisco",
+          "Umbral",
+          "Otto",
+          "Wagner",
+          "Reparacion PC",
+          "2",
+          "Laura",
+          "Morante",
+          "2",
+          "2014-10-31",
+          "2.390"
+        ],
+        [
+          "77-77777777-7",
+          "Francisco",
+          "Umbral",
+          "Otto",
+          "Wagner",
+          "Marketing 2",
+          "2",
+          "Victor",
+          "Hugo",
+          "2",
+          "2014-10-27",
+          "9.900"
+        ],
+        [
+          "77-77777777-7",
+          "Francisco",
+          "Umbral",
+          "Otto",
+          "Wagner",
+          "Reparac PC Avanzada",
+          "1",
+          "Ana Maria",
+          "Matute",
+          "2",
+          "2014-09-05",
+          "4.810"
+        ],
+        [
+          "77-77777777-7",
+          "Francisco",
+          "Umbral",
+          "Otto",
+          "Wagner",
+          "Marketing 2",
+          "2",
+          "José",
+          "Ortega y Gasset",
+          "1",
+          "2014-06-29",
+          "10.000"
+        ],
+        [
+          "77-77777777-7",
+          "Francisco",
+          "Umbral",
+          "Otto",
+          "Wagner",
+          "Reparac PC Avanzada",
+          "1",
+          "Isabel",
+          "Gemio",
+          "1",
+          "2014-05-31",
+          "8.440"
+        ],
+        [
+          "77-77777777-7",
+          "Francisco",
+          "Umbral",
+          "Otto",
+          "Wagner",
+          "Reparac PC Avanzada",
+          "1",
+          "Ana Maria",
+          "Matute",
+          "1",
+          "2014-05-31",
+          "5.420"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Franz",
+          "Kafka",
+          "Marketing 2",
+          "1",
+          "Casimiro",
+          "Cegado",
+          "2",
+          "2014-10-31",
+          "9.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Francisco",
+          "Umbral",
+          "Marketing 2",
+          "1",
+          "Ruben",
+          "Dario",
+          "2",
+          "2014-10-31",
+          "4.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Francisco",
+          "Umbral",
+          "Marketing 2",
+          "1",
+          "Maria",
+          "Asquerino",
+          "2",
+          "2014-10-31",
+          "7.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Franz",
+          "Kafka",
+          "Marketing 2",
+          "2",
+          "José",
+          "Ortega y Gasset",
+          "2",
+          "2014-10-27",
+          "10.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Francisco",
+          "Umbral",
+          "Marketing 1",
+          "2",
+          "Bella",
+          "Abzug",
+          "2",
+          "2014-09-29",
+          "4.500"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Franz",
+          "Kafka",
+          "Marketing 2",
+          "1",
+          "Ruben",
+          "Dario",
+          "1",
+          "2014-06-30",
+          "5.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Franz",
+          "Kafka",
+          "Marketing 2",
+          "1",
+          "Maria",
+          "Asquerino",
+          "1",
+          "2014-06-30",
+          "5.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Francisco",
+          "Umbral",
+          "Marketing 2",
+          "1",
+          "Casimiro",
+          "Cegado",
+          "1",
+          "2014-06-30",
+          "5.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Franz",
+          "Kafka",
+          "Marketing 2",
+          "2",
+          "Victor",
+          "Hugo",
+          "1",
+          "2014-06-29",
+          "10.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Francisco",
+          "Umbral",
+          "Marketing 1",
+          "2",
+          "Bella",
+          "Abzug",
+          "1",
+          "2014-06-15",
+          "10.000"
+        ],
+        [
+          "55-55555555-5",
+          "Henri",
+          "Amiel",
+          "Francisco",
+          "Umbral",
+          "Marketing 1",
+          "2",
+          "Jorge",
+          "Bucay",
+          "1",
+          "2014-06-15",
+          "6.000"
+        ],
+        [
+          "88-88888888-8",
+          "Otto",
+          "Wagner",
+          "Elias",
+          "Yanes",
+          "Reparac PC Avanzada",
+          "1",
+          "Isabel",
+          "Gemio",
+          "3",
+          "2014-12-14",
+          "3.500"
+        ],
+        [
+          "88-88888888-8",
+          "Otto",
+          "Wagner",
+          "Elias",
+          "Yanes",
+          "Reparac PC Avanzada",
+          "1",
+          "Ana Maria",
+          "Matute",
+          "3",
+          "2014-12-14",
+          "7.000"
+        ],
+        [
+          "88-88888888-8",
+          "Otto",
+          "Wagner",
+          "Elias",
+          "Yanes",
+          "Reparac PC Avanzada",
+          "1",
+          "Isabel",
+          "Gemio",
+          "2",
+          "2014-09-05",
+          "9.820"
+        ],
+        [
+          "88-88888888-8",
+          "Otto",
+          "Wagner",
+          "Elias",
+          "Yanes",
+          "Reparacion PC",
+          "2",
+          "Laura",
+          "Morante",
+          "1",
+          "2014-06-30",
+          "2.000"
+        ]
+      ]
+    },
+    "notas": "La jerarquía real de supervisores no coincide con la del docx (ver nota de la solución ideal): en la base actual Kafka no supervisa a nadie de los que muestra el docx. Corregido con las 24 filas reales."
+  },
+  "p3e1": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nro_contrato",
+          "fecha_incorporacion",
+          "fecha_finalizacion_contrato",
+          "Fecha Caducidad"
+        ],
+        [
+          "1",
+          "2014-11-01",
+          "2015-12-26",
+          "2014-10-20"
+        ],
+        [
+          "3",
+          "2014-11-15",
+          "2015-12-24",
+          "2014-10-21"
+        ],
+        [
+          "6",
+          "2015-01-02",
+          "2015-12-24",
+          "2014-10-23"
+        ]
+      ]
+    },
+    "notas": "La fecha_finalizacion_contrato real del contrato 6 es 2015-12-24, no 2015-12-26 como trae el docx (desfasaje de datos). Corregido con los valores reales."
+  },
+  "p3e2": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nro_contrato",
+          "razon_social",
+          "apellido",
+          "nombre",
+          "fecha_incorporacion",
+          "Fecha Caducidad"
+        ],
+        [
+          "1",
+          "Traigame eso",
+          "Garcia",
+          "Eliseo",
+          "2014-11-01",
+          "Contrato Vigente"
+        ],
+        [
+          "3",
+          "Viejos Amigos",
+          "Lopez",
+          "Stefanía",
+          "2014-11-15",
+          "Contrato Vigente"
+        ],
+        [
+          "4",
+          "Viejos Amigos",
+          "Wingdam",
+          "Raul",
+          "2014-12-01",
+          "2015-12-15"
+        ],
+        [
+          "5",
+          "Viejos Amigos",
+          "Wingdam",
+          "Raul",
+          "2015-01-02",
+          "2015-03-12"
+        ],
+        [
+          "6",
+          "Informatiks srl",
+          "Guftafson",
+          "Juana",
+          "2015-01-02",
+          "Contrato Vigente"
+        ],
+        [
+          "7",
+          "Viejos Amigos",
+          "Lopez",
+          "Stefanía",
+          "2015-01-02",
+          "2015-12-24"
+        ]
+      ]
+    },
+    "notas": "El docx numera mal las fechas de incorporación (parecen ser en realidad las de finalización desplazadas) y usa fechas de finalización desactualizadas; se corrige con los valores reales de la base para fecha_incorporacion y fecha_finalizacion_contrato/Fecha Caducidad."
+  },
+  "p3e3": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nro_contrato",
+          "fecha_incorporacion",
+          "fecha_finalizacion_contrato",
+          "fecha_caducidad",
+          "sueldo",
+          "porcentaje_comision",
+          "dni",
+          "cuit",
+          "cod_cargo",
+          "fecha_solicitud",
+          "dias_antes"
+        ],
+        [
+          "4",
+          "2014-12-01",
+          "2015-12-16",
+          "2015-12-15",
+          "1900.000",
+          "13.000",
+          "29345777",
+          "30-10504876-5",
+          "4",
+          "2014-09-13",
+          "1"
+        ],
+        [
+          "5",
+          "2015-01-02",
+          "2015-12-24",
+          "2015-03-12",
+          "2063.000",
+          "14.000",
+          "29345777",
+          "30-10504876-5",
+          "5",
+          "2014-09-21",
+          "287"
+        ]
+      ]
+    },
+    "notas": "El docx trae el cod_cargo del contrato 4 corrompido por un artefacto de extracción de Word ('4         4') y el orden de filas invertido. Corregido con los valores reales."
+  },
+  "p4e1": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "razon_social",
+          "SUM(co.importe_comision)"
+        ],
+        [
+          "Traigame eso",
+          "480.000"
+        ]
+      ]
+    },
+    "notas": "El importe real de comisiones de 'Traigame eso' es 480.000, no 360.000 como trae el docx (desfasaje de datos, se cargaron más comisiones desde que se redactó el enunciado)."
+  },
+  "p4e2": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "razon_social",
+          "SUM(co.importe_comision)"
+        ],
+        [
+          "Viejos Amigos",
+          "2022.640"
+        ],
+        [
+          "Traigame eso",
+          "480.000"
+        ],
+        [
+          "Informatiks srl",
+          "2348.000"
+        ]
+      ]
+    },
+    "notas": "Los importes reales de comisiones por empresa no coinciden con el docx (desfasaje de datos) y además existe una tercera empresa con comisiones ('Informatiks srl') que el docx no contemplaba."
+  },
+  "p4e3": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nombre_entrevistador",
+          "cod_evaluacion",
+          "AVG(ee.resultado)",
+          "STD(ee.resultado)",
+          "VARIANCE(ee.resultado)"
+        ],
+        [
+          "Raul Somias",
+          "2",
+          "67.0000",
+          "0.0",
+          "0.0"
+        ],
+        [
+          "Angelica Doria",
+          "1",
+          "70.6667",
+          "7.4087035902976215",
+          "54.888888888888864"
+        ],
+        [
+          "Angelica Doria",
+          "3",
+          "71.6667",
+          "8.219218670625303",
+          "67.55555555555556"
+        ],
+        [
+          "Angelica Doria",
+          "2",
+          "74.3333",
+          "12.918548250050735",
+          "166.8888888888889"
+        ],
+        [
+          "Tomas Sanchez",
+          "3",
+          "76.5000",
+          "7.5",
+          "56.25"
+        ],
+        [
+          "Tomas Sanchez",
+          "1",
+          "77.0000",
+          "14.0",
+          "196.0"
+        ],
+        [
+          "Raul Somias",
+          "1",
+          "80.0000",
+          "0.0",
+          "0.0"
+        ],
+        [
+          "Raul Somias",
+          "3",
+          "82.0000",
+          "0.0",
+          "0.0"
+        ],
+        [
+          "Tomas Sanchez",
+          "2",
+          "83.5000",
+          "11.5",
+          "132.25"
+        ]
+      ]
+    },
+    "notas": "El docx trunca AVG/STD/VARIANCE a menos decimales que los que devuelve MySQL realmente, lo que hace que cualquier respuesta correcta se marque como 'Difiere' por precisión. Corregido con los valores reales devueltos por MySQL (misma precisión que vería cualquier alumno)."
+  },
+  "p4e6": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nombre_entrevistador",
+          "cod_evaluacion",
+          "COUNT(*)",
+          "AVG(ee.resultado)",
+          "STD(ee.resultado)"
+        ],
+        [
+          "Raul Somias",
+          "1",
+          "1",
+          "80.0000",
+          "0.0"
+        ],
+        [
+          "Raul Somias",
+          "2",
+          "1",
+          "67.0000",
+          "0.0"
+        ],
+        [
+          "Raul Somias",
+          "3",
+          "1",
+          "82.0000",
+          "0.0"
+        ],
+        [
+          "Tomas Sanchez",
+          "1",
+          "2",
+          "77.0000",
+          "14.0"
+        ],
+        [
+          "Tomas Sanchez",
+          "2",
+          "2",
+          "83.5000",
+          "11.5"
+        ],
+        [
+          "Tomas Sanchez",
+          "3",
+          "2",
+          "76.5000",
+          "7.5"
+        ],
+        [
+          "Angelica Doria",
+          "1",
+          "3",
+          "70.6667",
+          "7.4087035902976215"
+        ],
+        [
+          "Angelica Doria",
+          "2",
+          "3",
+          "74.3333",
+          "12.918548250050735"
+        ],
+        [
+          "Angelica Doria",
+          "3",
+          "3",
+          "71.6667",
+          "8.219218670625303"
+        ]
+      ]
+    },
+    "notas": "El docx sólo capturó 7 de las 9 combinaciones reales interprete/evaluación y una fila quedó corrompida por un artefacto de extracción de Word (columnas pegadas). Corregido con las 9 filas reales."
+  },
+  "p4e7": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nombre_entrevistador",
+          "cod_evaluacion",
+          "COUNT(*)",
+          "AVG(ee.resultado)",
+          "STD(ee.resultado)"
+        ],
+        [
+          "Tomas Sanchez",
+          "1",
+          "2",
+          "77.0000",
+          "14.0"
+        ],
+        [
+          "Tomas Sanchez",
+          "2",
+          "2",
+          "83.5000",
+          "11.5"
+        ],
+        [
+          "Tomas Sanchez",
+          "3",
+          "2",
+          "76.5000",
+          "7.5"
+        ],
+        [
+          "Angelica Doria",
+          "1",
+          "3",
+          "70.6667",
+          "7.4087035902976215"
+        ],
+        [
+          "Angelica Doria",
+          "2",
+          "3",
+          "74.3333",
+          "12.918548250050735"
+        ],
+        [
+          "Angelica Doria",
+          "3",
+          "3",
+          "71.6667",
+          "8.219218670625303"
+        ]
+      ]
+    },
+    "notas": "El docx omite una combinación real (Angelica Doria / evaluación 1, que también cumple COUNT(*) > 1). Corregido con las 6 filas reales."
+  },
+  "p5e3": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "cuit",
+          "razon_social",
+          "AVG(co.importe_comision)"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "224.7377778"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "1174.0000000"
+        ]
+      ]
+    },
+    "notas": "El promedio real de comisiones de 'Viejos Amigos' difiere levemente del docx (224.7377778 vs 224.7377794) por datos de comisiones cargados después de redactado el enunciado."
+  },
+  "p5e7": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "cuit",
+          "dni",
+          "sueldo",
+          "prom"
+        ],
+        [
+          "30-10504876-5",
+          "28675888",
+          "5870.000",
+          "2858.2500000"
+        ]
+      ]
+    },
+    "notas": "El docx trae el sueldo sin separador de miles ('5870000' en vez de '5870.000'), un artefacto de formato del docx, no un error de datos ni de consulta."
+  },
+  "p5e9": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "dni",
+          "nombre",
+          "apellido",
+          "tel",
+          "email",
+          "direccion",
+          "cant_cursos",
+          "diferencia"
+        ],
+        [
+          "10101010",
+          "Ruben",
+          "Dario",
+          "1010101",
+          "rdario@gmail.com",
+          "Rio de Janeiro 1010",
+          "3",
+          "1"
+        ],
+        [
+          "11111111",
+          "Casimiro",
+          "Cegado",
+          "1111111",
+          "casimirocegado9B@yahoo.com.ar",
+          "9 de julio 111 9B",
+          "3",
+          "1"
+        ],
+        [
+          "12121212",
+          "Maria",
+          "Asquerino",
+          "1212121",
+          "masqu@gmail.com",
+          "Salta 1212",
+          "3",
+          "1"
+        ],
+        [
+          "17171717",
+          "Ana Maria",
+          "Matute",
+          "1717171",
+          "ana_m_matute@gmail.com",
+          "Salta 1717",
+          "3",
+          "1"
+        ],
+        [
+          "22222222",
+          "Laura",
+          "Morante",
+          "2222222",
+          "lau_morante22@gmail.com",
+          "Italia 2222",
+          "4",
+          "2"
+        ],
+        [
+          "24242424",
+          "José",
+          "Ortega y Gasset",
+          "2424242",
+          "pepe_oys@hotmail.com",
+          "Francia 2424",
+          "3",
+          "1"
+        ]
+      ]
+    },
+    "notas": "El docx tiene el orden de columnas 'te'/'email' invertido respecto a la consulta ideal (mismo dato, otra posición) y encabezados truncados/erróneos ('te' en vez de 'tel', 'count(*)-@cant)' con paréntesis de más). Corregido con el orden real de columnas."
+  },
+  "p5e10": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nom_plan",
+          "COUNT(*)",
+          "% Total"
+        ],
+        [
+          "Marketing 1",
+          "3",
+          "27.2727"
+        ],
+        [
+          "Marketing 2",
+          "5",
+          "45.4545"
+        ],
+        [
+          "Reparac PC Avanzada",
+          "2",
+          "18.1818"
+        ],
+        [
+          "Reparacion PC",
+          "1",
+          "9.0909"
+        ]
+      ]
+    },
+    "notas": "El docx calcula el porcentaje sobre una base distinta (parece dividir por 20 cursos en vez de los 11 alumnos inscriptos reales), dando el doble del valor real. Corregido con el % real (cantidad de inscriptos de ese plan / total de inscriptos * 100)."
+  },
+  "p5e12": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nom_plan",
+          "desc_plan",
+          "hs",
+          "modalidad",
+          "valor_plan"
+        ],
+        [
+          "Marketing 2",
+          "Seleccion del sector de mercado. Matriz FODA.",
+          "150",
+          "Semipresencial",
+          "60.000"
+        ]
+      ]
+    },
+    "notas": "El docx trae el valor_plan sin separador decimal ('60000' en vez de '60.000'), un artefacto de formato del docx."
+  },
+  "p5e15": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "dni",
+          "nombre",
+          "nom_plan",
+          "nro_curso",
+          "avg(nota)",
+          "prome"
+        ],
+        [
+          "11111111",
+          "Casimiro",
+          "Marketing 1",
+          "1",
+          "7.8850000",
+          "7.1462500"
+        ],
+        [
+          "13131313",
+          "Antoine de",
+          "Marketing 1",
+          "1",
+          "7.2000000",
+          "7.1462500"
+        ],
+        [
+          "20202020",
+          "Bella",
+          "Marketing 1",
+          "2",
+          "7.2500000",
+          "6.8983333"
+        ],
+        [
+          "22222222",
+          "Laura",
+          "Marketing 1",
+          "2",
+          "7.0000000",
+          "6.8983333"
+        ],
+        [
+          "11111111",
+          "Casimiro",
+          "Marketing 2",
+          "1",
+          "7.0000000",
+          "5.8333333"
+        ],
+        [
+          "12121212",
+          "Maria",
+          "Marketing 2",
+          "1",
+          "6.0000000",
+          "5.8333333"
+        ],
+        [
+          "24242424",
+          "José",
+          "Marketing 2",
+          "2",
+          "10.0000000",
+          "9.9750000"
+        ],
+        [
+          "15151515",
+          "Isabel",
+          "Reparac PC Avanzada",
+          "1",
+          "7.2533333",
+          "6.4983333"
+        ],
+        [
+          "14141414",
+          "Jose",
+          "Reparacion PC",
+          "1",
+          "7.7950000",
+          "6.8590000"
+        ],
+        [
+          "15151515",
+          "Isabel",
+          "Reparacion PC",
+          "1",
+          "7.5000000",
+          "6.8590000"
+        ],
+        [
+          "17171717",
+          "Ana Maria",
+          "Reparacion PC",
+          "1",
+          "9.0000000",
+          "6.8590000"
+        ],
+        [
+          "18181818",
+          "Victor",
+          "Reparacion PC",
+          "1",
+          "10.0000000",
+          "6.8590000"
+        ]
+      ]
+    },
+    "notas": "Se interpretó 'promedio del curso que realiza' calculando el promedio del alumno EN CADA curso (hay alumnos en más de un curso), por lo que salen 12 filas en vez de las 7 del docx (una por alumno); ver nota completa en soluciones_ideales.json. Se prioriza la interpretación literal de la consigna."
+  },
+  "p5e16": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nom_plan",
+          "nro_curso",
+          "fecha_ini",
+          "salon",
+          "cupo",
+          "COUNT(i.dni)",
+          "(c.cupo - COUNT(i.dni))"
+        ],
+        [
+          "Marketing 1",
+          "2",
+          "2014-04-01",
+          "NULL",
+          "100",
+          "3",
+          "97"
+        ],
+        [
+          "Marketing 1",
+          "3",
+          "2015-04-01",
+          "NULL",
+          "100",
+          "0",
+          "100"
+        ],
+        [
+          "Marketing 2",
+          "1",
+          "2014-04-01",
+          "1",
+          "20",
+          "3",
+          "17"
+        ],
+        [
+          "Marketing 2",
+          "2",
+          "2014-04-01",
+          "1",
+          "20",
+          "2",
+          "18"
+        ],
+        [
+          "Reparacion PC",
+          "2",
+          "2014-05-01",
+          "3",
+          "10",
+          "1",
+          "9"
+        ],
+        [
+          "Reparacion PC",
+          "3",
+          "2015-05-01",
+          "3",
+          "10",
+          "1",
+          "9"
+        ]
+      ]
+    },
+    "notas": "El resultado real tiene 6 cursos con más del 80% de lugares libres (varios con cupos grandes y pocos inscriptos), no 1 como muestra el docx; también falta la columna nom_plan en el encabezado del docx. Es diferencia de dataset, no de lógica de la consulta (ver nota de la solución ideal)."
+  },
+  "p5e17": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "nom_plan",
+          "maxfecha",
+          "Valor actual",
+          "Ant fecha",
+          "Valor anterior",
+          "diferencia"
+        ],
+        [
+          "Marketing 1",
+          "2014-12-01",
+          "65.000",
+          "2014-08-01",
+          "54.000",
+          "11.000"
+        ],
+        [
+          "Marketing 2",
+          "2015-01-02",
+          "60.000",
+          "2014-08-01",
+          "88.000",
+          "-28.000"
+        ],
+        [
+          "Marketing 3",
+          "2015-01-02",
+          "200.000",
+          "NULL",
+          "0.000",
+          "0"
+        ],
+        [
+          "Reparac PC Avanzada",
+          "2015-04-01",
+          "135.000",
+          "2015-01-02",
+          "125.000",
+          "10.000"
+        ],
+        [
+          "Reparacion PC",
+          "2015-01-02",
+          "80.000",
+          "2014-08-01",
+          "80.000",
+          "0.000"
+        ]
+      ]
+    },
+    "notas": "El docx deja vacías las celdas de 'Ant fecha'/'Valor anterior'/'diferencia' para Marketing 3 (sin valor previo), pero la consulta real devuelve NULL/0 en esas celdas via IFNULL; se corrige 'diferencia' a 0 (las demás celdas vacías ya son equivalentes a NULL para el comparador)."
+  },
+  "p6e1": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "cuit",
+          "razon_socila",
+          "dni",
+          "apellido",
+          "nombre",
+          "cargo",
+          "desc_cargo",
+          "origen"
+        ],
+        [
+          "30-23456328-5",
+          "Constructora Gaia S.A.",
+          "31345778",
+          "Ruiz",
+          "Aquiles",
+          "7",
+          "Director de Obras",
+          "Antecedentes"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "30987654",
+          "Guftafson",
+          "Juana",
+          "6",
+          "Jefe de Desarrollo",
+          "Contrato - Empresa"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "30425782",
+          "Losteau",
+          "Pedro",
+          "6",
+          "Jefe de Desarrollo",
+          "Antecedentes"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "30987654",
+          "Guftafson",
+          "Juana",
+          "8",
+          "Programador",
+          "Antecedentes"
+        ],
+        [
+          "30-20987654-4",
+          "Porciones Reducidas",
+          "27890765",
+          "Garcia",
+          "Eliseo",
+          "2",
+          "mozo",
+          "Antecedentes"
+        ],
+        [
+          "30-20987654-4",
+          "Porciones Reducidas",
+          "28675888",
+          "Lopez",
+          "Stefanía",
+          "2",
+          "mozo",
+          "Antecedentes"
+        ],
+        [
+          "30-20987654-4",
+          "Porciones Reducidas",
+          "28675888",
+          "Lopez",
+          "Stefanía",
+          "3",
+          "cocinero",
+          "Antecedentes"
+        ],
+        [
+          "30-15876543-4",
+          "Reuniones Improvisadas",
+          "29345777",
+          "Wingdam",
+          "Raul",
+          "4",
+          "organizador de eventos",
+          "Antecedentes"
+        ],
+        [
+          "30-15876543-4",
+          "Reuniones Improvisadas",
+          "29345777",
+          "Wingdam",
+          "Raul",
+          "5",
+          "decorador",
+          "Antecedentes"
+        ],
+        [
+          "30-21008765-5",
+          "Traigame eso",
+          "27890765",
+          "Garcia",
+          "Eliseo",
+          "2",
+          "mozo",
+          "Contrato - Empresa"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "28675888",
+          "Lopez",
+          "Stefanía",
+          "3",
+          "cocinero",
+          "Contrato - Empresa"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "29345777",
+          "Wingdam",
+          "Raul",
+          "4",
+          "organizador de eventos",
+          "Contrato - Empresa"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "29345777",
+          "Wingdam",
+          "Raul",
+          "5",
+          "decorador",
+          "Contrato - Empresa"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "28675888",
+          "Lopez",
+          "Stefanía",
+          "3",
+          "cocinero",
+          "Contrato - Empresa"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "30987654",
+          "Guftafson",
+          "Juana",
+          "6",
+          "Jefe de Desarrollo",
+          "Antecedentes"
+        ]
+      ]
+    },
+    "notas": "El encabezado de la última columna en el docx quedó mal extraído (repite el valor 'Contrato - Empresa' en vez de decir 'origen') y al dataset real se sumó una fila más (Informatiks srl / Losteau, antecedente) desde que se redactó el enunciado. Corregido con las 15 filas reales y el encabezado correcto."
+  },
+  "p7e2": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "Nombre del Plan",
+          "Descripcion del Plan",
+          "Nro. del Curso",
+          "Fecha Inicio",
+          "Fecha Fin",
+          "salon",
+          "cupo",
+          "Cantidad Alumnos"
+        ],
+        [
+          "Marketing 2",
+          "Seleccion del sector de mercado. Matriz FODA.",
+          "3",
+          "2015-04-01",
+          "2015-11-01",
+          "1",
+          "20",
+          "5"
+        ],
+        [
+          "Marketing 3",
+          "Competencia Desleal",
+          "1",
+          "2015-04-01",
+          "2015-12-15",
+          "2",
+          "3",
+          "3"
+        ],
+        [
+          "Reparac PC Avanzada",
+          "Configuración de SO Linux/Windows y de red. Herramientas de diagnostico especializadas y reparacion",
+          "2",
+          "2015-03-01",
+          "2015-12-15",
+          "3",
+          "10",
+          "3"
+        ],
+        [
+          "Reparacion PC",
+          "Identidifar componentes de una pc, diagnosticar problemas y reemplazo de partes dañadas",
+          "3",
+          "2015-05-01",
+          "2015-11-01",
+          "3",
+          "10",
+          "1"
+        ]
+      ]
+    },
+    "notas": "El docx trunca el texto de Descripcion del Plan de Reparac PC Avanzada con puntos suspensivos (artefacto de extraccion de Word), pero el resto de los datos coincide. Corregido con el texto completo real."
+  },
+  "p7e4": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "Nombre y Apellido",
+          "Nombre Plan",
+          "Nro. del Curso",
+          "promedio",
+          "Cant cuotas impagas"
+        ],
+        [
+          "Ruben Dario",
+          "Marketing 1",
+          "1",
+          "6.5000000",
+          "6"
+        ],
+        [
+          "Ruben Dario",
+          "Marketing 2",
+          "1",
+          "4.5000000",
+          "7"
+        ],
+        [
+          "Ruben Dario",
+          "Marketing 2",
+          "3",
+          "NULL",
+          "0"
+        ],
+        [
+          "Casimiro Cegado",
+          "Marketing 1",
+          "1",
+          "7.8850000",
+          "6"
+        ],
+        [
+          "Casimiro Cegado",
+          "Marketing 2",
+          "1",
+          "7.0000000",
+          "7"
+        ],
+        [
+          "Casimiro Cegado",
+          "Marketing 3",
+          "1",
+          "NULL",
+          "0"
+        ],
+        [
+          "Maria Asquerino",
+          "Marketing 1",
+          "1",
+          "7.0000000",
+          "6"
+        ],
+        [
+          "Maria Asquerino",
+          "Marketing 2",
+          "1",
+          "6.0000000",
+          "7"
+        ],
+        [
+          "Maria Asquerino",
+          "Marketing 3",
+          "1",
+          "NULL",
+          "0"
+        ],
+        [
+          "Antoine de Saint-Exupery",
+          "Marketing 1",
+          "1",
+          "7.2000000",
+          "6"
+        ],
+        [
+          "Antoine de Saint-Exupery",
+          "Marketing 2",
+          "3",
+          "NULL",
+          "0"
+        ],
+        [
+          "Jose Echegaray",
+          "Reparac PC Avanzada",
+          "2",
+          "NULL",
+          "0"
+        ],
+        [
+          "Jose Echegaray",
+          "Reparacion PC",
+          "1",
+          "7.7950000",
+          "6"
+        ],
+        [
+          "Isabel Gemio",
+          "Reparac PC Avanzada",
+          "1",
+          "7.2533333",
+          "10"
+        ],
+        [
+          "Isabel Gemio",
+          "Reparacion PC",
+          "1",
+          "7.5000000",
+          "6"
+        ],
+        [
+          "Gertrudis Gomez de Avellaneda",
+          "Reparacion PC",
+          "1",
+          "0E-7",
+          "6"
+        ],
+        [
+          "Ana Maria Matute",
+          "Reparac PC Avanzada",
+          "1",
+          "5.7433333",
+          "10"
+        ],
+        [
+          "Ana Maria Matute",
+          "Reparac PC Avanzada",
+          "2",
+          "NULL",
+          "0"
+        ],
+        [
+          "Ana Maria Matute",
+          "Reparacion PC",
+          "1",
+          "9.0000000",
+          "6"
+        ],
+        [
+          "Victor Montenegro",
+          "Reparac PC Avanzada",
+          "2",
+          "NULL",
+          "0"
+        ],
+        [
+          "Victor Montenegro",
+          "Reparacion PC",
+          "1",
+          "10.0000000",
+          "6"
+        ],
+        [
+          "Bella Abzug",
+          "Marketing 1",
+          "2",
+          "7.2500000",
+          "6"
+        ],
+        [
+          "Bella Abzug",
+          "Marketing 2",
+          "3",
+          "NULL",
+          "0"
+        ],
+        [
+          "Jorge Bucay",
+          "Marketing 1",
+          "2",
+          "6.4450000",
+          "6"
+        ],
+        [
+          "Laura Morante",
+          "Marketing 1",
+          "2",
+          "7.0000000",
+          "6"
+        ],
+        [
+          "Laura Morante",
+          "Marketing 2",
+          "3",
+          "NULL",
+          "0"
+        ],
+        [
+          "Laura Morante",
+          "Reparacion PC",
+          "2",
+          "2.1950000",
+          "6"
+        ],
+        [
+          "Laura Morante",
+          "Reparacion PC",
+          "3",
+          "NULL",
+          "0"
+        ],
+        [
+          "Victor Hugo",
+          "Marketing 2",
+          "2",
+          "9.9500000",
+          "7"
+        ],
+        [
+          "José Ortega y Gasset",
+          "Marketing 2",
+          "2",
+          "10.0000000",
+          "7"
+        ],
+        [
+          "José Ortega y Gasset",
+          "Marketing 2",
+          "3",
+          "NULL",
+          "0"
+        ],
+        [
+          "José Ortega y Gasset",
+          "Marketing 3",
+          "1",
+          "NULL",
+          "0"
+        ]
+      ]
+    },
+    "notas": "El docx sólo muestra una fila de ejemplo por curso (7 filas), pero la vista real correctamente devuelve una fila por cada inscripcion de alumno a curso (32 filas), tal como pide la consigna (\"para cada curso al que se ha inscripto\"). Corregido con las 32 filas reales."
   }
 }

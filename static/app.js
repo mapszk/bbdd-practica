@@ -139,6 +139,9 @@ function renderRiel() {
   const btnSoluciones = document.createElement("button");
   btnSoluciones.textContent = "📋 Ver soluciones";
   btnSoluciones.onclick = () => Soluciones.abrir();
+  const btnDatos = document.createElement("button");
+  btnDatos.textContent = "🗄 Ver datos";
+  btnDatos.onclick = () => Datos.abrir(mapNombreBase(ejercicioActual ? ejercicioActual.base_datos : "afatse"));
   const btnExportar = document.createElement("button");
   btnExportar.textContent = "📄 Exportar mis_soluciones.sql";
   btnExportar.onclick = async () => {
@@ -146,6 +149,7 @@ function renderRiel() {
     toast("Exportado: " + r.ruta);
   };
   acciones.appendChild(btnEsquema);
+  acciones.appendChild(btnDatos);
   acciones.appendChild(btnSoluciones);
   acciones.appendChild(btnExportar);
   riel.appendChild(acciones);
@@ -581,18 +585,14 @@ function renderIdeal() {
   const cont = document.getElementById("panel-resultados");
   const ej = ejercicioActual;
   const miSol = solucionesCache[ej.id];
-  const resuelto = miSol && miSol.estado === "resuelto";
 
-  if (!resuelto) {
-    cont.innerHTML = `<div class="mensaje-ok">🔒 Marcá este ejercicio como resuelto (ejecutalo con éxito) para desbloquear la solución ideal.
-    Así no se arruina el intento por espiar la respuesta antes de tiempo.</div>`;
-    return;
+  let html = "";
+  if (miSol && miSol.sql) {
+    html += `<div style="margin-bottom:14px">
+      <div style="font-size:12px;color:var(--texto-tenue);margin-bottom:4px">Tu solución</div>
+      <pre class="sol-sql-bloque">${escapeHtml(miSol.sql || "")}</pre>
+    </div>`;
   }
-
-  let html = `<div style="margin-bottom:14px">
-    <div style="font-size:12px;color:var(--texto-tenue);margin-bottom:4px">Tu solución</div>
-    <pre class="sol-sql-bloque">${escapeHtml(miSol.sql || "")}</pre>
-  </div>`;
 
   if (ej.solucion_ideal && ej.solucion_ideal.sql) {
     html += `<div>
