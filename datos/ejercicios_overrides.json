@@ -1999,5 +1999,79 @@
       ]
     },
     "notas": "El docx sólo muestra una fila de ejemplo por curso (7 filas), pero la vista real correctamente devuelve una fila por cada inscripcion de alumno a curso (32 filas), tal como pide la consigna (\"para cada curso al que se ha inscripto\"). Corregido con las 32 filas reales."
+  },
+  "p3e4": {
+    "tabla_esperada": {
+      "tipo": "resultado",
+      "filas": [
+        [
+          "cuit",
+          "razon_social",
+          "direccion",
+          "anio_contrato",
+          "mes_contrato",
+          "importe_comision",
+          "fecha_vencimiento"
+        ],
+        [
+          "30-21008765-5",
+          "Traigame eso",
+          "Zeballos 7456",
+          "2015",
+          "2",
+          "120.000",
+          "2026-10-26"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "Buenos Aires 4444",
+          "2015",
+          "1",
+          "247.000",
+          "2026-10-26"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "Buenos Aires 4444",
+          "2015",
+          "2",
+          "247.000",
+          "2026-10-26"
+        ],
+        [
+          "30-10504876-5",
+          "Viejos Amigos",
+          "Buenos Aires 4444",
+          "2015",
+          "2",
+          "288.820",
+          "2026-10-26"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "Dorrego 2213 4 A",
+          "2015",
+          "1",
+          "1174.000",
+          "2026-10-26"
+        ],
+        [
+          "30-21098732-4",
+          "Informatiks srl",
+          "Dorrego 2213 4 A",
+          "2015",
+          "2",
+          "1174.000",
+          "2026-10-26"
+        ]
+      ]
+    },
+    "flags": {
+      "fecha_dinamica": true
+    },
+    "notas": "La columna fecha_vencimiento se calcula como CURDATE() + 2 meses, así que cambia todos los días; no hay un valor fijo que se pueda dejar como esperado permanentemente. Se corrigieron las otras 6 columnas con los importes/fechas reales (el docx traía sólo 4 filas con importes desactualizados). La app avisa con un badge que esa columna en particular no es comparable de forma estática."
   }
 }

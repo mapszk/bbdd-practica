@@ -251,6 +251,9 @@ function renderConsigna() {
   if (ej.flags && ej.flags.error_en_salida) {
     html += `<div class="badge aviso">⚠ El propio documento marca esta salida esperada como errónea</div>`;
   }
+  if (ej.flags && ej.flags.fecha_dinamica) {
+    html += `<div class="badge aviso">⚠ Este ejercicio calcula una fecha en base al día de hoy (CURDATE()): la columna de fecha nunca va a coincidir exactamente con la tabla esperada salvo que lo corras el mismo día en que se generó. Revisá el resto de las columnas para saber si tu consulta está bien.</div>`;
+  }
   if (ej.seccion) {
     html += `<div class="badge aviso">${escapeHtml(ej.seccion)}</div>`;
   }
