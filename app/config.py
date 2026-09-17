@@ -8,7 +8,10 @@ decide "adentro" vs "afuera" de OneDrive.
 from __future__ import annotations
 
 import os
+import sys
 from pathlib import Path
+
+ES_WINDOWS = sys.platform.startswith("win")
 
 # Carpeta del proyecto: código de la app + datos del alumno.
 # Vive en OneDrive intencionalmente (respaldo automático de las soluciones).
@@ -33,12 +36,18 @@ DUMPS = {
     "agencia_personal": PROJECT_DIR / "agencia_personal_2020.sql",
     "ropa_siempre_limpia": PROJECT_DIR
     / "BDatos_4_AnexoI_Tintoreria_siempre_limpia_2020.sql",
+    "parcial": PROJECT_DIR / "parcial.sql",
 }
 
 # Todo lo que MySQL/uv necesitan tener SIEMPRE abierto/bloqueado va afuera
 # de OneDrive, en el perfil local de Windows.
-_LOCALAPPDATA = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
-RUNTIME_DIR = _LOCALAPPDATA / "PracticaSQL"
+if ES_WINDOWS:
+    _LOCALAPPDATA = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
+    RUNTIME_DIR = _LOCALAPPDATA / "PracticaSQL"
+else:
+    # Fuera de Windows no hay OneDrive ni mysqld portable: usamos el mysqld
+    # del sistema con un datadir propio bajo el home del usuario.
+    RUNTIME_DIR = Path.home() / ".local" / "share" / "PracticaSQL"
 
 DESCARGAS_DIR = RUNTIME_DIR / "descargas"
 MYSQL_BIN_DIR = RUNTIME_DIR / "mysql"
@@ -81,6 +90,8 @@ def asegurar_directorios() -> None:
 
 
 def _assert_fuera_de_onedrive(ruta: Path) -> None:
+    if not ES_WINDOWS:
+        return
     partes = [p.lower() for p in ruta.parts]
     if any("onedrive" in p for p in partes):
         raise RuntimeError(

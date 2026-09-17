@@ -87,6 +87,13 @@ main {
 .riel-acciones { padding: 10px 12px; border-top: 1px solid var(--borde); margin-top: 8px; }
 .riel-acciones button { width: 100%; margin-bottom: 6px; }
 
+.riel-separador {
+  margin: 10px 12px 6px; padding-top: 10px;
+  border-top: 1px dashed var(--borde);
+  font-size: 10px; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--texto-tenue);
+}
+
 /* Consigna */
 #panel-consigna {
   overflow-y: auto; padding: 16px 20px;

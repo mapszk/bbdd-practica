@@ -526,5 +526,325 @@
   "p13e4": {
     "sql": "ALTER TABLE valores_plan ADD COLUMN usuario_alta varchar(50);\n\nDELIMITER $$\nCREATE TRIGGER trg_valores_plan_usuario_alta BEFORE INSERT ON valores_plan\nFOR EACH ROW\nBEGIN\n  SET NEW.usuario_alta = CURRENT_USER();\nEND$$\nDELIMITER ;\n\n-- c) Prueba (dentro de una transacción):\nSTART TRANSACTION;\nINSERT INTO valores_plan (nom_plan, fecha_desde_plan, valor_plan) VALUES ('Marketing 1', '2020-01-01', 999.000);\nSELECT * FROM valores_plan WHERE fecha_desde_plan = '2020-01-01'; -- usuario_alta debe venir completo\nROLLBACK; -- probar también con COMMIT",
     "notas": "IMPORTANTE -- al igual que en p13e3, este ejercicio modifica el esquema de una tabla real y compartida ('valores_plan'), así que la verificación completa se hizo sobre un clon aislado '_ideal_valores_plan' (CREATE TABLE ... LIKE + INSERT ... SELECT). Detalle técnico relevante encontrado durante la verificación: la primera versión del trigger usaba AFTER INSERT + un UPDATE posterior sobre la MISMA tabla que lo disparó, lo cual MySQL rechaza con el error 1442 'Can't update table ... because it is already used by statement which invoked this stored function/trigger' (restricción de tablas mutantes). Se corrigió cambiando a un trigger BEFORE INSERT que hace SET NEW.usuario_alta = CURRENT_USER() directamente sobre la fila que se está insertando, lo cual es además más simple y evita el problema de raíz; el campo 'sql' ya refleja esta versión corregida. Probado con ROLLBACK (fila con usuario_alta='root@localhost' visible dentro de la transacción, desaparece tras el ROLLBACK) y con COMMIT (fila quedó grabada con usuario_alta correcto, se limpió manualmente después). Se confirmó al final que la tabla real 'valores_plan' NO tiene ninguna columna ni trigger nuevo."
+  },
+  "p14e1": {
+    "sql": "SELECT nombre, email, condicion_iva\nFROM cliente\nWHERE condicion_iva = 'Responsable Inscripto'\nORDER BY nombre;",
+    "notas": ""
+  },
+  "p14e2": {
+    "sql": "SELECT nombre, duracion_dias\nFROM excursion\nWHERE duracion_dias > 1\nORDER BY duracion_dias DESC, nombre;",
+    "notas": ""
+  },
+  "p14e3": {
+    "sql": "SELECT id, estilo, capacidad\nFROM hospedaje\nWHERE apto_mov_reducida = 1 AND capacidad >= 4\nORDER BY capacidad DESC, id;",
+    "notas": ""
+  },
+  "p14e4": {
+    "sql": "SELECT nombre, valor_actual\nFROM servicio\nWHERE valor_actual > 40000\nORDER BY valor_actual DESC;",
+    "notas": ""
+  },
+  "p14e5": {
+    "sql": "SELECT id_excursion, fecha_salida, cupo\nFROM salida\nWHERE cupo = 20 AND fecha_salida BETWEEN '2025-01-01' AND '2025-12-31'\nORDER BY fecha_salida;",
+    "notas": ""
+  },
+  "p14e6": {
+    "sql": "SELECT nombre, cuit_cuil\nFROM cliente\nWHERE cuit_cuil LIKE '27-%'\nORDER BY nombre;",
+    "notas": ""
+  },
+  "p14e7": {
+    "sql": "SELECT nombre, apellido, tel\nFROM huesped\nWHERE tel IS NULL;",
+    "notas": ""
+  },
+  "p14e8": {
+    "sql": "SELECT id, fecha_inicio, fecha_fin, importe\nFROM estadia\nWHERE fecha_pago IS NULL AND fecha_inicio BETWEEN '2025-01-01' AND '2025-06-30'\nORDER BY fecha_inicio;",
+    "notas": ""
+  },
+  "p14e9": {
+    "sql": "SELECT nombre, detalle\nFROM excursion\nWHERE nombre LIKE '%Jusenkyo%' OR detalle LIKE '%Jusenkyo%';",
+    "notas": ""
+  },
+  "p14e10": {
+    "sql": "SELECT nombre, descripcion\nFROM servicio\nWHERE nombre LIKE '%erm%' OR descripcion LIKE '%erm%';",
+    "notas": ""
+  },
+  "p14e11": {
+    "sql": "SELECT DISTINCT condicion_iva\nFROM cliente\nORDER BY condicion_iva;",
+    "notas": ""
+  },
+  "p14e12": {
+    "sql": "SELECT id, estilo, metros_cuadrados\nFROM hospedaje\nWHERE metros_cuadrados IS NOT NULL\nORDER BY metros_cuadrados DESC\nLIMIT 10;",
+    "notas": ""
+  },
+  "p14e13": {
+    "sql": "SELECT nombre, apellido, fecha_nac\nFROM huesped\nWHERE fecha_nac BETWEEN '1995-01-01' AND '2000-12-31'\nORDER BY fecha_nac;",
+    "notas": ""
+  },
+  "p14e14": {
+    "sql": "SELECT id_excursion, fecha_salida, costo_unitario, recargo_huesped, (costo_unitario + recargo_huesped) AS costo_total\nFROM salida\nORDER BY costo_total DESC\nLIMIT 10;",
+    "notas": ""
+  },
+  "p14e15": {
+    "sql": "SELECT fecha, descripcion, importe\nFROM menu_diario\nWHERE fecha = '2025-01-03'\nORDER BY importe DESC;",
+    "notas": ""
+  },
+  "p14e16": {
+    "sql": "SELECT nombre, condicion_iva\nFROM cliente\nWHERE condicion_iva IN ('Exento', 'No Responsable')\nORDER BY nombre;",
+    "notas": ""
+  },
+  "p14e17": {
+    "sql": "SELECT id, dia_semana, hora_ini, hora_fin\nFROM turno\nWHERE dia_semana IN (6, 7)\nORDER BY dia_semana, hora_ini;",
+    "notas": ""
+  },
+  "p14e18": {
+    "sql": "SELECT id_hospedaje, fecha_inicio, fecha_fin_planificada, fecha_fin_real, motivo\nFROM mantenimiento\nWHERE fecha_fin_real > fecha_fin_planificada\nORDER BY id_hospedaje;",
+    "notas": ""
+  },
+  "p14e19": {
+    "sql": "SELECT id, fecha_inicio, fecha_fin, importe, DATEDIFF(fecha_fin, fecha_inicio) AS noches\nFROM estadia\nWHERE DATEDIFF(fecha_fin, fecha_inicio) = 14\nORDER BY importe DESC;",
+    "notas": ""
+  },
+  "p14e20": {
+    "sql": "SELECT nombre, apellido, UPPER(apellido) AS apellido_mayus\nFROM empleado\nORDER BY apellido;",
+    "notas": ""
+  },
+  "p15e1": {
+    "sql": "SELECT ex.nombre AS excursion, te.nombre AS tipo\nFROM excursion ex\nINNER JOIN tipo_excursion te ON te.id = ex.id_tipo_excursion\nWHERE te.nombre = 'Termal'\nORDER BY ex.nombre;",
+    "notas": ""
+  },
+  "p15e2": {
+    "sql": "SELECT e.id, c.nombre AS cliente, e.importe\nFROM estadia e\nINNER JOIN cliente c ON c.id = e.id_cliente\nWHERE e.importe > 1200000\nORDER BY e.importe DESC;",
+    "notas": ""
+  },
+  "p15e3": {
+    "sql": "SELECT h.id, h.estilo, th.nombre AS tipo_habitacion\nFROM hospedaje h\nINNER JOIN tipo_habitacion th ON th.id = h.id_tipo_habitacion\nWHERE th.nombre = 'Suite'\nORDER BY h.id;",
+    "notas": ""
+  },
+  "p15e4": {
+    "sql": "SELECT ex.nombre AS excursion, s.fecha_salida, s.costo_unitario\nFROM salida s\nINNER JOIN excursion ex ON ex.id = s.id_excursion\nWHERE s.fecha_salida BETWEEN '2025-06-01' AND '2025-09-30'\nORDER BY s.fecha_salida;",
+    "notas": ""
+  },
+  "p15e5": {
+    "sql": "SELECT emp.nombre, emp.apellido, t.dia_semana, t.hora_ini, t.hora_fin\nFROM empleado_turno et\nINNER JOIN empleado emp ON emp.id = et.id_empleado\nINNER JOIN turno t ON t.id = et.id_turno\nWHERE et.anio = 2026 AND et.mes = 1\nORDER BY emp.apellido, emp.nombre;",
+    "notas": ""
+  },
+  "p15e6": {
+    "sql": "SELECT c.nombre AS cliente, hu.nombre AS huesped, hu.apellido AS huesped_apellido, e.importe\nFROM estadia e\nINNER JOIN cliente c ON c.id = e.id_cliente\nINNER JOIN estadia_huesped eh ON eh.id_estadia = e.id\nINNER JOIN huesped hu ON hu.id = eh.id_huesped\nWHERE e.importe > 1300000\nORDER BY e.importe DESC, hu.apellido;",
+    "notas": ""
+  },
+  "p15e7": {
+    "sql": "SELECT s.nombre AS servicio, e.id AS id_estadia, e.importe\nFROM servicio s\nINNER JOIN servicio_estadia se ON se.id_servicio = s.id\nINNER JOIN estadia e ON e.id = se.id_estadia\nWHERE e.importe > 1300000\nORDER BY e.importe DESC;",
+    "notas": ""
+  },
+  "p15e8": {
+    "sql": "SELECT h.id, h.estilo, v.fecha_desde, v.valor_base\nFROM hospedaje h\nINNER JOIN valor_hospedaje v ON v.id_hospedaje = h.id\nWHERE v.fecha_desde = '2026-01-01'\nORDER BY h.estilo, h.id;",
+    "notas": ""
+  },
+  "p15e9": {
+    "sql": "SELECT h.id, h.estilo, m.fecha_inicio, m.fecha_fin_planificada, m.fecha_fin_real\nFROM hospedaje h\nINNER JOIN mantenimiento m ON m.id_hospedaje = h.id\nWHERE m.fecha_fin_real > m.fecha_fin_planificada\nORDER BY h.id;",
+    "notas": ""
+  },
+  "p15e10": {
+    "sql": "SELECT h.id, h.estilo, h.capacidad, th.nombre AS tipo_habitacion\nFROM hospedaje h\nLEFT JOIN tipo_habitacion th ON th.id = h.id_tipo_habitacion\nWHERE h.capacidad >= 4\nORDER BY h.id;",
+    "notas": ""
+  },
+  "p15e11": {
+    "sql": "SELECT c.id, c.nombre\nFROM cliente c\nLEFT JOIN estadia e ON e.id_cliente = c.id\nWHERE e.id IS NULL;",
+    "notas": ""
+  },
+  "p15e12": {
+    "sql": "SELECT ex.id, ex.nombre\nFROM excursion ex\nLEFT JOIN salida s ON s.id_excursion = ex.id\nWHERE s.id_excursion IS NULL\nORDER BY ex.nombre;",
+    "notas": ""
+  },
+  "p15e13": {
+    "sql": "SELECT ex.id, ex.nombre\nFROM salida s\nRIGHT JOIN excursion ex ON ex.id = s.id_excursion\nWHERE s.id_excursion IS NULL\nORDER BY ex.nombre;",
+    "notas": ""
+  },
+  "p15e14": {
+    "sql": "SELECT c.id, c.nombre\nFROM estadia e\nRIGHT JOIN cliente c ON c.id = e.id_cliente\nWHERE e.id IS NULL;",
+    "notas": ""
+  },
+  "p15e15": {
+    "sql": "SELECT m.fecha, m.descripcion, r.id_huesped\nFROM reserva r\nRIGHT JOIN menu_diario m ON m.id = r.id_menu_diario\nWHERE m.fecha BETWEEN '2025-01-01' AND '2025-01-10'\nORDER BY m.fecha;",
+    "notas": ""
+  },
+  "p15e16": {
+    "sql": "SELECT te.nombre AS tipo_excursion, th.nombre AS tipo_habitacion\nFROM tipo_excursion te\nCROSS JOIN tipo_habitacion th\nORDER BY te.nombre, th.nombre;",
+    "notas": ""
+  },
+  "p15e17": {
+    "sql": "SELECT t.id, t.dia_semana, th.nombre AS tipo_habitacion\nFROM turno t\nCROSS JOIN tipo_habitacion th\nWHERE t.dia_semana = 1\nORDER BY t.id, th.nombre;",
+    "notas": ""
+  },
+  "p15e18": {
+    "sql": "SELECT e1.nombre AS excursion_1, e2.nombre AS excursion_2, te.nombre AS tipo\nFROM excursion e1\nINNER JOIN excursion e2 ON e2.id_tipo_excursion = e1.id_tipo_excursion AND e2.id > e1.id\nINNER JOIN tipo_excursion te ON te.id = e1.id_tipo_excursion\nWHERE te.nombre = 'Cultural'\nORDER BY e1.nombre, e2.nombre;",
+    "notas": ""
+  },
+  "p15e19": {
+    "sql": "SELECT h1.id AS hospedaje_1, h2.id AS hospedaje_2, h1.capacidad\nFROM hospedaje h1\nINNER JOIN hospedaje h2 ON h2.capacidad = h1.capacidad AND h2.id_tipo_habitacion = h1.id_tipo_habitacion AND h2.id > h1.id\nINNER JOIN tipo_habitacion th ON th.id = h1.id_tipo_habitacion\nWHERE th.nombre = 'Suite'\nORDER BY h1.id, h2.id;",
+    "notas": ""
+  },
+  "p15e20": {
+    "sql": "SELECT h1.nombre AS huesped_1, h1.apellido AS apellido_1, h2.nombre AS huesped_2, h2.apellido AS apellido_2, h1.fecha_nac\nFROM huesped h1\nINNER JOIN huesped h2 ON MONTH(h2.fecha_nac) = MONTH(h1.fecha_nac) AND DAY(h2.fecha_nac) = DAY(h1.fecha_nac) AND h2.id > h1.id\nORDER BY h1.fecha_nac;",
+    "notas": ""
+  },
+  "p16e1": {
+    "sql": "SELECT s.nombre, COUNT(*) AS veces_contratado\nFROM servicio s\nINNER JOIN servicio_estadia se ON se.id_servicio = s.id\nGROUP BY s.id, s.nombre\nORDER BY veces_contratado DESC;",
+    "notas": ""
+  },
+  "p16e2": {
+    "sql": "SELECT te.nombre AS tipo, COUNT(*) AS cantidad_excursiones\nFROM excursion ex\nINNER JOIN tipo_excursion te ON te.id = ex.id_tipo_excursion\nGROUP BY te.id, te.nombre\nORDER BY cantidad_excursiones DESC, te.nombre;",
+    "notas": ""
+  },
+  "p16e3": {
+    "sql": "SELECT estilo, COUNT(*) AS cantidad, AVG(capacidad) AS capacidad_promedio\nFROM hospedaje\nGROUP BY estilo\nORDER BY cantidad DESC;",
+    "notas": ""
+  },
+  "p16e4": {
+    "sql": "SELECT id_excursion, COUNT(*) AS cantidad_salidas, AVG(costo_unitario) AS costo_promedio\nFROM salida\nGROUP BY id_excursion\nORDER BY cantidad_salidas DESC, id_excursion;",
+    "notas": ""
+  },
+  "p16e5": {
+    "sql": "SELECT MONTH(fecha) AS mes, COUNT(*) AS cantidad_menus, SUM(importe) AS total_importe\nFROM menu_diario\nGROUP BY MONTH(fecha)\nORDER BY mes;",
+    "notas": ""
+  },
+  "p16e6": {
+    "sql": "SELECT entregado, COUNT(*) AS cantidad_reservas, SUM(cantidad) AS unidades_totales\nFROM reserva\nGROUP BY entregado\nORDER BY entregado;",
+    "notas": ""
+  },
+  "p16e7": {
+    "sql": "SELECT eh.id_hospedaje, COUNT(*) AS veces_utilizado\nFROM estadia_huesped eh\nINNER JOIN hospedaje h ON h.id = eh.id_hospedaje\nWHERE h.estilo = 'cabaña'\nGROUP BY eh.id_hospedaje\nORDER BY veces_utilizado DESC;",
+    "notas": ""
+  },
+  "p16e8": {
+    "sql": "SELECT anio, COUNT(*) AS cantidad_turnos\nFROM empleado_turno\nGROUP BY anio\nORDER BY anio;",
+    "notas": ""
+  },
+  "p16e9": {
+    "sql": "SELECT c.condicion_iva, COUNT(*) AS cantidad_estadias, SUM(e.importe) AS total_facturado\nFROM estadia e\nINNER JOIN cliente c ON c.id = e.id_cliente\nGROUP BY c.condicion_iva\nORDER BY total_facturado DESC;",
+    "notas": ""
+  },
+  "p16e10": {
+    "sql": "SELECT t.dia_semana, COUNT(*) AS cantidad_turnos_asignados\nFROM empleado_turno et\nINNER JOIN turno t ON t.id = et.id_turno\nGROUP BY t.dia_semana\nORDER BY t.dia_semana;",
+    "notas": ""
+  },
+  "p16e11": {
+    "sql": "SELECT c.nombre, COUNT(*) AS cantidad_estadias\nFROM estadia e\nINNER JOIN cliente c ON c.id = e.id_cliente\nGROUP BY c.id, c.nombre\nHAVING COUNT(*) > 4\nORDER BY cantidad_estadias DESC, c.nombre;",
+    "notas": ""
+  },
+  "p16e12": {
+    "sql": "SELECT te.nombre AS tipo, COUNT(*) AS cantidad_excursiones\nFROM excursion ex\nINNER JOIN tipo_excursion te ON te.id = ex.id_tipo_excursion\nGROUP BY te.id, te.nombre\nHAVING COUNT(*) > 4\nORDER BY cantidad_excursiones DESC;",
+    "notas": ""
+  },
+  "p16e13": {
+    "sql": "SELECT id_excursion, COUNT(*) AS cantidad_salidas, SUM(cupo) AS cupo_total\nFROM salida\nGROUP BY id_excursion\nHAVING COUNT(*) >= 3\nORDER BY cantidad_salidas DESC, id_excursion;",
+    "notas": ""
+  },
+  "p16e14": {
+    "sql": "SELECT id_estadia, COUNT(*) AS cantidad_huespedes\nFROM estadia_huesped\nGROUP BY id_estadia\nHAVING COUNT(*) >= 4\nORDER BY cantidad_huespedes DESC, id_estadia;",
+    "notas": ""
+  },
+  "p16e15": {
+    "sql": "SELECT s.nombre, COUNT(*) AS veces_contratado\nFROM servicio s\nINNER JOIN servicio_estadia se ON se.id_servicio = s.id\nGROUP BY s.id, s.nombre\nHAVING COUNT(*) >= 20\nORDER BY veces_contratado DESC;",
+    "notas": ""
+  },
+  "p16e16": {
+    "sql": "SELECT emp.nombre, emp.apellido, COUNT(*) AS cantidad_turnos\nFROM empleado_turno et\nINNER JOIN empleado emp ON emp.id = et.id_empleado\nGROUP BY emp.id, emp.nombre, emp.apellido\nHAVING COUNT(*) >= 17\nORDER BY cantidad_turnos DESC, emp.apellido;",
+    "notas": ""
+  },
+  "p16e17": {
+    "sql": "SELECT c.condicion_iva, SUM(e.importe) AS total_facturado\nFROM estadia e\nINNER JOIN cliente c ON c.id = e.id_cliente\nGROUP BY c.condicion_iva\nHAVING SUM(e.importe) > 10000000\nORDER BY total_facturado DESC;",
+    "notas": ""
+  },
+  "p16e18": {
+    "sql": "SELECT hu.nombre, hu.apellido, COUNT(*) AS cantidad_reservas\nFROM reserva r\nINNER JOIN huesped hu ON hu.id = r.id_huesped\nGROUP BY hu.id, hu.nombre, hu.apellido\nHAVING COUNT(*) > 10\nORDER BY cantidad_reservas DESC;",
+    "notas": ""
+  },
+  "p16e19": {
+    "sql": "SELECT te.nombre AS tipo, AVG(ex.duracion_dias) AS duracion_promedio\nFROM excursion ex\nINNER JOIN tipo_excursion te ON te.id = ex.id_tipo_excursion\nGROUP BY te.id, te.nombre\nHAVING AVG(ex.duracion_dias) >= 1.5\nORDER BY duracion_promedio DESC;",
+    "notas": ""
+  },
+  "p16e20": {
+    "sql": "SELECT th.nombre AS tipo_habitacion, COUNT(*) AS cantidad\nFROM hospedaje h\nINNER JOIN tipo_habitacion th ON th.id = h.id_tipo_habitacion\nGROUP BY th.id, th.nombre\nHAVING COUNT(*) >= 6\nORDER BY cantidad DESC;",
+    "notas": ""
+  },
+  "p17e1": {
+    "sql": "WITH total_por_cliente AS (\n  SELECT id_cliente, SUM(importe) AS total\n  FROM estadia\n  GROUP BY id_cliente\n)\nSELECT c.nombre, t.total\nFROM total_por_cliente t\nINNER JOIN cliente c ON c.id = t.id_cliente\nWHERE t.total > 2500000\nORDER BY t.total DESC;",
+    "notas": ""
+  },
+  "p17e2": {
+    "sql": "WITH total_por_cliente AS (\n  SELECT id_cliente, SUM(importe) AS total\n  FROM estadia\n  GROUP BY id_cliente\n),\npromedio_general AS (\n  SELECT AVG(total) AS promedio FROM total_por_cliente\n)\nSELECT c.nombre, t.total\nFROM total_por_cliente t\nINNER JOIN cliente c ON c.id = t.id_cliente\nINNER JOIN promedio_general p ON t.total > p.promedio\nORDER BY t.total DESC;",
+    "notas": ""
+  },
+  "p17e3": {
+    "sql": "WITH cant_por_tipo AS (\n  SELECT id_tipo_excursion, COUNT(*) AS cantidad\n  FROM excursion\n  GROUP BY id_tipo_excursion\n)\nSELECT te.nombre, c.cantidad\nFROM cant_por_tipo c\nINNER JOIN tipo_excursion te ON te.id = c.id_tipo_excursion\nORDER BY c.cantidad DESC, te.nombre;",
+    "notas": ""
+  },
+  "p17e4": {
+    "sql": "WITH cant_por_tipo AS (\n  SELECT id_tipo_excursion, COUNT(*) AS cantidad\n  FROM excursion\n  GROUP BY id_tipo_excursion\n)\nSELECT te.nombre, c.cantidad\nFROM cant_por_tipo c\nINNER JOIN tipo_excursion te ON te.id = c.id_tipo_excursion\nWHERE c.cantidad > 4\nORDER BY c.cantidad DESC;",
+    "notas": ""
+  },
+  "p17e5": {
+    "sql": "WITH conteo_servicio AS (\n  SELECT id_servicio, COUNT(*) AS veces\n  FROM servicio_estadia\n  GROUP BY id_servicio\n)\nSELECT s.nombre, c.veces\nFROM conteo_servicio c\nINNER JOIN servicio s ON s.id = c.id_servicio\nORDER BY c.veces DESC, s.nombre\nLIMIT 5;",
+    "notas": ""
+  },
+  "p17e6": {
+    "sql": "WITH turnos_por_empleado AS (\n  SELECT id_empleado, COUNT(*) AS cantidad\n  FROM empleado_turno\n  GROUP BY id_empleado\n)\nSELECT emp.nombre, emp.apellido, t.cantidad\nFROM turnos_por_empleado t\nINNER JOIN empleado emp ON emp.id = t.id_empleado\nWHERE t.cantidad >= 17\nORDER BY t.cantidad DESC, emp.apellido;",
+    "notas": ""
+  },
+  "p17e7": {
+    "sql": "WITH promedio_por_cliente AS (\n  SELECT id_cliente, AVG(importe) AS promedio\n  FROM estadia\n  GROUP BY id_cliente\n)\nSELECT c.nombre, p.promedio\nFROM promedio_por_cliente p\nINNER JOIN cliente c ON c.id = p.id_cliente\nWHERE p.promedio > 600000\nORDER BY p.promedio DESC;",
+    "notas": ""
+  },
+  "p17e8": {
+    "sql": "WITH numeradas AS (\n  SELECT e.id_cliente, e.id AS id_estadia, e.importe,\n         ROW_NUMBER() OVER (PARTITION BY e.id_cliente ORDER BY e.importe DESC) AS posicion\n  FROM estadia e\n)\nSELECT c.nombre, n.id_estadia, n.importe\nFROM numeradas n\nINNER JOIN cliente c ON c.id = n.id_cliente\nWHERE n.posicion = 1\nORDER BY n.importe DESC;",
+    "notas": ""
+  },
+  "p17e9": {
+    "sql": "WITH numeradas AS (\n  SELECT ex.id_tipo_excursion, ex.nombre, ex.duracion_dias,\n         ROW_NUMBER() OVER (PARTITION BY ex.id_tipo_excursion ORDER BY ex.duracion_dias DESC) AS posicion\n  FROM excursion ex\n)\nSELECT te.nombre AS tipo, n.nombre AS excursion, n.duracion_dias\nFROM numeradas n\nINNER JOIN tipo_excursion te ON te.id = n.id_tipo_excursion\nWHERE n.posicion = 1\nORDER BY n.duracion_dias DESC;",
+    "notas": ""
+  },
+  "p17e10": {
+    "sql": "WITH servicios_por_estadia AS (\n  SELECT id_estadia, COUNT(*) AS cantidad\n  FROM servicio_estadia\n  GROUP BY id_estadia\n)\nSELECT c.nombre AS cliente, e.id AS id_estadia, s.cantidad\nFROM servicios_por_estadia s\nINNER JOIN estadia e ON e.id = s.id_estadia\nINNER JOIN cliente c ON c.id = e.id_cliente\nWHERE s.cantidad >= 3\nORDER BY s.cantidad DESC;",
+    "notas": ""
+  },
+  "p17e11": {
+    "sql": "WITH recaudo_por_excursion AS (\n  SELECT id_excursion, SUM(costo_unitario * cupo) AS recaudo_potencial\n  FROM salida\n  GROUP BY id_excursion\n)\nSELECT ex.nombre, r.recaudo_potencial\nFROM recaudo_por_excursion r\nINNER JOIN excursion ex ON ex.id = r.id_excursion\nWHERE r.recaudo_potencial > 1000000\nORDER BY r.recaudo_potencial DESC;",
+    "notas": ""
+  },
+  "p17e12": {
+    "sql": "WITH huespedes_por_estadia AS (\n  SELECT id_estadia, COUNT(*) AS cantidad\n  FROM estadia_huesped\n  GROUP BY id_estadia\n)\nSELECT c.nombre AS cliente, e.id AS id_estadia, h.cantidad\nFROM huespedes_por_estadia h\nINNER JOIN estadia e ON e.id = h.id_estadia\nINNER JOIN cliente c ON c.id = e.id_cliente\nWHERE h.cantidad >= 4\nORDER BY h.cantidad DESC, e.id;",
+    "notas": ""
+  },
+  "p17e13": {
+    "sql": "WITH gasto_menu_por_huesped AS (\n  SELECT r.id_huesped, SUM(r.cantidad * m.importe) AS gasto_total\n  FROM reserva r\n  INNER JOIN menu_diario m ON m.id = r.id_menu_diario\n  GROUP BY r.id_huesped\n)\nSELECT hu.nombre, hu.apellido, g.gasto_total\nFROM gasto_menu_por_huesped g\nINNER JOIN huesped hu ON hu.id = g.id_huesped\nWHERE g.gasto_total > 400000\nORDER BY g.gasto_total DESC;",
+    "notas": ""
+  },
+  "p17e14": {
+    "sql": "WITH reservas_por_huesped AS (\n  SELECT id_huesped, COUNT(*) AS cantidad\n  FROM reserva\n  GROUP BY id_huesped\n)\nSELECT hu.nombre, hu.apellido, r.cantidad\nFROM reservas_por_huesped r\nINNER JOIN huesped hu ON hu.id = r.id_huesped\nWHERE r.cantidad >= 12\nORDER BY r.cantidad DESC;",
+    "notas": ""
+  },
+  "p17e15": {
+    "sql": "WITH ultimo_valor AS (\n  SELECT id_hospedaje, valor_base,\n         ROW_NUMBER() OVER (PARTITION BY id_hospedaje ORDER BY fecha_desde DESC) AS posicion\n  FROM valor_hospedaje\n)\nSELECT h.id, h.estilo, u.valor_base\nFROM ultimo_valor u\nINNER JOIN hospedaje h ON h.id = u.id_hospedaje\nWHERE u.posicion = 1 AND u.valor_base > 200000\nORDER BY u.valor_base DESC;",
+    "notas": ""
+  },
+  "p17e16": {
+    "sql": "WITH impagas_por_cliente AS (\n  SELECT id_cliente, COUNT(*) AS cantidad\n  FROM estadia\n  WHERE fecha_pago IS NULL\n  GROUP BY id_cliente\n)\nSELECT c.nombre, i.cantidad\nFROM impagas_por_cliente i\nINNER JOIN cliente c ON c.id = i.id_cliente\nWHERE i.cantidad >= 2\nORDER BY i.cantidad DESC;",
+    "notas": ""
+  },
+  "p17e17": {
+    "sql": "WITH duracion_por_hospedaje AS (\n  SELECT id_hospedaje, AVG(DATEDIFF(fecha_fin_real, fecha_inicio)) AS duracion_promedio\n  FROM mantenimiento\n  GROUP BY id_hospedaje\n)\nSELECT h.id, h.estilo, d.duracion_promedio\nFROM duracion_por_hospedaje d\nINNER JOIN hospedaje h ON h.id = d.id_hospedaje\nWHERE d.duracion_promedio >= 5\nORDER BY d.duracion_promedio DESC;",
+    "notas": ""
+  },
+  "p17e18": {
+    "sql": "WITH salidas_llenas AS (\n  SELECT id_excursion, COUNT(*) AS cantidad\n  FROM salida\n  WHERE cupo = 20\n  GROUP BY id_excursion\n)\nSELECT ex.nombre, s.cantidad\nFROM salidas_llenas s\nINNER JOIN excursion ex ON ex.id = s.id_excursion\nWHERE s.cantidad >= 2\nORDER BY s.cantidad DESC;",
+    "notas": ""
+  },
+  "p17e19": {
+    "sql": "WITH gasto_servicios_por_estadia AS (\n  SELECT se.id_estadia, SUM(s.valor_actual) AS gasto_total\n  FROM servicio_estadia se\n  INNER JOIN servicio s ON s.id = se.id_servicio\n  GROUP BY se.id_estadia\n)\nSELECT c.nombre AS cliente, e.id AS id_estadia, g.gasto_total\nFROM gasto_servicios_por_estadia g\nINNER JOIN estadia e ON e.id = g.id_estadia\nINNER JOIN cliente c ON c.id = e.id_cliente\nWHERE g.gasto_total > 100000\nORDER BY g.gasto_total DESC;",
+    "notas": ""
+  },
+  "p17e20": {
+    "sql": "WITH turnos_por_empleado AS (\n  SELECT id_empleado, COUNT(*) AS cantidad\n  FROM empleado_turno\n  GROUP BY id_empleado\n),\npromedio_general AS (\n  SELECT AVG(cantidad) AS promedio FROM turnos_por_empleado\n)\nSELECT emp.nombre, emp.apellido, t.cantidad\nFROM turnos_por_empleado t\nINNER JOIN empleado emp ON emp.id = t.id_empleado\nINNER JOIN promedio_general p ON t.cantidad > p.promedio\nORDER BY t.cantidad DESC, emp.apellido;",
+    "notas": ""
   }
 }

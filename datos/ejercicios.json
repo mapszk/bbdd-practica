@@ -9972,6 +9972,5187 @@
           "ayuda": null
         }
       ]
+    },
+    {
+      "numero": 14,
+      "titulo": "Parcial: SELECT",
+      "preambulo": [
+        "20 ejercicios de repaso de SELECT sobre la base de datos del parcial (Jusenkyo Onsen Resort): filtros, LIKE, IN, BETWEEN, IS NULL, DISTINCT, funciones de fecha/texto, expresiones y ORDER BY/LIMIT."
+      ],
+      "ejercicios": [
+        {
+          "id": "p14e1",
+          "numero": 1,
+          "consigna": "Mostrar nombre, email y condición de IVA de los clientes cuya condición de IVA sea 'Responsable Inscripto', ordenados alfabéticamente por nombre.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "email",
+                "condicion_iva"
+              ],
+              [
+                "Agencia de Viajes Seyruun",
+                "reservas@seyyruun.turismo",
+                "Responsable Inscripto"
+              ],
+              [
+                "Erina Nakiri",
+                "erina@god.tongue",
+                "Responsable Inscripto"
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                "reservas@federacion.galactica",
+                "Responsable Inscripto"
+              ],
+              [
+                "Iglesia del Amanecer Viajes",
+                "reservas@amanecer.iglesia",
+                "Responsable Inscripto"
+              ],
+              [
+                "Imperio Britannia Retiros Corporativos",
+                "rrhh@britannia.corp",
+                "Responsable Inscripto"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                "retiros@imperio.galactico",
+                "Responsable Inscripto"
+              ],
+              [
+                "Lelouch vi Britannia",
+                "lelouch@zero.requiem",
+                "Responsable Inscripto"
+              ],
+              [
+                "Liam Sera Banfield",
+                "liam@evil.lord",
+                "Responsable Inscripto"
+              ],
+              [
+                "Massive Dynamic Retiros",
+                "eventos@massivedynamic.corp",
+                "Responsable Inscripto"
+              ],
+              [
+                "Paul Atreides",
+                "paul@arrakis.fremen",
+                "Responsable Inscripto"
+              ],
+              [
+                "Rebelión Turismo",
+                "reservas@rebelion.fleet",
+                "Responsable Inscripto"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                "eventos@totsuki.academy",
+                "Responsable Inscripto"
+              ],
+              [
+                "Zoe Washburne",
+                "zoe@serenity.firefly",
+                "Responsable Inscripto"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e2",
+          "numero": 2,
+          "consigna": "Mostrar el nombre y la duración en días de las excursiones que duran más de 1 día, ordenadas de mayor a menor duración y, a igualdad de duración, por nombre.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "duracion_dias"
+              ],
+              [
+                "Travesía del Desierto de Arrakis",
+                3
+              ],
+              [
+                "Trekking del Valle de los Wookiee",
+                3
+              ],
+              [
+                "Aventura en la Nave Serenity",
+                2
+              ],
+              [
+                "Aventura: Cacería del Tarot Club",
+                2
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                2
+              ],
+              [
+                "Expedición al Bosque de la Sombra",
+                2
+              ],
+              [
+                "Misión: Asalto al Imperio Britannia",
+                2
+              ],
+              [
+                "Trekking del Monte de la Piedad",
+                2
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e3",
+          "numero": 3,
+          "consigna": "Mostrar id, estilo y capacidad de los hospedajes aptos para movilidad reducida que tengan capacidad para 4 huéspedes o más, ordenados por capacidad de forma descendente.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "capacidad"
+              ],
+              [
+                16002,
+                "cabaña",
+                8
+              ],
+              [
+                16008,
+                "cabaña",
+                8
+              ],
+              [
+                16000,
+                "cabaña",
+                6
+              ],
+              [
+                16006,
+                "cabaña",
+                6
+              ],
+              [
+                16019,
+                "habitacion",
+                5
+              ],
+              [
+                16039,
+                "habitacion",
+                5
+              ],
+              [
+                16003,
+                "cabaña",
+                4
+              ],
+              [
+                16017,
+                "habitacion",
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e4",
+          "numero": 4,
+          "consigna": "Mostrar nombre y valor actual de los servicios cuyo valor actual supere los $40.000, ordenados por valor de forma descendente.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "valor_actual"
+              ],
+              [
+                "Pensión Vegetariana Totsuki",
+                "82000.000"
+              ],
+              [
+                "Pensión Completa NERV",
+                "78000.000"
+              ],
+              [
+                "Spa Geofront",
+                "55000.000"
+              ],
+              [
+                "Media Pensión Colonial",
+                "45000.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e5",
+          "numero": 5,
+          "consigna": "Mostrar id de excursión, fecha de salida y cupo de las salidas del año 2025 que tengan el cupo máximo (20 lugares), ordenadas por fecha de salida.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_excursion",
+                "fecha_salida",
+                "cupo"
+              ],
+              [
+                17004,
+                "2025-09-28",
+                20
+              ],
+              [
+                17012,
+                "2025-10-09",
+                20
+              ],
+              [
+                17003,
+                "2025-11-03",
+                20
+              ],
+              [
+                17001,
+                "2025-11-16",
+                20
+              ],
+              [
+                17008,
+                "2025-11-30",
+                20
+              ],
+              [
+                17001,
+                "2025-12-09",
+                20
+              ],
+              [
+                17007,
+                "2025-12-12",
+                20
+              ],
+              [
+                17002,
+                "2025-12-29",
+                20
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e6",
+          "numero": 6,
+          "consigna": "Mostrar nombre y CUIT/CUIL de los clientes cuyo CUIT/CUIL empiece con '27-', ordenados por nombre.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "cuit_cuil"
+              ],
+              [
+                "Ainz Ooal Gown",
+                "27-99990000-1"
+              ],
+              [
+                "Akane Tendo",
+                "27-18181818-3"
+              ],
+              [
+                "Albedo",
+                "27-11110000-3"
+              ],
+              [
+                "Belldandy",
+                "27-42424242-1"
+              ],
+              [
+                "C.C.",
+                "27-70707070-3"
+              ],
+              [
+                "Chani",
+                "27-33330000-2"
+              ],
+              [
+                "Gaius Baltar",
+                "27-36363636-1"
+              ],
+              [
+                "Gourry Gabriev",
+                "27-87654321-3"
+              ],
+              [
+                "Han Solo",
+                "27-11381138-2"
+              ],
+              [
+                "Kallen Stadtfeld",
+                "27-69696969-2"
+              ],
+              [
+                "Kara Thrace",
+                "27-12121212-2"
+              ],
+              [
+                "Keiichi Morisato",
+                "27-24242424-3"
+              ],
+              [
+                "Klein Moretti",
+                "27-55551111-4"
+              ],
+              [
+                "Laura Roslin",
+                "27-47474747-1"
+              ],
+              [
+                "Lina Inverse",
+                "27-12345678-3"
+              ],
+              [
+                "Malcolm Reynolds",
+                "27-86753090-3"
+              ],
+              [
+                "Motoko Kusanagi",
+                "27-99998888-1"
+              ],
+              [
+                "Olivia Dunham",
+                "27-80808080-3"
+              ],
+              [
+                "Ranma Saotome",
+                "27-16161616-2"
+              ],
+              [
+                "Walter Bishop",
+                "27-90909090-1"
+              ],
+              [
+                "Zelgadis Graywords",
+                "27-81818181-2"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e7",
+          "numero": 7,
+          "consigna": "Mostrar nombre, apellido y teléfono de los huéspedes que no tienen teléfono registrado (campo tel nulo).",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "tel"
+              ],
+              [
+                "Ryoga",
+                "Hibiki",
+                null
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e8",
+          "numero": 8,
+          "consigna": "Mostrar id, fechas y monto de las estadías del primer semestre de 2025 que todavía no tienen fecha de pago registrada, ordenadas por fecha de inicio.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "fecha_inicio",
+                "fecha_fin",
+                "importe"
+              ],
+              [
+                19002,
+                "2025-01-19",
+                "2025-01-24",
+                "570139.000"
+              ],
+              [
+                19005,
+                "2025-02-02",
+                "2025-02-04",
+                "236463.000"
+              ],
+              [
+                19011,
+                "2025-04-22",
+                "2025-04-29",
+                "753009.000"
+              ],
+              [
+                19017,
+                "2025-05-17",
+                "2025-05-24",
+                "465692.000"
+              ],
+              [
+                19018,
+                "2025-05-22",
+                "2025-05-29",
+                "345971.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e9",
+          "numero": 9,
+          "consigna": "Mostrar nombre y detalle de las excursiones cuyo nombre o detalle mencionen 'Jusenkyo'.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "detalle"
+              ],
+              [
+                "Ruta de las Fuentes Malditas de Jusenkyo",
+                "Recorrido por las 100 fuentes malditas del Valle Nyanniichuan"
+              ],
+              [
+                "Termas del Panda Ahogado",
+                "Baños en las aguas termales con historia del panda de Jusenkyo"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e10",
+          "numero": 10,
+          "consigna": "Mostrar nombre y descripción de los servicios relacionados con aguas termales (nombre o descripción que contengan 'erm').",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "descripcion"
+              ],
+              [
+                "Spa Geofront",
+                "Acceso a piscinas termales, sauna y masajes del Geofront"
+              ],
+              [
+                "Terma del Panda Ahogado",
+                "Baños termales especiales con aguas de Jusenkyo"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e11",
+          "numero": 11,
+          "consigna": "Mostrar, sin repetir, todas las condiciones de IVA distintas que existen entre los clientes, ordenadas alfabéticamente.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "condicion_iva"
+              ],
+              [
+                "Consumidor Final"
+              ],
+              [
+                "Exento"
+              ],
+              [
+                "Monotributista"
+              ],
+              [
+                "No Responsable"
+              ],
+              [
+                "Responsable Inscripto"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e12",
+          "numero": 12,
+          "consigna": "Mostrar id, estilo y metros cuadrados de los 10 hospedajes más grandes (con metros cuadrados informados), ordenados de mayor a menor superficie.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "metros_cuadrados"
+              ],
+              [
+                16039,
+                "habitacion",
+                45
+              ],
+              [
+                16017,
+                "habitacion",
+                45
+              ],
+              [
+                16027,
+                "habitacion",
+                44
+              ],
+              [
+                16029,
+                "habitacion",
+                43
+              ],
+              [
+                16037,
+                "habitacion",
+                43
+              ],
+              [
+                16019,
+                "habitacion",
+                42
+              ],
+              [
+                16028,
+                "habitacion",
+                41
+              ],
+              [
+                16018,
+                "habitacion",
+                40
+              ],
+              [
+                16038,
+                "habitacion",
+                39
+              ],
+              [
+                16016,
+                "habitacion",
+                38
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e13",
+          "numero": 13,
+          "consigna": "Mostrar nombre, apellido y fecha de nacimiento de los huéspedes nacidos entre 1995 y 2000, ordenados por fecha de nacimiento.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "fecha_nac"
+              ],
+              [
+                "Liam",
+                "Sera Banfield",
+                "1995-03-01"
+              ],
+              [
+                "Klein",
+                "Moretti",
+                "1995-04-02"
+              ],
+              [
+                "Suzaku",
+                "Kururugi",
+                "1995-07-10"
+              ],
+              [
+                "River",
+                "Tam",
+                "1995-11-15"
+              ],
+              [
+                "Lelouch",
+                "vi Britannia",
+                "1995-12-05"
+              ],
+              [
+                "Kallen",
+                "Stadtfeld",
+                "1996-03-14"
+              ],
+              [
+                "Soma",
+                "Yukihira",
+                "1996-09-15"
+              ],
+              [
+                "Erina",
+                "Nakiri",
+                "1996-10-15"
+              ],
+              [
+                "Megumi",
+                "Tadokoro",
+                "1996-12-04"
+              ],
+              [
+                "Ranma",
+                "Saotome",
+                "1998-04-15"
+              ],
+              [
+                "Shampoo",
+                "Amazona",
+                "1998-05-10"
+              ],
+              [
+                "Ryoga",
+                "Hibiki",
+                "1998-06-15"
+              ],
+              [
+                "Akane",
+                "Tendo",
+                "1998-07-22"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e14",
+          "numero": 14,
+          "consigna": "Mostrar id de excursión, fecha de salida, costo unitario, recargo por huésped y el costo total (costo unitario + recargo) de las 10 salidas con mayor costo total, ordenadas de forma descendente por ese costo total.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_excursion",
+                "fecha_salida",
+                "costo_unitario",
+                "recargo_huesped",
+                "costo_total"
+              ],
+              [
+                17000,
+                "2025-11-08",
+                "83287.000",
+                "17168.000",
+                "100455.000"
+              ],
+              [
+                17000,
+                "2026-02-16",
+                "80621.000",
+                "16481.000",
+                "97102.000"
+              ],
+              [
+                17009,
+                "2026-08-09",
+                "77294.000",
+                "17641.000",
+                "94935.000"
+              ],
+              [
+                17003,
+                "2025-05-31",
+                "82638.000",
+                "11974.000",
+                "94612.000"
+              ],
+              [
+                17004,
+                "2026-01-14",
+                "80356.000",
+                "13622.000",
+                "93978.000"
+              ],
+              [
+                17009,
+                "2026-03-30",
+                "84228.000",
+                "9544.000",
+                "93772.000"
+              ],
+              [
+                17011,
+                "2025-05-04",
+                "79139.000",
+                "13713.000",
+                "92852.000"
+              ],
+              [
+                17005,
+                "2025-02-03",
+                "84922.000",
+                "7569.000",
+                "92491.000"
+              ],
+              [
+                17001,
+                "2026-09-26",
+                "78731.000",
+                "12244.000",
+                "90975.000"
+              ],
+              [
+                17001,
+                "2025-12-20",
+                "78516.000",
+                "11627.000",
+                "90143.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e15",
+          "numero": 15,
+          "consigna": "Mostrar fecha, descripción e importe de los menús diarios ofrecidos el 3 de enero de 2025, ordenados por importe de forma descendente.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "fecha",
+                "descripcion",
+                "importe"
+              ],
+              [
+                "2025-01-03",
+                "Ramen de la Niebla",
+                "12107.000"
+              ],
+              [
+                "2025-01-03",
+                "Yakiniku Don de la Alianza",
+                "10260.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e16",
+          "numero": 16,
+          "consigna": "Mostrar nombre y condición de IVA de los clientes cuya condición de IVA sea 'Exento' o 'No Responsable', ordenados por nombre.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "condicion_iva"
+              ],
+              [
+                "Ainz Ooal Gown",
+                "Exento"
+              ],
+              [
+                "Belldandy",
+                "Exento"
+              ],
+              [
+                "Flota Colonial Turismo",
+                "Exento"
+              ],
+              [
+                "Gaius Baltar",
+                "No Responsable"
+              ],
+              [
+                "Gremio Navigator",
+                "Exento"
+              ],
+              [
+                "Laura Roslin",
+                "Exento"
+              ],
+              [
+                "Walter Bishop",
+                "No Responsable"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e17",
+          "numero": 17,
+          "consigna": "Mostrar id, día de la semana y horario de los turnos que corresponden a los días 6 o 7 (fin de semana), ordenados por día y hora de inicio.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "dia_semana",
+                "hora_ini",
+                "hora_fin"
+              ],
+              [
+                12017,
+                6,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                12015,
+                6,
+                "8:00:00",
+                "17:59:59"
+              ],
+              [
+                12016,
+                6,
+                "16:00:00",
+                "23:59:59"
+              ],
+              [
+                12020,
+                7,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                12018,
+                7,
+                "8:00:00",
+                "17:59:59"
+              ],
+              [
+                12019,
+                7,
+                "16:00:00",
+                "23:59:59"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e18",
+          "numero": 18,
+          "consigna": "Mostrar los mantenimientos que terminaron más tarde de lo planificado (fecha de fin real posterior a la fecha de fin planificada), ordenados por id de hospedaje.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_hospedaje",
+                "fecha_inicio",
+                "fecha_fin_planificada",
+                "fecha_fin_real",
+                "motivo"
+              ],
+              [
+                16005,
+                "2025-03-10",
+                "2025-03-15",
+                "2025-03-16",
+                "Daño por Dragon Slave en paredes de la cabaña"
+              ],
+              [
+                16006,
+                "2026-05-20",
+                "2026-05-25",
+                "2026-05-26",
+                "Refacción tras riña de Ranma y Ryoga"
+              ],
+              [
+                16015,
+                "2025-09-20",
+                "2025-09-25",
+                "2025-09-27",
+                "Anomalía Fringe en el espejo del baño"
+              ],
+              [
+                16020,
+                "2026-04-05",
+                "2026-04-08",
+                "2026-04-10",
+                "Reparación del hiperimpulsor del aire acondicionado"
+              ],
+              [
+                16025,
+                "2026-07-15",
+                "2026-07-20",
+                "2026-07-22",
+                "Un gusano de arena bloqueó la entrada principal"
+              ],
+              [
+                16030,
+                "2026-08-12",
+                "2026-08-16",
+                "2026-08-18",
+                "Daño estructural por batalla Lancelot vs. Guren"
+              ],
+              [
+                16035,
+                "2026-09-15",
+                "2026-09-20",
+                "2026-09-21",
+                "Reemplazo de cristales del Geofront"
+              ],
+              [
+                16037,
+                "2026-10-15",
+                "2026-10-20",
+                "2026-10-22",
+                "Instalación de escudo deflector de la Alianza Rebelde"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e19",
+          "numero": 19,
+          "consigna": "Mostrar id, fechas, importe y cantidad de noches (calculada con DATEDIFF) de las estadías que duraron exactamente 14 noches, ordenadas por importe de forma descendente.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "fecha_inicio",
+                "fecha_fin",
+                "importe",
+                "noches"
+              ],
+              [
+                19110,
+                "2026-07-01",
+                "2026-07-15",
+                "1545475.000",
+                14
+              ],
+              [
+                19126,
+                "2026-09-11",
+                "2026-09-25",
+                "1534418.000",
+                14
+              ],
+              [
+                19031,
+                "2025-08-18",
+                "2025-09-01",
+                "1510758.000",
+                14
+              ],
+              [
+                19127,
+                "2026-10-09",
+                "2026-10-23",
+                "1488675.000",
+                14
+              ],
+              [
+                19015,
+                "2025-05-03",
+                "2025-05-17",
+                "1451833.000",
+                14
+              ],
+              [
+                19036,
+                "2025-09-04",
+                "2025-09-18",
+                "1344666.000",
+                14
+              ],
+              [
+                19039,
+                "2025-10-08",
+                "2025-10-22",
+                "1231182.000",
+                14
+              ],
+              [
+                19042,
+                "2025-10-15",
+                "2025-10-29",
+                "1059271.000",
+                14
+              ],
+              [
+                19080,
+                "2026-05-08",
+                "2026-05-22",
+                "995335.000",
+                14
+              ],
+              [
+                19103,
+                "2026-07-12",
+                "2026-07-26",
+                "885402.000",
+                14
+              ],
+              [
+                19118,
+                "2026-08-20",
+                "2026-09-03",
+                "759692.000",
+                14
+              ],
+              [
+                19066,
+                "2026-03-19",
+                "2026-04-02",
+                "709382.000",
+                14
+              ],
+              [
+                19083,
+                "2026-05-20",
+                "2026-06-03",
+                "692738.000",
+                14
+              ],
+              [
+                19100,
+                "2026-06-01",
+                "2026-06-15",
+                "672428.000",
+                14
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p14e20",
+          "numero": 20,
+          "consigna": "Mostrar nombre, apellido y apellido en mayúsculas (usando UPPER) de todos los empleados, ordenados por apellido.",
+          "seccion": "SELECT",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "apellido_mayus"
+              ],
+              [
+                "C",
+                "3PO",
+                "3PO"
+              ],
+              [
+                "Karl",
+                "Agathon",
+                "AGATHON"
+              ],
+              [
+                "Cologne",
+                "Amazona",
+                "AMAZONA"
+              ],
+              [
+                "Daisuke",
+                "Aramaki",
+                "ARAMAKI"
+              ],
+              [
+                "R2",
+                "D2",
+                "D2"
+              ],
+              [
+                "Gin",
+                "Dojima",
+                "DOJIMA"
+              ],
+              [
+                "Kaylee",
+                "Frye",
+                "FRYE"
+              ],
+              [
+                "Felix",
+                "Gaeta",
+                "GAETA"
+              ],
+              [
+                "Happosai",
+                "Maestro",
+                "MAESTRO"
+              ],
+              [
+                "Pazu",
+                "Operador",
+                "OPERADOR"
+              ],
+              [
+                "Skuld",
+                "Primadora",
+                "PRIMADORA"
+              ],
+              [
+                "Urd",
+                "Primadora",
+                "PRIMADORA"
+              ],
+              [
+                "Cattleya",
+                "Primadora",
+                "PRIMADORA"
+              ],
+              [
+                "Genma",
+                "Saotome",
+                "SAOTOME"
+              ],
+              [
+                "Inara",
+                "Serra",
+                "SERRA"
+              ],
+              [
+                "Kojiro",
+                "Shinomiya",
+                "SHINOMIYA"
+              ],
+              [
+                "Oz",
+                "Tarotista",
+                "TAROTISTA"
+              ],
+              [
+                "Ishikawa",
+                "Tecnico",
+                "TECNICO"
+              ],
+              [
+                "Nabiki",
+                "Tendo",
+                "TENDO"
+              ],
+              [
+                "Kasumi",
+                "Tendo",
+                "TENDO"
+              ],
+              [
+                "Soun",
+                "Tendo",
+                "TENDO"
+              ],
+              [
+                "Saul",
+                "Tigh",
+                "TIGH"
+              ],
+              [
+                "Fors",
+                "Wall",
+                "WALL"
+              ],
+              [
+                "Hoban",
+                "Washburne",
+                "WASHBURNE"
+              ],
+              [
+                "Emlyn",
+                "White",
+                "WHITE"
+              ],
+              [
+                "Chewbacca",
+                "Wookiee",
+                "WOOKIEE"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 15,
+      "titulo": "Parcial: JOIN",
+      "preambulo": [
+        "20 ejercicios de repaso de JOIN sobre la base de datos del parcial: INNER JOIN (incluyendo combinaciones de 3 y 4 tablas), LEFT JOIN, RIGHT JOIN, CROSS JOIN y self join."
+      ],
+      "ejercicios": [
+        {
+          "id": "p15e1",
+          "numero": 1,
+          "consigna": "Usando INNER JOIN, mostrar el nombre de cada excursión junto con el nombre de su tipo de excursión, para las excursiones cuyo tipo sea 'Termal', ordenadas por nombre de excursión.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "excursion",
+                "tipo"
+              ],
+              [
+                "Aguas del Río Nyanniichuan",
+                "Termal"
+              ],
+              [
+                "Baños del Lago Espejo",
+                "Termal"
+              ],
+              [
+                "Ruta de las Fuentes Malditas de Jusenkyo",
+                "Termal"
+              ],
+              [
+                "Termas del Panda Ahogado",
+                "Termal"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e2",
+          "numero": 2,
+          "consigna": "Usando INNER JOIN, mostrar id de estadía, nombre del cliente e importe, para las estadías cuyo importe supere los $1.200.000, ordenadas por importe de forma descendente.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "cliente",
+                "importe"
+              ],
+              [
+                19110,
+                "Ainz Ooal Gown",
+                "1545475.000"
+              ],
+              [
+                19126,
+                "William Adama",
+                "1534418.000"
+              ],
+              [
+                19031,
+                "Malcolm Reynolds",
+                "1510758.000"
+              ],
+              [
+                19127,
+                "Federación Galáctica de Turismo",
+                "1488675.000"
+              ],
+              [
+                19015,
+                "Agencia de Viajes Seyruun",
+                "1451833.000"
+              ],
+              [
+                19036,
+                "Imperio Intergaláctico RRHH",
+                "1344666.000"
+              ],
+              [
+                19039,
+                "Klein Moretti",
+                "1231182.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e3",
+          "numero": 3,
+          "consigna": "Usando INNER JOIN, mostrar id y estilo del hospedaje junto con el nombre del tipo de habitación, para los hospedajes cuyo tipo de habitación sea 'Suite', ordenados por id.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "tipo_habitacion"
+              ],
+              [
+                16015,
+                "habitacion",
+                "Suite"
+              ],
+              [
+                16016,
+                "habitacion",
+                "Suite"
+              ],
+              [
+                16025,
+                "habitacion",
+                "Suite"
+              ],
+              [
+                16026,
+                "habitacion",
+                "Suite"
+              ],
+              [
+                16035,
+                "habitacion",
+                "Suite"
+              ],
+              [
+                16036,
+                "habitacion",
+                "Suite"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e4",
+          "numero": 4,
+          "consigna": "Usando INNER JOIN, mostrar el nombre de la excursión, la fecha de salida y el costo unitario de las salidas realizadas entre el 1 de junio y el 30 de septiembre de 2025, ordenadas por fecha de salida.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "excursion",
+                "fecha_salida",
+                "costo_unitario"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "2025-06-13",
+                "37534.000"
+              ],
+              [
+                "Avistamiento de Gusanos Gigantes",
+                "2025-07-17",
+                "59676.000"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "2025-08-07",
+                "42083.000"
+              ],
+              [
+                "Misión: Asalto al Imperio Britannia",
+                "2025-09-28",
+                "74292.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e5",
+          "numero": 5,
+          "consigna": "Usando INNER JOIN entre tres tablas (empleado, empleado_turno y turno), mostrar nombre y apellido del empleado junto con el día de la semana y el horario de los turnos que tiene asignados en enero de 2026, ordenados por apellido y nombre.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "dia_semana",
+                "hora_ini",
+                "hora_fin"
+              ],
+              [
+                "C",
+                "3PO",
+                6,
+                "8:00:00",
+                "17:59:59"
+              ],
+              [
+                "Cologne",
+                "Amazona",
+                2,
+                "8:00:00",
+                "17:59:59"
+              ],
+              [
+                "Daisuke",
+                "Aramaki",
+                2,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "R2",
+                "D2",
+                6,
+                "8:00:00",
+                "17:59:59"
+              ],
+              [
+                "Kaylee",
+                "Frye",
+                2,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Happosai",
+                "Maestro",
+                5,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Pazu",
+                "Operador",
+                6,
+                "16:00:00",
+                "23:59:59"
+              ],
+              [
+                "Cattleya",
+                "Primadora",
+                6,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Skuld",
+                "Primadora",
+                1,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Kojiro",
+                "Shinomiya",
+                7,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Ishikawa",
+                "Tecnico",
+                1,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Soun",
+                "Tendo",
+                2,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Saul",
+                "Tigh",
+                2,
+                "0:00:00",
+                "7:59:59"
+              ],
+              [
+                "Hoban",
+                "Washburne",
+                7,
+                "8:00:00",
+                "17:59:59"
+              ],
+              [
+                "Chewbacca",
+                "Wookiee",
+                1,
+                "8:00:00",
+                "17:59:59"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e6",
+          "numero": 6,
+          "consigna": "Usando INNER JOIN entre cuatro tablas (estadia, cliente, estadia_huesped y huesped), mostrar el nombre del cliente, nombre y apellido del huésped alojado, y el importe, para las estadías con importe superior a $1.300.000, ordenadas por importe descendente.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "cliente",
+                "huesped",
+                "huesped_apellido",
+                "importe"
+              ],
+              [
+                "Ainz Ooal Gown",
+                "River",
+                "Tam",
+                "1545475.000"
+              ],
+              [
+                "William Adama",
+                "Malcolm",
+                "Reynolds",
+                "1534418.000"
+              ],
+              [
+                "Malcolm Reynolds",
+                "Paul",
+                "Atreides",
+                "1510758.000"
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                "Gourry",
+                "Gabriev",
+                "1488675.000"
+              ],
+              [
+                "Agencia de Viajes Seyruun",
+                "Laura",
+                "Roslin",
+                "1451833.000"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                "Zelgadis",
+                "Graywords",
+                "1344666.000"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                "Luke",
+                "Skywalker",
+                "1344666.000"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                "Kallen",
+                "Stadtfeld",
+                "1344666.000"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                "Batou",
+                "Togusa",
+                "1344666.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e7",
+          "numero": 7,
+          "consigna": "Usando INNER JOIN entre tres tablas (servicio, servicio_estadia y estadia), mostrar el nombre del servicio, el id de estadía y el importe de la estadía, para las estadías con importe superior a $1.300.000, ordenadas por importe descendente.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "servicio",
+                "id_estadia",
+                "importe"
+              ],
+              [
+                "Guía Sherpa Fremen",
+                19110,
+                "1545475.000"
+              ],
+              [
+                "Pensión Completa NERV",
+                19126,
+                "1534418.000"
+              ],
+              [
+                "Desayuno Viper",
+                19126,
+                "1534418.000"
+              ],
+              [
+                "Pensión Completa NERV",
+                19031,
+                "1510758.000"
+              ],
+              [
+                "Pensión Completa NERV",
+                19127,
+                "1488675.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e8",
+          "numero": 8,
+          "consigna": "Usando INNER JOIN, mostrar id y estilo del hospedaje junto con la fecha desde y el valor base vigentes a partir del 1° de enero de 2026, ordenados por estilo e id.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "fecha_desde",
+                "valor_base"
+              ],
+              [
+                16000,
+                "cabaña",
+                "2026-01-01",
+                "310000.000"
+              ],
+              [
+                16002,
+                "cabaña",
+                "2026-01-01",
+                "380000.000"
+              ],
+              [
+                16005,
+                "cabaña",
+                "2026-01-01",
+                "165000.000"
+              ],
+              [
+                16008,
+                "cabaña",
+                "2026-01-01",
+                "365000.000"
+              ],
+              [
+                16010,
+                "habitacion",
+                "2026-01-01",
+                "105000.000"
+              ],
+              [
+                16013,
+                "habitacion",
+                "2026-01-01",
+                "145000.000"
+              ],
+              [
+                16015,
+                "habitacion",
+                "2026-01-01",
+                "185000.000"
+              ],
+              [
+                16017,
+                "habitacion",
+                "2026-01-01",
+                "215000.000"
+              ],
+              [
+                16019,
+                "habitacion",
+                "2026-01-01",
+                "175000.000"
+              ],
+              [
+                16022,
+                "habitacion",
+                "2026-01-01",
+                "105000.000"
+              ],
+              [
+                16025,
+                "habitacion",
+                "2026-01-01",
+                "182000.000"
+              ],
+              [
+                16027,
+                "habitacion",
+                "2026-01-01",
+                "218000.000"
+              ],
+              [
+                16030,
+                "habitacion",
+                "2026-01-01",
+                "98000.000"
+              ],
+              [
+                16035,
+                "habitacion",
+                "2026-01-01",
+                "185000.000"
+              ],
+              [
+                16039,
+                "habitacion",
+                "2026-01-01",
+                "180000.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e9",
+          "numero": 9,
+          "consigna": "Usando INNER JOIN, mostrar id y estilo del hospedaje junto con los datos del mantenimiento, para los mantenimientos que terminaron más tarde de lo planificado, ordenados por id de hospedaje.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "fecha_inicio",
+                "fecha_fin_planificada",
+                "fecha_fin_real"
+              ],
+              [
+                16005,
+                "cabaña",
+                "2025-03-10",
+                "2025-03-15",
+                "2025-03-16"
+              ],
+              [
+                16006,
+                "cabaña",
+                "2026-05-20",
+                "2026-05-25",
+                "2026-05-26"
+              ],
+              [
+                16015,
+                "habitacion",
+                "2025-09-20",
+                "2025-09-25",
+                "2025-09-27"
+              ],
+              [
+                16020,
+                "habitacion",
+                "2026-04-05",
+                "2026-04-08",
+                "2026-04-10"
+              ],
+              [
+                16025,
+                "habitacion",
+                "2026-07-15",
+                "2026-07-20",
+                "2026-07-22"
+              ],
+              [
+                16030,
+                "habitacion",
+                "2026-08-12",
+                "2026-08-16",
+                "2026-08-18"
+              ],
+              [
+                16035,
+                "habitacion",
+                "2026-09-15",
+                "2026-09-20",
+                "2026-09-21"
+              ],
+              [
+                16037,
+                "habitacion",
+                "2026-10-15",
+                "2026-10-20",
+                "2026-10-22"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e10",
+          "numero": 10,
+          "consigna": "Usando LEFT JOIN, mostrar id, estilo, capacidad y tipo de habitación (si lo tiene) de los hospedajes con capacidad para 4 huéspedes o más -- incluyendo los que no tienen tipo de habitación asignado, ordenados por id.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "capacidad",
+                "tipo_habitacion"
+              ],
+              [
+                16000,
+                "cabaña",
+                6,
+                null
+              ],
+              [
+                16001,
+                "cabaña",
+                4,
+                null
+              ],
+              [
+                16002,
+                "cabaña",
+                8,
+                null
+              ],
+              [
+                16003,
+                "cabaña",
+                4,
+                null
+              ],
+              [
+                16004,
+                "cabaña",
+                6,
+                null
+              ],
+              [
+                16006,
+                "cabaña",
+                6,
+                null
+              ],
+              [
+                16007,
+                "cabaña",
+                4,
+                null
+              ],
+              [
+                16008,
+                "cabaña",
+                8,
+                null
+              ],
+              [
+                16017,
+                "habitacion",
+                4,
+                "Suite Deluxe"
+              ],
+              [
+                16019,
+                "habitacion",
+                5,
+                "Familiar"
+              ],
+              [
+                16027,
+                "habitacion",
+                4,
+                "Suite Deluxe"
+              ],
+              [
+                16029,
+                "habitacion",
+                5,
+                "Familiar"
+              ],
+              [
+                16037,
+                "habitacion",
+                4,
+                "Suite Deluxe"
+              ],
+              [
+                16039,
+                "habitacion",
+                5,
+                "Familiar"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e11",
+          "numero": 11,
+          "consigna": "Usando LEFT JOIN, mostrar id y nombre de los clientes que nunca registraron una estadía (no tienen ninguna fila relacionada en la tabla estadia).",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "nombre"
+              ],
+              [
+                13028,
+                "Belldandy"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e12",
+          "numero": 12,
+          "consigna": "Usando LEFT JOIN, mostrar id y nombre de las excursiones que nunca tuvieron una salida programada, ordenadas por nombre.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "nombre"
+              ],
+              [
+                17019,
+                "Aguas del Río Nyanniichuan"
+              ],
+              [
+                17015,
+                "Aventura en la Nave Serenity"
+              ],
+              [
+                17018,
+                "Avistamiento de Diosas Primadoras"
+              ],
+              [
+                17021,
+                "Ruta de los Seleccionados"
+              ],
+              [
+                17016,
+                "Tour Cultural del Templo Morisato"
+              ],
+              [
+                17017,
+                "Trekking del Valle de los Wookiee"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e13",
+          "numero": 13,
+          "consigna": "Usando RIGHT JOIN (con salida como tabla izquierda y excursion como tabla derecha), mostrar id y nombre de las excursiones que nunca tuvieron una salida programada, ordenadas por nombre. Tiene que dar el mismo resultado que un LEFT JOIN con las tablas invertidas.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "nombre"
+              ],
+              [
+                17019,
+                "Aguas del Río Nyanniichuan"
+              ],
+              [
+                17015,
+                "Aventura en la Nave Serenity"
+              ],
+              [
+                17018,
+                "Avistamiento de Diosas Primadoras"
+              ],
+              [
+                17021,
+                "Ruta de los Seleccionados"
+              ],
+              [
+                17016,
+                "Tour Cultural del Templo Morisato"
+              ],
+              [
+                17017,
+                "Trekking del Valle de los Wookiee"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e14",
+          "numero": 14,
+          "consigna": "Usando RIGHT JOIN (con estadia como tabla izquierda y cliente como tabla derecha), mostrar id y nombre de los clientes que nunca registraron una estadía.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "nombre"
+              ],
+              [
+                13028,
+                "Belldandy"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e15",
+          "numero": 15,
+          "consigna": "Usando RIGHT JOIN (con reserva como tabla izquierda y menu_diario como tabla derecha), mostrar fecha, descripción del menú e id del huésped que lo reservó (nulo si nadie lo reservó), para los menús del 1 al 10 de enero de 2025, ordenados por fecha.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "fecha",
+                "descripcion",
+                "id_huesped"
+              ],
+              [
+                "2025-01-02",
+                "Omusubi de la Mañana",
+                null
+              ],
+              [
+                "2025-01-03",
+                "Ramen de la Niebla",
+                null
+              ],
+              [
+                "2025-01-03",
+                "Yakiniku Don de la Alianza",
+                null
+              ],
+              [
+                "2025-01-04",
+                "Onigiri Rápido del Viper",
+                null
+              ],
+              [
+                "2025-01-04",
+                "Bento del Panda Ahogado",
+                null
+              ],
+              [
+                "2025-01-10",
+                "Carbonara del Imperio Britannia",
+                14019
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e16",
+          "numero": 16,
+          "consigna": "Usando CROSS JOIN, mostrar todas las combinaciones posibles entre los tipos de excursión y los tipos de habitación, ordenadas por tipo de excursión y tipo de habitación.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "tipo_excursion",
+                "tipo_habitacion"
+              ],
+              [
+                "Aventura",
+                "Estándar"
+              ],
+              [
+                "Aventura",
+                "Familiar"
+              ],
+              [
+                "Aventura",
+                "Suite"
+              ],
+              [
+                "Aventura",
+                "Suite Deluxe"
+              ],
+              [
+                "Aventura",
+                "Superior"
+              ],
+              [
+                "Avistamiento",
+                "Estándar"
+              ],
+              [
+                "Avistamiento",
+                "Familiar"
+              ],
+              [
+                "Avistamiento",
+                "Suite"
+              ],
+              [
+                "Avistamiento",
+                "Suite Deluxe"
+              ],
+              [
+                "Avistamiento",
+                "Superior"
+              ],
+              [
+                "Cultural",
+                "Estándar"
+              ],
+              [
+                "Cultural",
+                "Familiar"
+              ],
+              [
+                "Cultural",
+                "Suite"
+              ],
+              [
+                "Cultural",
+                "Suite Deluxe"
+              ],
+              [
+                "Cultural",
+                "Superior"
+              ],
+              [
+                "Termal",
+                "Estándar"
+              ],
+              [
+                "Termal",
+                "Familiar"
+              ],
+              [
+                "Termal",
+                "Suite"
+              ],
+              [
+                "Termal",
+                "Suite Deluxe"
+              ],
+              [
+                "Termal",
+                "Superior"
+              ],
+              [
+                "Trekking",
+                "Estándar"
+              ],
+              [
+                "Trekking",
+                "Familiar"
+              ],
+              [
+                "Trekking",
+                "Suite"
+              ],
+              [
+                "Trekking",
+                "Suite Deluxe"
+              ],
+              [
+                "Trekking",
+                "Superior"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e17",
+          "numero": 17,
+          "consigna": "Usando CROSS JOIN, mostrar todas las combinaciones entre los turnos del día lunes (dia_semana = 1) y los tipos de habitación, ordenadas por id de turno y tipo de habitación.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "dia_semana",
+                "tipo_habitacion"
+              ],
+              [
+                12000,
+                1,
+                "Estándar"
+              ],
+              [
+                12000,
+                1,
+                "Familiar"
+              ],
+              [
+                12000,
+                1,
+                "Suite"
+              ],
+              [
+                12000,
+                1,
+                "Suite Deluxe"
+              ],
+              [
+                12000,
+                1,
+                "Superior"
+              ],
+              [
+                12001,
+                1,
+                "Estándar"
+              ],
+              [
+                12001,
+                1,
+                "Familiar"
+              ],
+              [
+                12001,
+                1,
+                "Suite"
+              ],
+              [
+                12001,
+                1,
+                "Suite Deluxe"
+              ],
+              [
+                12001,
+                1,
+                "Superior"
+              ],
+              [
+                12002,
+                1,
+                "Estándar"
+              ],
+              [
+                12002,
+                1,
+                "Familiar"
+              ],
+              [
+                12002,
+                1,
+                "Suite"
+              ],
+              [
+                12002,
+                1,
+                "Suite Deluxe"
+              ],
+              [
+                12002,
+                1,
+                "Superior"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e18",
+          "numero": 18,
+          "consigna": "Usando un self join (la tabla excursion unida consigo misma), mostrar los pares de excursiones distintas que comparten el mismo tipo de excursión, para el tipo 'Cultural', evitando mostrar el mismo par dos veces ni una excursión consigo misma.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "excursion_1",
+                "excursion_2",
+                "tipo"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "Ruta Cultural del Imperio Intergaláctico",
+                "Cultural"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "Ruta de los Seleccionados",
+                "Cultural"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "Tour Cultural del Templo Morisato",
+                "Cultural"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "Visita a las Ruinas de la Tumba de Nazarick",
+                "Cultural"
+              ],
+              [
+                "Ruta Cultural del Imperio Intergaláctico",
+                "Ruta de los Seleccionados",
+                "Cultural"
+              ],
+              [
+                "Ruta Cultural del Imperio Intergaláctico",
+                "Tour Cultural del Templo Morisato",
+                "Cultural"
+              ],
+              [
+                "Tour Cultural del Templo Morisato",
+                "Ruta de los Seleccionados",
+                "Cultural"
+              ],
+              [
+                "Visita a las Ruinas de la Tumba de Nazarick",
+                "Ruta Cultural del Imperio Intergaláctico",
+                "Cultural"
+              ],
+              [
+                "Visita a las Ruinas de la Tumba de Nazarick",
+                "Ruta de los Seleccionados",
+                "Cultural"
+              ],
+              [
+                "Visita a las Ruinas de la Tumba de Nazarick",
+                "Tour Cultural del Templo Morisato",
+                "Cultural"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e19",
+          "numero": 19,
+          "consigna": "Usando un self join (la tabla hospedaje unida consigo misma), mostrar los pares de hospedajes distintos que tienen la misma capacidad y el mismo tipo de habitación 'Suite', evitando pares repetidos.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "hospedaje_1",
+                "hospedaje_2",
+                "capacidad"
+              ],
+              [
+                16015,
+                16016,
+                2
+              ],
+              [
+                16015,
+                16025,
+                2
+              ],
+              [
+                16015,
+                16026,
+                2
+              ],
+              [
+                16015,
+                16035,
+                2
+              ],
+              [
+                16015,
+                16036,
+                2
+              ],
+              [
+                16016,
+                16025,
+                2
+              ],
+              [
+                16016,
+                16026,
+                2
+              ],
+              [
+                16016,
+                16035,
+                2
+              ],
+              [
+                16016,
+                16036,
+                2
+              ],
+              [
+                16025,
+                16026,
+                2
+              ],
+              [
+                16025,
+                16035,
+                2
+              ],
+              [
+                16025,
+                16036,
+                2
+              ],
+              [
+                16026,
+                16035,
+                2
+              ],
+              [
+                16026,
+                16036,
+                2
+              ],
+              [
+                16035,
+                16036,
+                2
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p15e20",
+          "numero": 20,
+          "consigna": "Usando un self join (la tabla huesped unida consigo misma), mostrar los pares de huéspedes distintos que cumplen años el mismo día y mes (sin importar el año de nacimiento), evitando pares repetidos, ordenados por fecha de nacimiento.",
+          "seccion": "JOIN",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "huesped_1",
+                "apellido_1",
+                "huesped_2",
+                "apellido_2",
+                "fecha_nac"
+              ],
+              [
+                "Walter",
+                "Bishop",
+                "Albedo",
+                "Succubus",
+                "1948-02-14"
+              ],
+              [
+                "Batou",
+                "Togusa",
+                "Ryoga",
+                "Hibiki",
+                "1975-06-15"
+              ],
+              [
+                "Peter",
+                "Bishop",
+                "Keiichi",
+                "Morisato",
+                "1978-03-12"
+              ],
+              [
+                "Kara",
+                "Thrace",
+                "Demiurge",
+                "Arch Devil",
+                "1980-09-15"
+              ],
+              [
+                "Kara",
+                "Thrace",
+                "Soma",
+                "Yukihira",
+                "1980-09-15"
+              ],
+              [
+                "Luke",
+                "Skywalker",
+                "Leia",
+                "Organa",
+                "1985-05-25"
+              ],
+              [
+                "Ainz",
+                "Ooal Gown",
+                "Belldandy",
+                "Primadora",
+                "1990-01-01"
+              ],
+              [
+                "Lina",
+                "Inverse",
+                "Zoe",
+                "Washburne",
+                "1990-05-15"
+              ],
+              [
+                "Demiurge",
+                "Arch Devil",
+                "Soma",
+                "Yukihira",
+                "1991-09-15"
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 16,
+      "titulo": "Parcial: GROUP BY",
+      "preambulo": [
+        "20 ejercicios de repaso de GROUP BY sobre la base de datos del parcial: 10 con agregaciones simples y 10 con HAVING para filtrar los grupos."
+      ],
+      "ejercicios": [
+        {
+          "id": "p16e1",
+          "numero": 1,
+          "consigna": "Para cada servicio, mostrar su nombre y la cantidad de veces que fue contratado (tabla servicio_estadia), ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "veces_contratado"
+              ],
+              [
+                "Media Pensión Colonial",
+                33
+              ],
+              [
+                "Pensión Completa NERV",
+                23
+              ],
+              [
+                "Desayuno Viper",
+                23
+              ],
+              [
+                "Spa Geofront",
+                21
+              ],
+              [
+                "Traslado Millennium Falcon",
+                8
+              ],
+              [
+                "Wi-Fi Sección 9",
+                6
+              ],
+              [
+                "Guía Sherpa Fremen",
+                6
+              ],
+              [
+                "Terma del Panda Ahogado",
+                5
+              ],
+              [
+                "Lavandería Wookiee",
+                4
+              ],
+              [
+                "Kit de Supervivencia Fringe",
+                3
+              ],
+              [
+                "Pensión Vegetariana Totsuki",
+                3
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e2",
+          "numero": 2,
+          "consigna": "Para cada tipo de excursión, mostrar su nombre y la cantidad de excursiones que tiene asociadas, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "tipo",
+                "cantidad_excursiones"
+              ],
+              [
+                "Aventura",
+                5
+              ],
+              [
+                "Cultural",
+                5
+              ],
+              [
+                "Avistamiento",
+                4
+              ],
+              [
+                "Termal",
+                4
+              ],
+              [
+                "Trekking",
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e3",
+          "numero": 3,
+          "consigna": "Para cada estilo de hospedaje, mostrar la cantidad de hospedajes de ese estilo y la capacidad promedio, ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "estilo",
+                "cantidad",
+                "capacidad_promedio"
+              ],
+              [
+                "habitacion",
+                30,
+                "2.7000"
+              ],
+              [
+                "cabaña",
+                10,
+                "5.0000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e4",
+          "numero": 4,
+          "consigna": "Para cada excursión, mostrar su id, la cantidad de salidas programadas y el costo unitario promedio de esas salidas, ordenadas por cantidad de salidas de forma descendente y, a igualdad, por id.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_excursion",
+                "cantidad_salidas",
+                "costo_promedio"
+              ],
+              [
+                17001,
+                10,
+                "60228.6000000"
+              ],
+              [
+                17003,
+                8,
+                "64228.2500000"
+              ],
+              [
+                17000,
+                7,
+                "62014.0000000"
+              ],
+              [
+                17005,
+                7,
+                "55882.2857143"
+              ],
+              [
+                17002,
+                6,
+                "62042.8333333"
+              ],
+              [
+                17004,
+                6,
+                "67760.3333333"
+              ],
+              [
+                17008,
+                5,
+                "58910.2000000"
+              ],
+              [
+                17009,
+                5,
+                "70760.0000000"
+              ],
+              [
+                17006,
+                4,
+                "58300.0000000"
+              ],
+              [
+                17007,
+                4,
+                "50163.5000000"
+              ],
+              [
+                17013,
+                2,
+                "72779.5000000"
+              ],
+              [
+                17010,
+                1,
+                "70193.0000000"
+              ],
+              [
+                17011,
+                1,
+                "79139.0000000"
+              ],
+              [
+                17012,
+                1,
+                "49487.0000000"
+              ],
+              [
+                17014,
+                1,
+                "64640.0000000"
+              ],
+              [
+                17020,
+                1,
+                "56799.0000000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e5",
+          "numero": 5,
+          "consigna": "Para cada mes del año (usando MONTH sobre la fecha), mostrar la cantidad de menús diarios ofrecidos y la suma de sus importes, ordenados por mes.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "mes",
+                "cantidad_menus",
+                "total_importe"
+              ],
+              [
+                1,
+                28,
+                "512107.000"
+              ],
+              [
+                2,
+                25,
+                "470416.000"
+              ],
+              [
+                3,
+                36,
+                "647544.000"
+              ],
+              [
+                4,
+                31,
+                "585772.000"
+              ],
+              [
+                5,
+                64,
+                "1207005.000"
+              ],
+              [
+                6,
+                46,
+                "892427.000"
+              ],
+              [
+                7,
+                61,
+                "1175097.000"
+              ],
+              [
+                8,
+                43,
+                "759820.000"
+              ],
+              [
+                9,
+                50,
+                "950667.000"
+              ],
+              [
+                10,
+                12,
+                "207435.000"
+              ],
+              [
+                11,
+                22,
+                "416215.000"
+              ],
+              [
+                12,
+                7,
+                "139464.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e6",
+          "numero": 6,
+          "consigna": "Para cada valor de 'entregado' (0 o 1), mostrar la cantidad de reservas de menú y la suma de las cantidades reservadas, ordenados por el valor de entregado.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "entregado",
+                "cantidad_reservas",
+                "unidades_totales"
+              ],
+              [
+                0,
+                115,
+                "242"
+              ],
+              [
+                1,
+                283,
+                "581"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e7",
+          "numero": 7,
+          "consigna": "Para cada hospedaje de estilo 'cabaña', mostrar su id y la cantidad de veces que fue utilizado en una estadía, ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_hospedaje",
+                "veces_utilizado"
+              ],
+              [
+                16002,
+                16
+              ],
+              [
+                16007,
+                15
+              ],
+              [
+                16006,
+                12
+              ],
+              [
+                16003,
+                10
+              ],
+              [
+                16004,
+                9
+              ],
+              [
+                16008,
+                8
+              ],
+              [
+                16000,
+                7
+              ],
+              [
+                16001,
+                6
+              ],
+              [
+                16005,
+                6
+              ],
+              [
+                16009,
+                5
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e8",
+          "numero": 8,
+          "consigna": "Para cada año, mostrar la cantidad total de turnos asignados a empleados, ordenados por año.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "anio",
+                "cantidad_turnos"
+              ],
+              [
+                2025,
+                219
+              ],
+              [
+                2026,
+                188
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e9",
+          "numero": 9,
+          "consigna": "Para cada condición de IVA, mostrar la cantidad de estadías y el total facturado por los clientes con esa condición, ordenados por total facturado de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "condicion_iva",
+                "cantidad_estadias",
+                "total_facturado"
+              ],
+              [
+                "Responsable Inscripto",
+                54,
+                "28373091.000"
+              ],
+              [
+                "Consumidor Final",
+                48,
+                "26666230.000"
+              ],
+              [
+                "Exento",
+                15,
+                "8209426.000"
+              ],
+              [
+                "Monotributista",
+                14,
+                "6977619.000"
+              ],
+              [
+                "No Responsable",
+                9,
+                "4059814.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e10",
+          "numero": 10,
+          "consigna": "Para cada día de la semana, mostrar la cantidad de turnos asignados a empleados en ese día, ordenados por día de la semana.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "dia_semana",
+                "cantidad_turnos_asignados"
+              ],
+              [
+                1,
+                47
+              ],
+              [
+                2,
+                70
+              ],
+              [
+                3,
+                51
+              ],
+              [
+                4,
+                53
+              ],
+              [
+                5,
+                58
+              ],
+              [
+                6,
+                61
+              ],
+              [
+                7,
+                67
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e11",
+          "numero": 11,
+          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada cliente y su cantidad de estadías, incluyendo sólo los clientes con más de 4 estadías, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "cantidad_estadias"
+              ],
+              [
+                "Ainz Ooal Gown",
+                8
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                8
+              ],
+              [
+                "Albedo",
+                6
+              ],
+              [
+                "Imperio Britannia Retiros Corporativos",
+                6
+              ],
+              [
+                "Massive Dynamic Retiros",
+                6
+              ],
+              [
+                "Zoe Washburne",
+                6
+              ],
+              [
+                "Akane Tendo",
+                5
+              ],
+              [
+                "Lelouch vi Britannia",
+                5
+              ],
+              [
+                "Lina Inverse",
+                5
+              ],
+              [
+                "Soma Yukihira",
+                5
+              ],
+              [
+                "Suzaku Kururugi",
+                5
+              ],
+              [
+                "Walter Bishop",
+                5
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e12",
+          "numero": 12,
+          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada tipo de excursión y su cantidad de excursiones asociadas, incluyendo sólo los tipos con más de 4 excursiones, ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "tipo",
+                "cantidad_excursiones"
+              ],
+              [
+                "Aventura",
+                5
+              ],
+              [
+                "Cultural",
+                5
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e13",
+          "numero": 13,
+          "consigna": "Usando GROUP BY con HAVING, mostrar id de excursión, cantidad de salidas y suma de cupos, incluyendo sólo las excursiones con 3 o más salidas, ordenadas por cantidad de salidas de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_excursion",
+                "cantidad_salidas",
+                "cupo_total"
+              ],
+              [
+                17001,
+                10,
+                "153"
+              ],
+              [
+                17003,
+                8,
+                "104"
+              ],
+              [
+                17000,
+                7,
+                "99"
+              ],
+              [
+                17005,
+                7,
+                "77"
+              ],
+              [
+                17002,
+                6,
+                "86"
+              ],
+              [
+                17004,
+                6,
+                "83"
+              ],
+              [
+                17008,
+                5,
+                "65"
+              ],
+              [
+                17009,
+                5,
+                "58"
+              ],
+              [
+                17006,
+                4,
+                "36"
+              ],
+              [
+                17007,
+                4,
+                "52"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e14",
+          "numero": 14,
+          "consigna": "Usando GROUP BY con HAVING, mostrar id de estadía y cantidad de huéspedes alojados, incluyendo sólo las estadías con 4 huéspedes o más, ordenadas por cantidad de forma descendente y, a igualdad, por id.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id_estadia",
+                "cantidad_huespedes"
+              ],
+              [
+                19006,
+                4
+              ],
+              [
+                19017,
+                4
+              ],
+              [
+                19019,
+                4
+              ],
+              [
+                19035,
+                4
+              ],
+              [
+                19036,
+                4
+              ],
+              [
+                19039,
+                4
+              ],
+              [
+                19070,
+                4
+              ],
+              [
+                19071,
+                4
+              ],
+              [
+                19083,
+                4
+              ],
+              [
+                19099,
+                4
+              ],
+              [
+                19102,
+                4
+              ],
+              [
+                19104,
+                4
+              ],
+              [
+                19116,
+                4
+              ],
+              [
+                19123,
+                4
+              ],
+              [
+                19133,
+                4
+              ],
+              [
+                19137,
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e15",
+          "numero": 15,
+          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada servicio y la cantidad de veces que fue contratado, incluyendo sólo los servicios contratados 20 veces o más, ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "veces_contratado"
+              ],
+              [
+                "Media Pensión Colonial",
+                33
+              ],
+              [
+                "Pensión Completa NERV",
+                23
+              ],
+              [
+                "Desayuno Viper",
+                23
+              ],
+              [
+                "Spa Geofront",
+                21
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e16",
+          "numero": 16,
+          "consigna": "Usando GROUP BY con HAVING, mostrar nombre y apellido de cada empleado junto con su cantidad de turnos asignados, incluyendo sólo los empleados con 17 turnos o más, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "cantidad_turnos"
+              ],
+              [
+                "C",
+                "3PO",
+                19
+              ],
+              [
+                "Chewbacca",
+                "Wookiee",
+                19
+              ],
+              [
+                "Soun",
+                "Tendo",
+                18
+              ],
+              [
+                "R2",
+                "D2",
+                17
+              ],
+              [
+                "Kaylee",
+                "Frye",
+                17
+              ],
+              [
+                "Felix",
+                "Gaeta",
+                17
+              ],
+              [
+                "Pazu",
+                "Operador",
+                17
+              ],
+              [
+                "Genma",
+                "Saotome",
+                17
+              ],
+              [
+                "Ishikawa",
+                "Tecnico",
+                17
+              ],
+              [
+                "Kasumi",
+                "Tendo",
+                17
+              ],
+              [
+                "Nabiki",
+                "Tendo",
+                17
+              ],
+              [
+                "Hoban",
+                "Washburne",
+                17
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e17",
+          "numero": 17,
+          "consigna": "Usando GROUP BY con HAVING, mostrar cada condición de IVA y el total facturado por sus clientes, incluyendo sólo las condiciones cuyo total facturado supere los $10.000.000, ordenadas por total de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "condicion_iva",
+                "total_facturado"
+              ],
+              [
+                "Responsable Inscripto",
+                "28373091.000"
+              ],
+              [
+                "Consumidor Final",
+                "26666230.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e18",
+          "numero": 18,
+          "consigna": "Usando GROUP BY con HAVING, mostrar nombre y apellido de cada huésped junto con su cantidad de reservas de menú, incluyendo sólo los huéspedes con más de 10 reservas, ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "cantidad_reservas"
+              ],
+              [
+                "C",
+                "C",
+                18
+              ],
+              [
+                "Shalltear",
+                "Bloodfallen",
+                14
+              ],
+              [
+                "Malcolm",
+                "Reynolds",
+                13
+              ],
+              [
+                "Jayne",
+                "Cobb",
+                13
+              ],
+              [
+                "Ryoga",
+                "Hibiki",
+                13
+              ],
+              [
+                "Olivia",
+                "Dunham",
+                12
+              ],
+              [
+                "Zoe",
+                "Washburne",
+                12
+              ],
+              [
+                "Ranma",
+                "Saotome",
+                12
+              ],
+              [
+                "Akane",
+                "Tendo",
+                12
+              ],
+              [
+                "Motoko",
+                "Kusanagi",
+                11
+              ],
+              [
+                "Kara",
+                "Thrace",
+                11
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e19",
+          "numero": 19,
+          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada tipo de excursión y la duración promedio (en días) de sus excursiones, incluyendo sólo los tipos con duración promedio de 1.5 días o más, ordenados por duración promedio de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "tipo",
+                "duracion_promedio"
+              ],
+              [
+                "Trekking",
+                "2.2500"
+              ],
+              [
+                "Aventura",
+                "1.8000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p16e20",
+          "numero": 20,
+          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada tipo de habitación y la cantidad de hospedajes que lo usan, incluyendo sólo los tipos usados en 6 o más hospedajes, ordenados por cantidad de forma descendente.",
+          "seccion": "GROUP BY",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "tipo_habitacion",
+                "cantidad"
+              ],
+              [
+                "Estándar",
+                9
+              ],
+              [
+                "Superior",
+                6
+              ],
+              [
+                "Suite",
+                6
+              ],
+              [
+                "Suite Deluxe",
+                6
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "numero": 17,
+      "titulo": "Parcial: CTE",
+      "preambulo": [
+        "20 ejercicios de repaso de CTE (WITH) sobre la base de datos del parcial: CTE simples, CTE encadenadas y CTE combinadas con funciones de ventana (ROW_NUMBER)."
+      ],
+      "ejercicios": [
+        {
+          "id": "p17e1",
+          "numero": 1,
+          "consigna": "Usando una CTE que calcule el total facturado (suma de importes) por cliente, mostrar el nombre del cliente y su total facturado para aquellos clientes cuyo total supere los $2.500.000, ordenados por total de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "total"
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                "5239208.000"
+              ],
+              [
+                "Ainz Ooal Gown",
+                "4722312.000"
+              ],
+              [
+                "Massive Dynamic Retiros",
+                "3339909.000"
+              ],
+              [
+                "Lelouch vi Britannia",
+                "3242224.000"
+              ],
+              [
+                "Malcolm Reynolds",
+                "2800264.000"
+              ],
+              [
+                "Albedo",
+                "2711854.000"
+              ],
+              [
+                "Lina Inverse",
+                "2678350.000"
+              ],
+              [
+                "Akane Tendo",
+                "2615480.000"
+              ],
+              [
+                "Kallen Stadtfeld",
+                "2581931.000"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                "2510170.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e2",
+          "numero": 2,
+          "consigna": "Usando dos CTE encadenadas (una con el total facturado por cliente y otra con el promedio general de esos totales), mostrar nombre del cliente y su total facturado para los clientes cuyo total supere el promedio general, ordenados por total de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "total"
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                "5239208.000"
+              ],
+              [
+                "Ainz Ooal Gown",
+                "4722312.000"
+              ],
+              [
+                "Massive Dynamic Retiros",
+                "3339909.000"
+              ],
+              [
+                "Lelouch vi Britannia",
+                "3242224.000"
+              ],
+              [
+                "Malcolm Reynolds",
+                "2800264.000"
+              ],
+              [
+                "Albedo",
+                "2711854.000"
+              ],
+              [
+                "Lina Inverse",
+                "2678350.000"
+              ],
+              [
+                "Akane Tendo",
+                "2615480.000"
+              ],
+              [
+                "Kallen Stadtfeld",
+                "2581931.000"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                "2510170.000"
+              ],
+              [
+                "Soma Yukihira",
+                "2293347.000"
+              ],
+              [
+                "Walter Bishop",
+                "2232727.000"
+              ],
+              [
+                "Agencia de Viajes Seyruun",
+                "2231112.000"
+              ],
+              [
+                "Imperio Britannia Retiros Corporativos",
+                "2172371.000"
+              ],
+              [
+                "Suzaku Kururugi",
+                "2109845.000"
+              ],
+              [
+                "Zoe Washburne",
+                "2049453.000"
+              ],
+              [
+                "Iglesia del Amanecer Viajes",
+                "1971074.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e3",
+          "numero": 3,
+          "consigna": "Usando una CTE que calcule la cantidad de excursiones por tipo de excursión, mostrar el nombre del tipo y la cantidad, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "cantidad"
+              ],
+              [
+                "Aventura",
+                5
+              ],
+              [
+                "Cultural",
+                5
+              ],
+              [
+                "Avistamiento",
+                4
+              ],
+              [
+                "Termal",
+                4
+              ],
+              [
+                "Trekking",
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e4",
+          "numero": 4,
+          "consigna": "Usando la misma CTE de cantidad de excursiones por tipo, mostrar únicamente los tipos con más de 4 excursiones asociadas, ordenados por cantidad de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "cantidad"
+              ],
+              [
+                "Aventura",
+                5
+              ],
+              [
+                "Cultural",
+                5
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e5",
+          "numero": 5,
+          "consigna": "Usando una CTE que calcule cuántas veces se contrató cada servicio (tabla servicio_estadia), mostrar el nombre del servicio y la cantidad de veces contratado para los 5 servicios más contratados, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "veces"
+              ],
+              [
+                "Media Pensión Colonial",
+                33
+              ],
+              [
+                "Desayuno Viper",
+                23
+              ],
+              [
+                "Pensión Completa NERV",
+                23
+              ],
+              [
+                "Spa Geofront",
+                21
+              ],
+              [
+                "Traslado Millennium Falcon",
+                8
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e6",
+          "numero": 6,
+          "consigna": "Usando una CTE que calcule la cantidad de turnos asignados por empleado, mostrar nombre y apellido del empleado junto con esa cantidad, para los empleados con 17 turnos o más, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "cantidad"
+              ],
+              [
+                "C",
+                "3PO",
+                19
+              ],
+              [
+                "Chewbacca",
+                "Wookiee",
+                19
+              ],
+              [
+                "Soun",
+                "Tendo",
+                18
+              ],
+              [
+                "R2",
+                "D2",
+                17
+              ],
+              [
+                "Kaylee",
+                "Frye",
+                17
+              ],
+              [
+                "Felix",
+                "Gaeta",
+                17
+              ],
+              [
+                "Pazu",
+                "Operador",
+                17
+              ],
+              [
+                "Genma",
+                "Saotome",
+                17
+              ],
+              [
+                "Ishikawa",
+                "Tecnico",
+                17
+              ],
+              [
+                "Kasumi",
+                "Tendo",
+                17
+              ],
+              [
+                "Nabiki",
+                "Tendo",
+                17
+              ],
+              [
+                "Hoban",
+                "Washburne",
+                17
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e7",
+          "numero": 7,
+          "consigna": "Usando una CTE que calcule el importe promedio de estadía por cliente, mostrar el nombre del cliente y su promedio para los clientes cuyo promedio supere los $600.000, ordenados por promedio de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "promedio"
+              ],
+              [
+                "William Adama",
+                "1534418.0000000"
+              ],
+              [
+                "Malcolm Reynolds",
+                "933421.3333333"
+              ],
+              [
+                "Laura Roslin",
+                "885402.0000000"
+              ],
+              [
+                "Klein Moretti",
+                "866975.0000000"
+              ],
+              [
+                "Kallen Stadtfeld",
+                "860643.6666667"
+              ],
+              [
+                "Flota Colonial Turismo",
+                "734906.0000000"
+              ],
+              [
+                "Ranma Saotome",
+                "709382.0000000"
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                "654901.0000000"
+              ],
+              [
+                "Lelouch vi Britannia",
+                "648444.8000000"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                "627542.5000000"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                "601842.6666667"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e8",
+          "numero": 8,
+          "consigna": "Usando una CTE con la función de ventana ROW_NUMBER() (particionando por cliente y ordenando por importe descendente), mostrar el nombre del cliente, el id y el importe de su estadía de mayor importe, ordenados por importe de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "id_estadia",
+                "importe"
+              ],
+              [
+                "Ainz Ooal Gown",
+                19110,
+                "1545475.000"
+              ],
+              [
+                "William Adama",
+                19126,
+                "1534418.000"
+              ],
+              [
+                "Malcolm Reynolds",
+                19031,
+                "1510758.000"
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                19127,
+                "1488675.000"
+              ],
+              [
+                "Agencia de Viajes Seyruun",
+                19015,
+                "1451833.000"
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                19036,
+                "1344666.000"
+              ],
+              [
+                "Klein Moretti",
+                19039,
+                "1231182.000"
+              ],
+              [
+                "Massive Dynamic Retiros",
+                19049,
+                "1187797.000"
+              ],
+              [
+                "Kallen Stadtfeld",
+                19053,
+                "1129021.000"
+              ],
+              [
+                "Lelouch vi Britannia",
+                19078,
+                "1122312.000"
+              ],
+              [
+                "Akane Tendo",
+                19124,
+                "1072436.000"
+              ],
+              [
+                "Gaius Baltar",
+                19116,
+                "1053607.000"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                19128,
+                "1029338.000"
+              ],
+              [
+                "Paul Atreides",
+                19090,
+                "1002360.000"
+              ],
+              [
+                "Albedo",
+                19080,
+                "995335.000"
+              ],
+              [
+                "Flota Colonial Turismo",
+                19035,
+                "904959.000"
+              ],
+              [
+                "Laura Roslin",
+                19103,
+                "885402.000"
+              ],
+              [
+                "Motoko Kusanagi",
+                19058,
+                "855215.000"
+              ],
+              [
+                "Walter Bishop",
+                19074,
+                "852364.000"
+              ],
+              [
+                "Suzaku Kururugi",
+                19075,
+                "787013.000"
+              ],
+              [
+                "Olivia Dunham",
+                19011,
+                "753009.000"
+              ],
+              [
+                "Zoe Washburne",
+                19093,
+                "709648.000"
+              ],
+              [
+                "Ranma Saotome",
+                19066,
+                "709382.000"
+              ],
+              [
+                "Zelgadis Graywords",
+                19083,
+                "692738.000"
+              ],
+              [
+                "Soma Yukihira",
+                19105,
+                "684344.000"
+              ],
+              [
+                "C.C.",
+                19125,
+                "652979.000"
+              ],
+              [
+                "Lina Inverse",
+                19028,
+                "651590.000"
+              ],
+              [
+                "Gourry Gabriev",
+                19097,
+                "631341.000"
+              ],
+              [
+                "Iglesia del Amanecer Viajes",
+                19007,
+                "607464.000"
+              ],
+              [
+                "Rebelión Turismo",
+                19089,
+                "586858.000"
+              ],
+              [
+                "Liam Sera Banfield",
+                19085,
+                "581358.000"
+              ],
+              [
+                "Han Solo",
+                19002,
+                "570139.000"
+              ],
+              [
+                "Kara Thrace",
+                19095,
+                "552511.000"
+              ],
+              [
+                "Leonard Mitchell",
+                19120,
+                "472932.000"
+              ],
+              [
+                "Imperio Britannia Retiros Corporativos",
+                19054,
+                "459726.000"
+              ],
+              [
+                "Chani",
+                19106,
+                "425023.000"
+              ],
+              [
+                "Erina Nakiri",
+                19008,
+                "369197.000"
+              ],
+              [
+                "Gremio Navigator",
+                19056,
+                "359426.000"
+              ],
+              [
+                "Keiichi Morisato",
+                19009,
+                "323599.000"
+              ],
+              [
+                "Luke Skywalker",
+                19016,
+                "242758.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e9",
+          "numero": 9,
+          "consigna": "Usando una CTE con la función de ventana ROW_NUMBER() (particionando por tipo de excursión y ordenando por duración descendente), mostrar el nombre del tipo, el nombre de la excursión y su duración para la excursión más larga de cada tipo, ordenados por duración de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "tipo",
+                "excursion",
+                "duracion_dias"
+              ],
+              [
+                "Trekking",
+                "Trekking del Valle de los Wookiee",
+                3
+              ],
+              [
+                "Aventura",
+                "Aventura: Cacería del Tarot Club",
+                2
+              ],
+              [
+                "Cultural",
+                "Catacumbas de los Primordiales",
+                2
+              ],
+              [
+                "Avistamiento",
+                "Avistamiento de Cylones",
+                1
+              ],
+              [
+                "Termal",
+                "Termas del Panda Ahogado",
+                1
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e10",
+          "numero": 10,
+          "consigna": "Usando una CTE que calcule la cantidad de servicios contratados por estadía, mostrar el cliente, el id de estadía y la cantidad de servicios, para las estadías que contrataron 3 o más servicios, ordenadas por cantidad de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "cliente",
+                "id_estadia",
+                "cantidad"
+              ],
+              [
+                "Keiichi Morisato",
+                19009,
+                3
+              ],
+              [
+                "Ainz Ooal Gown",
+                19010,
+                3
+              ],
+              [
+                "Ainz Ooal Gown",
+                19026,
+                3
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                19050,
+                3
+              ],
+              [
+                "Zoe Washburne",
+                19052,
+                3
+              ],
+              [
+                "Kallen Stadtfeld",
+                19053,
+                3
+              ],
+              [
+                "Lelouch vi Britannia",
+                19062,
+                3
+              ],
+              [
+                "Iglesia del Amanecer Viajes",
+                19082,
+                3
+              ],
+              [
+                "Rebelión Turismo",
+                19086,
+                3
+              ],
+              [
+                "Kara Thrace",
+                19095,
+                3
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e11",
+          "numero": 11,
+          "consigna": "Usando una CTE que calcule el recaudo potencial de cada excursión (suma de costo_unitario * cupo de todas sus salidas), mostrar el nombre de la excursión y su recaudo potencial para las que superen $1.000.000, ordenadas de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "recaudo_potencial"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                "9267208.000"
+              ],
+              [
+                "Avistamiento de Gusanos Gigantes",
+                "6718131.000"
+              ],
+              [
+                "Ruta de las Fuentes Malditas de Jusenkyo",
+                "5946911.000"
+              ],
+              [
+                "Misión: Asalto al Imperio Britannia",
+                "5613096.000"
+              ],
+              [
+                "Travesía del Desierto de Arrakis",
+                "5213233.000"
+              ],
+              [
+                "Avistamiento de Cylones",
+                "4409801.000"
+              ],
+              [
+                "Visita a las Ruinas de la Tumba de Nazarick",
+                "4317973.000"
+              ],
+              [
+                "Termas del Panda Ahogado",
+                "3733984.000"
+              ],
+              [
+                "Trekking del Monte de la Piedad",
+                "2714852.000"
+              ],
+              [
+                "Paseo en EVA",
+                "1894629.000"
+              ],
+              [
+                "Observación del Hado de los Primordiales",
+                "1604776.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e12",
+          "numero": 12,
+          "consigna": "Usando una CTE que calcule la cantidad de huéspedes alojados por estadía, mostrar el cliente, el id de estadía y la cantidad de huéspedes, para las estadías con 4 huéspedes o más, ordenadas por cantidad de forma descendente y, a igualdad, por id.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "cliente",
+                "id_estadia",
+                "cantidad"
+              ],
+              [
+                "Olivia Dunham",
+                19006,
+                4
+              ],
+              [
+                "Lina Inverse",
+                19017,
+                4
+              ],
+              [
+                "Malcolm Reynolds",
+                19019,
+                4
+              ],
+              [
+                "Flota Colonial Turismo",
+                19035,
+                4
+              ],
+              [
+                "Imperio Intergaláctico RRHH",
+                19036,
+                4
+              ],
+              [
+                "Klein Moretti",
+                19039,
+                4
+              ],
+              [
+                "Agencia de Viajes Seyruun",
+                19070,
+                4
+              ],
+              [
+                "Zoe Washburne",
+                19071,
+                4
+              ],
+              [
+                "Zelgadis Graywords",
+                19083,
+                4
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                19099,
+                4
+              ],
+              [
+                "Imperio Britannia Retiros Corporativos",
+                19102,
+                4
+              ],
+              [
+                "Motoko Kusanagi",
+                19104,
+                4
+              ],
+              [
+                "Gaius Baltar",
+                19116,
+                4
+              ],
+              [
+                "Soma Yukihira",
+                19123,
+                4
+              ],
+              [
+                "Suzaku Kururugi",
+                19133,
+                4
+              ],
+              [
+                "Kallen Stadtfeld",
+                19137,
+                4
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e13",
+          "numero": 13,
+          "consigna": "Usando una CTE que calcule, uniendo reserva con menu_diario, el gasto total en menús de cada huésped (cantidad reservada por importe del menú), mostrar nombre, apellido y gasto total para los huéspedes que gastaron más de $400.000, ordenados de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "gasto_total"
+              ],
+              [
+                "Akane",
+                "Tendo",
+                "585817.000"
+              ],
+              [
+                "River",
+                "Tam",
+                "543755.000"
+              ],
+              [
+                "C",
+                "C",
+                "541199.000"
+              ],
+              [
+                "Olivia",
+                "Dunham",
+                "501810.000"
+              ],
+              [
+                "Demiurge",
+                "Arch Devil",
+                "479265.000"
+              ],
+              [
+                "Batou",
+                "Togusa",
+                "478571.000"
+              ],
+              [
+                "Shalltear",
+                "Bloodfallen",
+                "474683.000"
+              ],
+              [
+                "Zelgadis",
+                "Graywords",
+                "468952.000"
+              ],
+              [
+                "Ryoga",
+                "Hibiki",
+                "468080.000"
+              ],
+              [
+                "Zoe",
+                "Washburne",
+                "443517.000"
+              ],
+              [
+                "Laura",
+                "Roslin",
+                "439577.000"
+              ],
+              [
+                "Gourry",
+                "Gabriev",
+                "435906.000"
+              ],
+              [
+                "Ainz",
+                "Ooal Gown",
+                "411402.000"
+              ],
+              [
+                "Suzaku",
+                "Kururugi",
+                "408427.000"
+              ],
+              [
+                "Kara",
+                "Thrace",
+                "400012.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e14",
+          "numero": 14,
+          "consigna": "Usando una CTE que calcule la cantidad de reservas de menú por huésped, mostrar nombre, apellido y cantidad para los huéspedes con 12 reservas o más, ordenados por cantidad de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "cantidad"
+              ],
+              [
+                "C",
+                "C",
+                18
+              ],
+              [
+                "Shalltear",
+                "Bloodfallen",
+                14
+              ],
+              [
+                "Malcolm",
+                "Reynolds",
+                13
+              ],
+              [
+                "Jayne",
+                "Cobb",
+                13
+              ],
+              [
+                "Ryoga",
+                "Hibiki",
+                13
+              ],
+              [
+                "Olivia",
+                "Dunham",
+                12
+              ],
+              [
+                "Zoe",
+                "Washburne",
+                12
+              ],
+              [
+                "Ranma",
+                "Saotome",
+                12
+              ],
+              [
+                "Akane",
+                "Tendo",
+                12
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e15",
+          "numero": 15,
+          "consigna": "Usando una CTE con ROW_NUMBER() que identifique el valor base vigente más reciente de cada hospedaje (particionando por hospedaje y ordenando por fecha_desde descendente), mostrar id y estilo del hospedaje junto con ese valor, para los hospedajes cuyo valor vigente supere $200.000, ordenados de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "valor_base"
+              ],
+              [
+                16002,
+                "cabaña",
+                "400000.000"
+              ],
+              [
+                16008,
+                "cabaña",
+                "365000.000"
+              ],
+              [
+                16000,
+                "cabaña",
+                "330000.000"
+              ],
+              [
+                16006,
+                "cabaña",
+                "290000.000"
+              ],
+              [
+                16004,
+                "cabaña",
+                "280000.000"
+              ],
+              [
+                16017,
+                "habitacion",
+                "230000.000"
+              ],
+              [
+                16001,
+                "cabaña",
+                "220000.000"
+              ],
+              [
+                16003,
+                "cabaña",
+                "220000.000"
+              ],
+              [
+                16027,
+                "habitacion",
+                "218000.000"
+              ],
+              [
+                16007,
+                "cabaña",
+                "210000.000"
+              ],
+              [
+                16028,
+                "habitacion",
+                "205000.000"
+              ],
+              [
+                16038,
+                "habitacion",
+                "202000.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e16",
+          "numero": 16,
+          "consigna": "Usando una CTE que calcule la cantidad de estadías sin fecha de pago registrada por cliente, mostrar el nombre del cliente y esa cantidad para los clientes con 2 o más estadías impagas, ordenados por cantidad de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "cantidad"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                4
+              ],
+              [
+                "Imperio Britannia Retiros Corporativos",
+                3
+              ],
+              [
+                "Soma Yukihira",
+                3
+              ],
+              [
+                "Lina Inverse",
+                2
+              ],
+              [
+                "Motoko Kusanagi",
+                2
+              ],
+              [
+                "Massive Dynamic Retiros",
+                2
+              ],
+              [
+                "Han Solo",
+                2
+              ],
+              [
+                "Paul Atreides",
+                2
+              ],
+              [
+                "Gremio Navigator",
+                2
+              ],
+              [
+                "Iglesia del Amanecer Viajes",
+                2
+              ],
+              [
+                "Zoe Washburne",
+                2
+              ],
+              [
+                "Akane Tendo",
+                2
+              ],
+              [
+                "Federación Galáctica de Turismo",
+                2
+              ],
+              [
+                "Suzaku Kururugi",
+                2
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e17",
+          "numero": 17,
+          "consigna": "Usando una CTE que calcule, por hospedaje, la duración promedio de sus mantenimientos (en días, con DATEDIFF entre fecha_fin_real y fecha_inicio), mostrar id y estilo del hospedaje junto con esa duración promedio, para los hospedajes con duración promedio de 5 días o más, ordenados de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "id",
+                "estilo",
+                "duracion_promedio"
+              ],
+              [
+                16015,
+                "habitacion",
+                "7.0000"
+              ],
+              [
+                16025,
+                "habitacion",
+                "7.0000"
+              ],
+              [
+                16037,
+                "habitacion",
+                "7.0000"
+              ],
+              [
+                16005,
+                "cabaña",
+                "6.0000"
+              ],
+              [
+                16006,
+                "cabaña",
+                "6.0000"
+              ],
+              [
+                16030,
+                "habitacion",
+                "6.0000"
+              ],
+              [
+                16035,
+                "habitacion",
+                "6.0000"
+              ],
+              [
+                16007,
+                "cabaña",
+                "5.0000"
+              ],
+              [
+                16008,
+                "cabaña",
+                "5.0000"
+              ],
+              [
+                16020,
+                "habitacion",
+                "5.0000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e18",
+          "numero": 18,
+          "consigna": "Usando una CTE que calcule, por excursión, la cantidad de salidas con cupo completo (cupo = 20), mostrar el nombre de la excursión y esa cantidad para las excursiones con 2 o más salidas a cupo completo, ordenadas de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "cantidad"
+              ],
+              [
+                "Catacumbas de los Primordiales",
+                4
+              ],
+              [
+                "Travesía del Desierto de Arrakis",
+                2
+              ],
+              [
+                "Avistamiento de Gusanos Gigantes",
+                2
+              ],
+              [
+                "Termas del Panda Ahogado",
+                2
+              ],
+              [
+                "Avistamiento de Cylones",
+                2
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e19",
+          "numero": 19,
+          "consigna": "Usando una CTE que calcule, por estadía, el gasto total en servicios contratados (uniendo servicio_estadia con servicio), mostrar el cliente, el id de estadía y el gasto total para las estadías cuyo gasto en servicios supere los $100.000, ordenadas de forma descendente.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "cliente",
+                "id_estadia",
+                "gasto_total"
+              ],
+              [
+                "Totsuki Retiros Culinarios",
+                19050,
+                "178000.000"
+              ],
+              [
+                "Iglesia del Amanecer Viajes",
+                19082,
+                "173000.000"
+              ],
+              [
+                "Rebelión Turismo",
+                19086,
+                "172000.000"
+              ],
+              [
+                "Kara Thrace",
+                19095,
+                "141000.000"
+              ],
+              [
+                "Kallen Stadtfeld",
+                19053,
+                "141000.000"
+              ],
+              [
+                "Lelouch vi Britannia",
+                19062,
+                "135000.000"
+              ],
+              [
+                "Massive Dynamic Retiros",
+                19013,
+                "133000.000"
+              ],
+              [
+                "Walter Bishop",
+                19061,
+                "133000.000"
+              ],
+              [
+                "Ainz Ooal Gown",
+                19026,
+                "131000.000"
+              ],
+              [
+                "Zoe Washburne",
+                19052,
+                "125000.000"
+              ],
+              [
+                "Massive Dynamic Retiros",
+                19065,
+                "123000.000"
+              ],
+              [
+                "Paul Atreides",
+                19090,
+                "123000.000"
+              ],
+              [
+                "Zoe Washburne",
+                19022,
+                "123000.000"
+              ],
+              [
+                "Keiichi Morisato",
+                19009,
+                "118000.000"
+              ],
+              [
+                "Erina Nakiri",
+                19008,
+                "118000.000"
+              ],
+              [
+                "Laura Roslin",
+                19103,
+                "118000.000"
+              ],
+              [
+                "C.C.",
+                19125,
+                "113000.000"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "p17e20",
+          "numero": 20,
+          "consigna": "Usando dos CTE encadenadas (una con la cantidad de turnos por empleado y otra con el promedio general de esa cantidad), mostrar nombre y apellido del empleado junto con su cantidad de turnos, para los empleados con más turnos que el promedio general, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
+          "seccion": "CTE",
+          "base_datos": "PARCIAL",
+          "subpasos": [],
+          "tablas": [],
+          "tabla_esperada": {
+            "tipo": "resultado",
+            "filas": [
+              [
+                "nombre",
+                "apellido",
+                "cantidad"
+              ],
+              [
+                "C",
+                "3PO",
+                19
+              ],
+              [
+                "Chewbacca",
+                "Wookiee",
+                19
+              ],
+              [
+                "Soun",
+                "Tendo",
+                18
+              ],
+              [
+                "R2",
+                "D2",
+                17
+              ],
+              [
+                "Kaylee",
+                "Frye",
+                17
+              ],
+              [
+                "Felix",
+                "Gaeta",
+                17
+              ],
+              [
+                "Pazu",
+                "Operador",
+                17
+              ],
+              [
+                "Genma",
+                "Saotome",
+                17
+              ],
+              [
+                "Ishikawa",
+                "Tecnico",
+                17
+              ],
+              [
+                "Nabiki",
+                "Tendo",
+                17
+              ],
+              [
+                "Kasumi",
+                "Tendo",
+                17
+              ],
+              [
+                "Hoban",
+                "Washburne",
+                17
+              ],
+              [
+                "Daisuke",
+                "Aramaki",
+                16
+              ],
+              [
+                "Cattleya",
+                "Primadora",
+                16
+              ],
+              [
+                "Skuld",
+                "Primadora",
+                16
+              ],
+              [
+                "Oz",
+                "Tarotista",
+                16
+              ],
+              [
+                "Emlyn",
+                "White",
+                16
+              ]
+            ]
+          }
+        }
+      ]
     }
   ]
 }

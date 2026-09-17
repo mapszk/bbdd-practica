@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizado": "2026-09-01T20:03:41-0300",
+  "actualizado": "2026-09-17T20:22:14-0300",
   "soluciones": {
     "p4e6": {
       "sql": "select \n\tnombre_entrevistador, \n    ee.cod_evaluacion, \n    COUNT(*),\n    AVG(ee.resultado),\n    STD(ee.resultado)\nfrom entrevistas_evaluaciones ee\ninner join entrevistas ent on ent.nro_entrevista = ee.nro_entrevista\ngroup by ent.nombre_entrevistador, ee.cod_evaluacion\norder by COUNT(*);",
@@ -82,11 +82,8 @@
       "sql": "select dni, apellido, nombre\nfrom personas\nwhere dni in (\n\tselect dni from contratos\n  \twhere cuit in (\n    \tselect cuit from contratos c\n      \tjoin personas p on p.dni = c.dni\n       \twhere p.apellido = \"Lopez\" and p.nombre = \"Stefanía\"\n    )\n)",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-09-01T18:37:02-0300",
-      "ultima_ejecucion": {
-        "ok": true,
-        "veredicto": "coincide"
-      }
+      "actualizado": "2026-09-03T19:43:57-0300",
+      "ultima_ejecucion": null
     },
     "p4e1": {
       "sql": "select e.razon_social, sum(c.importe_comision)\nfrom comisiones c\njoin contratos con on con.nro_contrato = c.nro_contrato\njoin empresas e on e.cuit = con.cuit\nwhere e.razon_social = \"Tráigame eso\"\ngroup by e.razon_social",
@@ -99,7 +96,7 @@
       "sql": "select * from empresas",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-09-01T19:05:41-0300",
+      "actualizado": "2026-09-17T20:22:14-0300",
       "ultima_ejecucion": null
     },
     "p1e2": {
@@ -393,18 +390,15 @@
       "sql": "select\n\tp.dni,\n    concat(p.nombre, p.apellido),\n    sueldo\nfrom contratos c1\njoin personas p on p.dni = c1.dni\nwhere c1.sueldo < (\n\tselect max(c.sueldo) from contratos c\n\tjoin empresas e on e.cuit = c.cuit\n\twhere e.razon_social = \"Viejos amigos\"\n)",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-09-01T18:41:43-0300",
+      "actualizado": "2026-09-03T19:43:59-0300",
       "ultima_ejecucion": null
     },
     "p5e3": {
       "sql": "with traigameEsoAvg as (\n\tselect avg(c.importe_comision) as promedio\n\tfrom comisiones c\n\tjoin contratos con on con.nro_contrato = c.nro_contrato\n\tjoin empresas e on e.cuit = con.cuit\n\twhere e.razon_social = \"Tráigame eso\"\n)\n\nselect \n\te.cuit,\n    e.razon_social,\n    avg(c.importe_comision)\nfrom empresas e \njoin contratos con on con.cuit = e.cuit\njoin comisiones c on c.nro_contrato = con.nro_contrato\ngroup by e.cuit\nhaving avg(c.importe_comision) > (\n\tselect promedio from traigameEsoAvg\n)",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-09-01T18:53:19-0300",
-      "ultima_ejecucion": {
-        "ok": true,
-        "veredicto": "coincide"
-      }
+      "actualizado": "2026-09-03T19:44:01-0300",
+      "ultima_ejecucion": null
     },
     "p5e4": {
       "sql": "",
@@ -480,6 +474,34 @@
       "estado": "borrador",
       "notas": "",
       "actualizado": "2026-09-01T20:03:41-0300",
+      "ultima_ejecucion": null
+    },
+    "p5e17": {
+      "sql": "with val_act as (\n    select nom_plan, max(fecha_desde_plan)\n    from valores_plan\n    where fecha_desde_plan <= current_date()\n    group by nom_plan\n)\n\nwith val_ant as (\n\tselect vp.nom_plan, max(vp.fecha_desde_plan) fecha_act\n  \tfrom valores_plan vp\n  \tinner join val_act va on va.nom_plan = vp.nom_plan \n  \tand vp.fecha_desde_plan < va.fecha_desde_plan\n)\n\nselect *\nfrom val_act va\ninner join valores_plan vp \non vp_act",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-09-03T19:58:52-0300",
+      "ultima_ejecucion": null
+    },
+    "p6e1": {
+      "sql": "",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-09-03T19:54:56-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e1": {
+      "sql": "",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-09-17T20:06:42-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e2": {
+      "sql": "",
+      "estado": "borrador",
+      "notas": "",
+      "actualizado": "2026-09-17T20:20:44-0300",
       "ultima_ejecucion": null
     }
   }

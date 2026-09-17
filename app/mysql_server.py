@@ -24,8 +24,9 @@ import pymysql
 from app import config
 
 CHUNK = 256 * 1024
-CREATE_NO_WINDOW = 0x08000000
-CREATE_NEW_PROCESS_GROUP = 0x00000200
+CREATE_NO_WINDOW = 0x08000000 if config.ES_WINDOWS else 0
+CREATE_NEW_PROCESS_GROUP = 0x00000200 if config.ES_WINDOWS else 0
+_POPEN_FLAGS = {"creationflags": CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP} if config.ES_WINDOWS else {}
 
 
 class MysqlBootstrapError(RuntimeError):
@@ -108,13 +109,50 @@ class GestorMysql:
         estado.update(kv)
         config.RUNTIME_JSON.write_text(json.dumps(estado, indent=2), encoding="utf-8")
 
+    def _mysqld_path(self) -> Path:
+        if not config.ES_WINDOWS:
+            # Copia propia (no la del sistema): el binario /usr/sbin/mysqld de
+            # Ubuntu/Debian está confinado por AppArmor a /etc/mysql y
+            # /var/lib/mysql, así que no puede leer nuestro datadir/my.ini
+            # bajo el home. Un binario idéntico en otra ruta no está confinado.
+            return config.MYSQL_BIN_DIR / "bin" / "mysqld"
+        return config.MYSQL_BIN_DIR / "bin" / "mysqld.exe"
+
+    def _mysqladmin_path(self) -> Path:
+        if not config.ES_WINDOWS:
+            return config.MYSQL_BIN_DIR / "bin" / "mysqladmin"
+        return config.MYSQL_BIN_DIR / "bin" / "mysqladmin.exe"
+
     def _binarios_listos(self) -> bool:
+        if not config.ES_WINDOWS:
+            return self._mysqld_path().exists() and self._mysqladmin_path().exists()
         estado = self._runtime_state()
         mysqld = config.MYSQL_BIN_DIR / "bin" / "mysqld.exe"
         return estado.get("version") == config.MYSQL_VERSION and mysqld.exists()
 
     def asegurar_binarios(self) -> None:
         if self._binarios_listos():
+            return
+
+        if not config.ES_WINDOWS:
+            mysqld_sistema = shutil.which("mysqld") or next(
+                (p for p in ("/usr/sbin/mysqld", "/usr/bin/mysqld") if Path(p).exists()),
+                None,
+            )
+            mysqladmin_sistema = shutil.which("mysqladmin") or next(
+                (p for p in ("/usr/bin/mysqladmin",) if Path(p).exists()),
+                None,
+            )
+            if not mysqld_sistema or not mysqladmin_sistema:
+                raise MysqlBootstrapError(
+                    "No se encontró mysqld/mysqladmin en el sistema. "
+                    "Instalá mysql-server o mariadb-server."
+                )
+            self._mysqld_path().parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(mysqld_sistema, self._mysqld_path())
+            shutil.copy2(mysqladmin_sistema, self._mysqladmin_path())
+            self._mysqld_path().chmod(0o755)
+            self._mysqladmin_path().chmod(0o755)
             return
 
         self._asegurar_vcredist()
@@ -207,11 +245,31 @@ class GestorMysql:
         def fwd(p: Path) -> str:
             return str(p).replace("\\", "/")
 
+        # En Linux el binario copiado sigue esperando el layout FHS normal
+        # (plugins en /usr/lib/mysql/plugin, mensajes en /usr/share/mysql-*),
+        # así que basedir apunta al basedir real del sistema, no a nuestra
+        # carpeta propia (que sólo tiene el binario copiado).
+        basedir = Path("/usr") if not config.ES_WINDOWS else config.MYSQL_BIN_DIR
+        plugin_dir_linea = ""
+        if not config.ES_WINDOWS:
+            for candidato in ("/usr/lib/mysql/plugin", "/usr/lib/x86_64-linux-gnu/mysql/plugin"):
+                if Path(candidato).is_dir():
+                    plugin_dir_linea = f"plugin-dir                = {candidato}\n"
+                    break
+
+        socket_linea = ""
+        pid_linea = ""
+        if not config.ES_WINDOWS:
+            # Rutas propias: no tocar /var/run/mysqld, que es del mysqld del
+            # sistema y no tenemos permiso de escritura ahí.
+            socket_linea = f"socket                   = {fwd(config.MYSQL_TMP_DIR / 'mysqld.sock')}\n"
+            pid_linea = f"pid-file                 = {fwd(config.MYSQL_TMP_DIR / 'mysqld.pid')}\n"
+
         contenido = f"""[mysqld]
-basedir                  = {fwd(config.MYSQL_BIN_DIR)}
+basedir                  = {fwd(basedir)}
 datadir                  = {fwd(config.MYSQL_DATA_DIR)}
 tmpdir                   = {fwd(config.MYSQL_TMP_DIR)}
-port                     = {config.MYSQL_PORT}
+{plugin_dir_linea}{socket_linea}{pid_linea}port                     = {config.MYSQL_PORT}
 bind-address             = 127.0.0.1
 mysqlx                   = OFF
 log-error                = {fwd(config.MYSQL_LOG_DIR / 'mysqld-error.log')}
@@ -225,6 +283,7 @@ secure_file_priv         = ""
 
 [client]
 port = {config.MYSQL_PORT}
+{f"socket                   = {fwd(config.MYSQL_TMP_DIR / 'mysqld.sock')}" if not config.ES_WINDOWS else ""}
 """
         config.MYSQL_INI_PATH.write_text(contenido, encoding="utf-8")
 
@@ -249,7 +308,7 @@ port = {config.MYSQL_PORT}
             self._log(f"Datadir incompleto movido a {roto}")
         config.MYSQL_DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-        mysqld = config.MYSQL_BIN_DIR / "bin" / "mysqld.exe"
+        mysqld = self._mysqld_path()
         self._log("Inicializando datadir (initialize-insecure)...")
         resultado = subprocess.run(
             [
@@ -260,7 +319,7 @@ port = {config.MYSQL_PORT}
             ],
             capture_output=True,
             timeout=120,
-            creationflags=CREATE_NO_WINDOW,
+            **_POPEN_FLAGS,
         )
         salida = resultado.stderr.decode("utf-8", errors="replace")
         for linea in salida.splitlines():
@@ -327,13 +386,13 @@ port = {config.MYSQL_PORT}
         self.asegurar_binarios()
         self.asegurar_datadir()
 
-        mysqld = config.MYSQL_BIN_DIR / "bin" / "mysqld.exe"
+        mysqld = self._mysqld_path()
         self._log(f"Arrancando mysqld en el puerto {config.MYSQL_PORT}...")
         self.proc = subprocess.Popen(
             [str(mysqld), f"--defaults-file={config.MYSQL_INI_PATH}", "--console"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            creationflags=CREATE_NO_WINDOW | CREATE_NEW_PROCESS_GROUP,
+            **_POPEN_FLAGS,
         )
         threading.Thread(
             target=self._drenar, args=(self.proc.stdout, "out"), daemon=True
@@ -380,7 +439,7 @@ port = {config.MYSQL_PORT}
         self._keepalive_stop.set()
         if self.proc is None:
             return
-        mysqladmin = config.MYSQL_BIN_DIR / "bin" / "mysqladmin.exe"
+        mysqladmin = self._mysqladmin_path()
         try:
             subprocess.run(
                 [
@@ -391,7 +450,7 @@ port = {config.MYSQL_PORT}
                     "shutdown",
                 ],
                 timeout=30,
-                creationflags=CREATE_NO_WINDOW,
+                **_POPEN_FLAGS,
             )
         except Exception:
             pass

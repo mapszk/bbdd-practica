@@ -26,6 +26,7 @@ const ER = (() => {
     { clave: "afatse", etiqueta: "afatse" },
     { clave: "agencia_personal", etiqueta: "agencia_personal" },
     { clave: "ropa_siempre_limpia", etiqueta: "ropa_siempre_limpia" },
+    { clave: "parcial", etiqueta: "parcial" },
   ];
 
   function crearOverlay() {

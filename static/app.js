@@ -105,12 +105,23 @@ function chipEstadoHtml(id) {
 function renderRiel() {
   const riel = document.getElementById("riel");
   riel.innerHTML = "";
+  let separadorPuesto = false;
   for (const p of estado.practicas) {
+    const esParcial = p.titulo.startsWith("Parcial");
+    if (esParcial && !separadorPuesto) {
+      const separador = document.createElement("div");
+      separador.className = "riel-separador";
+      separador.textContent = "Repaso -- Parcial";
+      riel.appendChild(separador);
+      separadorPuesto = true;
+    }
+
     const grupo = document.createElement("div");
     grupo.className = "practica-grupo";
     const titulo = document.createElement("div");
     titulo.className = "practica-titulo";
-    titulo.textContent = `P${p.numero}`;
+    const tema = esParcial ? p.titulo.split(":")[1]?.trim() : null;
+    titulo.textContent = tema || (esParcial ? "Parcial" : `P${p.numero}`);
     titulo.title = p.titulo;
     grupo.appendChild(titulo);
 
@@ -323,6 +334,7 @@ function mapNombreBase(nombreDocx) {
   if (n.includes("afatse")) return "afatse";
   if (n.includes("agencia")) return "agencia_personal";
   if (n.includes("tintor") || n.includes("ropa")) return "ropa_siempre_limpia";
+  if (n.includes("parcial") || n.includes("jusenkyo")) return "parcial";
   return n;
 }
 
