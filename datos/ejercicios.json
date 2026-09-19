@@ -10981,7 +10981,7 @@
         {
           "id": "p14e19",
           "numero": 19,
-          "consigna": "Mostrar id, fechas, importe y cantidad de noches (calculada con DATEDIFF) de las estadías que duraron exactamente 14 noches, ordenadas por importe de forma descendente.",
+          "consigna": "Mostrar id, fechas, importe y cantidad de noches de las estadías que duraron exactamente 14 noches, ordenadas por importe de forma descendente.",
           "seccion": "SELECT",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11100,7 +11100,7 @@
         {
           "id": "p14e20",
           "numero": 20,
-          "consigna": "Mostrar nombre, apellido y apellido en mayúsculas (usando UPPER) de todos los empleados, ordenados por apellido.",
+          "consigna": "Mostrar nombre, apellido y apellido en mayúsculas de todos los empleados, ordenados por apellido.",
           "seccion": "SELECT",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11258,7 +11258,7 @@
         {
           "id": "p15e1",
           "numero": 1,
-          "consigna": "Usando INNER JOIN, mostrar el nombre de cada excursión junto con el nombre de su tipo de excursión, para las excursiones cuyo tipo sea 'Termal', ordenadas por nombre de excursión.",
+          "consigna": "Mostrar el nombre de cada excursión junto con el nombre de su tipo de excursión, para las excursiones cuyo tipo sea 'Termal', ordenadas por nombre de excursión.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11292,7 +11292,7 @@
         {
           "id": "p15e2",
           "numero": 2,
-          "consigna": "Usando INNER JOIN, mostrar id de estadía, nombre del cliente e importe, para las estadías cuyo importe supere los $1.200.000, ordenadas por importe de forma descendente.",
+          "consigna": "Mostrar id de estadía, nombre del cliente e importe, para las estadías cuyo importe supere los $1.200.000, ordenadas por importe de forma descendente.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11346,7 +11346,7 @@
         {
           "id": "p15e3",
           "numero": 3,
-          "consigna": "Usando INNER JOIN, mostrar id y estilo del hospedaje junto con el nombre del tipo de habitación, para los hospedajes cuyo tipo de habitación sea 'Suite', ordenados por id.",
+          "consigna": "Mostrar id y estilo del hospedaje junto con el nombre del tipo de habitación, para los hospedajes cuyo tipo de habitación sea 'Suite', ordenados por id.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11395,7 +11395,7 @@
         {
           "id": "p15e4",
           "numero": 4,
-          "consigna": "Usando INNER JOIN, mostrar el nombre de la excursión, la fecha de salida y el costo unitario de las salidas realizadas entre el 1 de junio y el 30 de septiembre de 2025, ordenadas por fecha de salida.",
+          "consigna": "Mostrar el nombre de la excursión, la fecha de salida y el costo unitario de las salidas realizadas entre el 1 de junio y el 30 de septiembre de 2025, ordenadas por fecha de salida.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11434,7 +11434,7 @@
         {
           "id": "p15e5",
           "numero": 5,
-          "consigna": "Usando INNER JOIN entre tres tablas (empleado, empleado_turno y turno), mostrar nombre y apellido del empleado junto con el día de la semana y el horario de los turnos que tiene asignados en enero de 2026, ordenados por apellido y nombre.",
+          "consigna": "Mostrar nombre y apellido del empleado junto con el día de la semana y el horario de los turnos que tiene asignados en enero de 2026, ordenados por apellido y nombre.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11560,7 +11560,7 @@
         {
           "id": "p15e6",
           "numero": 6,
-          "consigna": "Usando INNER JOIN entre cuatro tablas (estadia, cliente, estadia_huesped y huesped), mostrar el nombre del cliente, nombre y apellido del huésped alojado, y el importe, para las estadías con importe superior a $1.300.000, ordenadas por importe descendente.",
+          "consigna": "Mostrar el nombre del cliente, nombre y apellido del huésped alojado, y el importe, para las estadías con importe superior a $1.300.000, ordenadas por importe descendente.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11634,7 +11634,7 @@
         {
           "id": "p15e7",
           "numero": 7,
-          "consigna": "Usando INNER JOIN entre tres tablas (servicio, servicio_estadia y estadia), mostrar el nombre del servicio, el id de estadía y el importe de la estadía, para las estadías con importe superior a $1.300.000, ordenadas por importe descendente.",
+          "consigna": "Mostrar el nombre del servicio, el id de estadía y el importe de la estadía, para las estadías con importe superior a $1.300.000, ordenadas por importe descendente.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11678,7 +11678,7 @@
         {
           "id": "p15e8",
           "numero": 8,
-          "consigna": "Usando INNER JOIN, mostrar id y estilo del hospedaje junto con la fecha desde y el valor base vigentes a partir del 1° de enero de 2026, ordenados por estilo e id.",
+          "consigna": "Mostrar id y estilo del hospedaje junto con la fecha desde y el valor base vigentes a partir del 1° de enero de 2026, ordenados por estilo e id.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11788,7 +11788,7 @@
         {
           "id": "p15e9",
           "numero": 9,
-          "consigna": "Usando INNER JOIN, mostrar id y estilo del hospedaje junto con los datos del mantenimiento, para los mantenimientos que terminaron más tarde de lo planificado, ordenados por id de hospedaje.",
+          "consigna": "Mostrar id y estilo del hospedaje junto con los datos del mantenimiento, para los mantenimientos que terminaron más tarde de lo planificado, ordenados por id de hospedaje.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11865,7 +11865,7 @@
         {
           "id": "p15e10",
           "numero": 10,
-          "consigna": "Usando LEFT JOIN, mostrar id, estilo, capacidad y tipo de habitación (si lo tiene) de los hospedajes con capacidad para 4 huéspedes o más -- incluyendo los que no tienen tipo de habitación asignado, ordenados por id.",
+          "consigna": "Mostrar id, estilo, capacidad y tipo de habitación (si lo tiene) de los hospedajes con capacidad para 4 huéspedes o más -- incluyendo los que no tienen tipo de habitación asignado, ordenados por id.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11969,7 +11969,7 @@
         {
           "id": "p15e11",
           "numero": 11,
-          "consigna": "Usando LEFT JOIN, mostrar id y nombre de los clientes que nunca registraron una estadía (no tienen ninguna fila relacionada en la tabla estadia).",
+          "consigna": "Mostrar id y nombre de los clientes que nunca registraron una estadía.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -11991,7 +11991,7 @@
         {
           "id": "p15e12",
           "numero": 12,
-          "consigna": "Usando LEFT JOIN, mostrar id y nombre de las excursiones que nunca tuvieron una salida programada, ordenadas por nombre.",
+          "consigna": "Mostrar id y nombre de las excursiones que nunca tuvieron una salida programada, ordenadas por nombre.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12033,7 +12033,7 @@
         {
           "id": "p15e13",
           "numero": 13,
-          "consigna": "Usando RIGHT JOIN (con salida como tabla izquierda y excursion como tabla derecha), mostrar id y nombre de las excursiones que nunca tuvieron una salida programada, ordenadas por nombre. Tiene que dar el mismo resultado que un LEFT JOIN con las tablas invertidas.",
+          "consigna": "Mostrar id y nombre de las excursiones que nunca tuvieron una salida programada, ordenadas por nombre.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12075,7 +12075,7 @@
         {
           "id": "p15e14",
           "numero": 14,
-          "consigna": "Usando RIGHT JOIN (con estadia como tabla izquierda y cliente como tabla derecha), mostrar id y nombre de los clientes que nunca registraron una estadía.",
+          "consigna": "Mostrar id y nombre de los clientes que nunca registraron una estadía.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12097,7 +12097,7 @@
         {
           "id": "p15e15",
           "numero": 15,
-          "consigna": "Usando RIGHT JOIN (con reserva como tabla izquierda y menu_diario como tabla derecha), mostrar fecha, descripción del menú e id del huésped que lo reservó (nulo si nadie lo reservó), para los menús del 1 al 10 de enero de 2025, ordenados por fecha.",
+          "consigna": "Mostrar fecha, descripción del menú e id del huésped que lo reservó (nulo si nadie lo reservó), para los menús del 1 al 10 de enero de 2025, ordenados por fecha.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12146,7 +12146,7 @@
         {
           "id": "p15e16",
           "numero": 16,
-          "consigna": "Usando CROSS JOIN, mostrar todas las combinaciones posibles entre los tipos de excursión y los tipos de habitación, ordenadas por tipo de excursión y tipo de habitación.",
+          "consigna": "Mostrar todas las combinaciones posibles entre los tipos de excursión y los tipos de habitación, ordenadas por tipo de excursión y tipo de habitación.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12264,7 +12264,7 @@
         {
           "id": "p15e17",
           "numero": 17,
-          "consigna": "Usando CROSS JOIN, mostrar todas las combinaciones entre los turnos del día lunes (dia_semana = 1) y los tipos de habitación, ordenadas por id de turno y tipo de habitación.",
+          "consigna": "Mostrar todas las combinaciones entre los turnos del día lunes (dia_semana = 1) y los tipos de habitación, ordenadas por id de turno y tipo de habitación.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12358,7 +12358,7 @@
         {
           "id": "p15e18",
           "numero": 18,
-          "consigna": "Usando un self join (la tabla excursion unida consigo misma), mostrar los pares de excursiones distintas que comparten el mismo tipo de excursión, para el tipo 'Cultural', evitando mostrar el mismo par dos veces ni una excursión consigo misma.",
+          "consigna": "Mostrar los pares de excursiones distintas que comparten el mismo tipo de excursión, para el tipo 'Cultural', evitando mostrar el mismo par dos veces ni una excursión consigo misma.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12427,7 +12427,7 @@
         {
           "id": "p15e19",
           "numero": 19,
-          "consigna": "Usando un self join (la tabla hospedaje unida consigo misma), mostrar los pares de hospedajes distintos que tienen la misma capacidad y el mismo tipo de habitación 'Suite', evitando pares repetidos.",
+          "consigna": "Mostrar los pares de hospedajes distintos que tienen la misma capacidad y el mismo tipo de habitación 'Suite', evitando pares repetidos.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12521,7 +12521,7 @@
         {
           "id": "p15e20",
           "numero": 20,
-          "consigna": "Usando un self join (la tabla huesped unida consigo misma), mostrar los pares de huéspedes distintos que cumplen años el mismo día y mes (sin importar el año de nacimiento), evitando pares repetidos, ordenados por fecha de nacimiento.",
+          "consigna": "Mostrar los pares de huéspedes distintos que cumplen años el mismo día y mes (sin importar el año de nacimiento), evitando pares repetidos, ordenados por fecha de nacimiento.",
           "seccion": "JOIN",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -12842,7 +12842,7 @@
         {
           "id": "p16e5",
           "numero": 5,
-          "consigna": "Para cada mes del año (usando MONTH sobre la fecha), mostrar la cantidad de menús diarios ofrecidos y la suma de sus importes, ordenados por mes.",
+          "consigna": "Para cada mes del año, mostrar la cantidad de menús diarios ofrecidos y la suma de sus importes, ordenados por mes.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13124,7 +13124,7 @@
         {
           "id": "p16e11",
           "numero": 11,
-          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada cliente y su cantidad de estadías, incluyendo sólo los clientes con más de 4 estadías, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "consigna": "Mostrar el nombre de cada cliente y su cantidad de estadías, incluyendo sólo los clientes con más de 4 estadías, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13190,7 +13190,7 @@
         {
           "id": "p16e12",
           "numero": 12,
-          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada tipo de excursión y su cantidad de excursiones asociadas, incluyendo sólo los tipos con más de 4 excursiones, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar el nombre de cada tipo de excursión y su cantidad de excursiones asociadas, incluyendo sólo los tipos con más de 4 excursiones, ordenados por cantidad de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13216,7 +13216,7 @@
         {
           "id": "p16e13",
           "numero": 13,
-          "consigna": "Usando GROUP BY con HAVING, mostrar id de excursión, cantidad de salidas y suma de cupos, incluyendo sólo las excursiones con 3 o más salidas, ordenadas por cantidad de salidas de forma descendente.",
+          "consigna": "Mostrar id de excursión, cantidad de salidas y suma de cupos, incluyendo sólo las excursiones con 3 o más salidas, ordenadas por cantidad de salidas de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13285,7 +13285,7 @@
         {
           "id": "p16e14",
           "numero": 14,
-          "consigna": "Usando GROUP BY con HAVING, mostrar id de estadía y cantidad de huéspedes alojados, incluyendo sólo las estadías con 4 huéspedes o más, ordenadas por cantidad de forma descendente y, a igualdad, por id.",
+          "consigna": "Mostrar id de estadía y cantidad de huéspedes alojados, incluyendo sólo las estadías con 4 huéspedes o más, ordenadas por cantidad de forma descendente y, a igualdad, por id.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13367,7 +13367,7 @@
         {
           "id": "p16e15",
           "numero": 15,
-          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada servicio y la cantidad de veces que fue contratado, incluyendo sólo los servicios contratados 20 veces o más, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar el nombre de cada servicio y la cantidad de veces que fue contratado, incluyendo sólo los servicios contratados 20 veces o más, ordenados por cantidad de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13401,7 +13401,7 @@
         {
           "id": "p16e16",
           "numero": 16,
-          "consigna": "Usando GROUP BY con HAVING, mostrar nombre y apellido de cada empleado junto con su cantidad de turnos asignados, incluyendo sólo los empleados con 17 turnos o más, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
+          "consigna": "Mostrar nombre y apellido de cada empleado junto con su cantidad de turnos asignados, incluyendo sólo los empleados con 17 turnos o más, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13480,7 +13480,7 @@
         {
           "id": "p16e17",
           "numero": 17,
-          "consigna": "Usando GROUP BY con HAVING, mostrar cada condición de IVA y el total facturado por sus clientes, incluyendo sólo las condiciones cuyo total facturado supere los $10.000.000, ordenadas por total de forma descendente.",
+          "consigna": "Mostrar cada condición de IVA y el total facturado por sus clientes, incluyendo sólo las condiciones cuyo total facturado supere los $10.000.000, ordenadas por total de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13506,7 +13506,7 @@
         {
           "id": "p16e18",
           "numero": 18,
-          "consigna": "Usando GROUP BY con HAVING, mostrar nombre y apellido de cada huésped junto con su cantidad de reservas de menú, incluyendo sólo los huéspedes con más de 10 reservas, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar nombre y apellido de cada huésped junto con su cantidad de reservas de menú, incluyendo sólo los huéspedes con más de 10 reservas, ordenados por cantidad de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13580,7 +13580,7 @@
         {
           "id": "p16e19",
           "numero": 19,
-          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada tipo de excursión y la duración promedio (en días) de sus excursiones, incluyendo sólo los tipos con duración promedio de 1.5 días o más, ordenados por duración promedio de forma descendente.",
+          "consigna": "Mostrar el nombre de cada tipo de excursión y la duración promedio (en días) de sus excursiones, incluyendo sólo los tipos con duración promedio de 1.5 días o más, ordenados por duración promedio de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13606,7 +13606,7 @@
         {
           "id": "p16e20",
           "numero": 20,
-          "consigna": "Usando GROUP BY con HAVING, mostrar el nombre de cada tipo de habitación y la cantidad de hospedajes que lo usan, incluyendo sólo los tipos usados en 6 o más hospedajes, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar el nombre de cada tipo de habitación y la cantidad de hospedajes que lo usan, incluyendo sólo los tipos usados en 6 o más hospedajes, ordenados por cantidad de forma descendente.",
           "seccion": "GROUP BY",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13649,7 +13649,7 @@
         {
           "id": "p17e1",
           "numero": 1,
-          "consigna": "Usando una CTE que calcule el total facturado (suma de importes) por cliente, mostrar el nombre del cliente y su total facturado para aquellos clientes cuyo total supere los $2.500.000, ordenados por total de forma descendente.",
+          "consigna": "Mostrar el nombre de cada cliente y su total facturado (suma de los importes de sus estadías), para aquellos clientes cuyo total supere los $2.500.000, ordenados por total de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13707,7 +13707,7 @@
         {
           "id": "p17e2",
           "numero": 2,
-          "consigna": "Usando dos CTE encadenadas (una con el total facturado por cliente y otra con el promedio general de esos totales), mostrar nombre del cliente y su total facturado para los clientes cuyo total supere el promedio general, ordenados por total de forma descendente.",
+          "consigna": "Mostrar nombre del cliente y su total facturado para los clientes cuyo total supere el promedio general de los totales facturados por cliente, ordenados por total de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13793,7 +13793,7 @@
         {
           "id": "p17e3",
           "numero": 3,
-          "consigna": "Usando una CTE que calcule la cantidad de excursiones por tipo de excursión, mostrar el nombre del tipo y la cantidad, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "consigna": "Mostrar el nombre de cada tipo de excursión y su cantidad de excursiones asociadas, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13831,7 +13831,7 @@
         {
           "id": "p17e4",
           "numero": 4,
-          "consigna": "Usando la misma CTE de cantidad de excursiones por tipo, mostrar únicamente los tipos con más de 4 excursiones asociadas, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar únicamente los tipos de excursión con más de 4 excursiones asociadas, junto con esa cantidad, ordenados por cantidad de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13857,7 +13857,7 @@
         {
           "id": "p17e5",
           "numero": 5,
-          "consigna": "Usando una CTE que calcule cuántas veces se contrató cada servicio (tabla servicio_estadia), mostrar el nombre del servicio y la cantidad de veces contratado para los 5 servicios más contratados, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
+          "consigna": "Mostrar el nombre del servicio y la cantidad de veces contratado (tabla servicio_estadia) para los 5 servicios más contratados, ordenados por cantidad de forma descendente y, a igualdad, por nombre.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13895,7 +13895,7 @@
         {
           "id": "p17e6",
           "numero": 6,
-          "consigna": "Usando una CTE que calcule la cantidad de turnos asignados por empleado, mostrar nombre y apellido del empleado junto con esa cantidad, para los empleados con 17 turnos o más, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
+          "consigna": "Mostrar nombre y apellido del empleado junto con su cantidad de turnos asignados, para los empleados con 17 turnos o más, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -13974,7 +13974,7 @@
         {
           "id": "p17e7",
           "numero": 7,
-          "consigna": "Usando una CTE que calcule el importe promedio de estadía por cliente, mostrar el nombre del cliente y su promedio para los clientes cuyo promedio supere los $600.000, ordenados por promedio de forma descendente.",
+          "consigna": "Mostrar el nombre del cliente y su importe promedio de estadía para los clientes cuyo promedio supere los $600.000, ordenados por promedio de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14036,7 +14036,7 @@
         {
           "id": "p17e8",
           "numero": 8,
-          "consigna": "Usando una CTE con la función de ventana ROW_NUMBER() (particionando por cliente y ordenando por importe descendente), mostrar el nombre del cliente, el id y el importe de su estadía de mayor importe, ordenados por importe de forma descendente.",
+          "consigna": "Mostrar el nombre del cliente, el id y el importe de su estadía de mayor importe, ordenados por importe de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14255,7 +14255,7 @@
         {
           "id": "p17e9",
           "numero": 9,
-          "consigna": "Usando una CTE con la función de ventana ROW_NUMBER() (particionando por tipo de excursión y ordenando por duración descendente), mostrar el nombre del tipo, el nombre de la excursión y su duración para la excursión más larga de cada tipo, ordenados por duración de forma descendente.",
+          "consigna": "Mostrar el nombre del tipo de excursión, el nombre de la excursión y su duración para la excursión más larga de cada tipo, ordenados por duración de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14299,7 +14299,7 @@
         {
           "id": "p17e10",
           "numero": 10,
-          "consigna": "Usando una CTE que calcule la cantidad de servicios contratados por estadía, mostrar el cliente, el id de estadía y la cantidad de servicios, para las estadías que contrataron 3 o más servicios, ordenadas por cantidad de forma descendente.",
+          "consigna": "Mostrar el cliente, el id de estadía y la cantidad de servicios contratados, para las estadías que contrataron 3 o más servicios, ordenadas por cantidad de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14368,7 +14368,7 @@
         {
           "id": "p17e11",
           "numero": 11,
-          "consigna": "Usando una CTE que calcule el recaudo potencial de cada excursión (suma de costo_unitario * cupo de todas sus salidas), mostrar el nombre de la excursión y su recaudo potencial para las que superen $1.000.000, ordenadas de forma descendente.",
+          "consigna": "Mostrar el nombre de la excursión y su recaudo potencial (suma de costo_unitario * cupo de todas sus salidas) para las que superen $1.000.000, ordenadas de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14430,7 +14430,7 @@
         {
           "id": "p17e12",
           "numero": 12,
-          "consigna": "Usando una CTE que calcule la cantidad de huéspedes alojados por estadía, mostrar el cliente, el id de estadía y la cantidad de huéspedes, para las estadías con 4 huéspedes o más, ordenadas por cantidad de forma descendente y, a igualdad, por id.",
+          "consigna": "Mostrar el cliente, el id de estadía y la cantidad de huéspedes alojados, para las estadías con 4 huéspedes o más, ordenadas por cantidad de forma descendente y, a igualdad, por id.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14529,7 +14529,7 @@
         {
           "id": "p17e13",
           "numero": 13,
-          "consigna": "Usando una CTE que calcule, uniendo reserva con menu_diario, el gasto total en menús de cada huésped (cantidad reservada por importe del menú), mostrar nombre, apellido y gasto total para los huéspedes que gastaron más de $400.000, ordenados de forma descendente.",
+          "consigna": "Mostrar nombre, apellido y gasto total en menús de cada huésped (cantidad reservada por importe del menú), para los huéspedes que gastaron más de $400.000, ordenados de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14623,7 +14623,7 @@
         {
           "id": "p17e14",
           "numero": 14,
-          "consigna": "Usando una CTE que calcule la cantidad de reservas de menú por huésped, mostrar nombre, apellido y cantidad para los huéspedes con 12 reservas o más, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar nombre, apellido y cantidad de reservas de menú de los huéspedes con 12 reservas o más, ordenados por cantidad de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14687,7 +14687,7 @@
         {
           "id": "p17e15",
           "numero": 15,
-          "consigna": "Usando una CTE con ROW_NUMBER() que identifique el valor base vigente más reciente de cada hospedaje (particionando por hospedaje y ordenando por fecha_desde descendente), mostrar id y estilo del hospedaje junto con ese valor, para los hospedajes cuyo valor vigente supere $200.000, ordenados de forma descendente.",
+          "consigna": "Mostrar id y estilo del hospedaje junto con su valor base vigente más reciente (el de fecha_desde más nueva), para los hospedajes cuyo valor vigente supere $200.000, ordenados de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14766,7 +14766,7 @@
         {
           "id": "p17e16",
           "numero": 16,
-          "consigna": "Usando una CTE que calcule la cantidad de estadías sin fecha de pago registrada por cliente, mostrar el nombre del cliente y esa cantidad para los clientes con 2 o más estadías impagas, ordenados por cantidad de forma descendente.",
+          "consigna": "Mostrar el nombre del cliente y su cantidad de estadías sin fecha de pago registrada, para los clientes con 2 o más estadías impagas, ordenados por cantidad de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14840,7 +14840,7 @@
         {
           "id": "p17e17",
           "numero": 17,
-          "consigna": "Usando una CTE que calcule, por hospedaje, la duración promedio de sus mantenimientos (en días, con DATEDIFF entre fecha_fin_real y fecha_inicio), mostrar id y estilo del hospedaje junto con esa duración promedio, para los hospedajes con duración promedio de 5 días o más, ordenados de forma descendente.",
+          "consigna": "Mostrar id y estilo del hospedaje junto con la duración promedio de sus mantenimientos (en días, entre fecha_inicio y fecha_fin_real), para los hospedajes con duración promedio de 5 días o más, ordenados de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14909,7 +14909,7 @@
         {
           "id": "p17e18",
           "numero": 18,
-          "consigna": "Usando una CTE que calcule, por excursión, la cantidad de salidas con cupo completo (cupo = 20), mostrar el nombre de la excursión y esa cantidad para las excursiones con 2 o más salidas a cupo completo, ordenadas de forma descendente.",
+          "consigna": "Mostrar el nombre de la excursión y su cantidad de salidas con cupo completo (cupo = 20), para las excursiones con 2 o más salidas a cupo completo, ordenadas de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -14947,7 +14947,7 @@
         {
           "id": "p17e19",
           "numero": 19,
-          "consigna": "Usando una CTE que calcule, por estadía, el gasto total en servicios contratados (uniendo servicio_estadia con servicio), mostrar el cliente, el id de estadía y el gasto total para las estadías cuyo gasto en servicios supere los $100.000, ordenadas de forma descendente.",
+          "consigna": "Mostrar el cliente, el id de estadía y su gasto total en servicios contratados, para las estadías cuyo gasto en servicios supere los $100.000, ordenadas de forma descendente.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],
@@ -15051,7 +15051,7 @@
         {
           "id": "p17e20",
           "numero": 20,
-          "consigna": "Usando dos CTE encadenadas (una con la cantidad de turnos por empleado y otra con el promedio general de esa cantidad), mostrar nombre y apellido del empleado junto con su cantidad de turnos, para los empleados con más turnos que el promedio general, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
+          "consigna": "Mostrar nombre y apellido del empleado junto con su cantidad de turnos, para los empleados con más turnos que el promedio general de turnos por empleado, ordenados por cantidad de forma descendente y, a igualdad, por apellido.",
           "seccion": "CTE",
           "base_datos": "PARCIAL",
           "subpasos": [],

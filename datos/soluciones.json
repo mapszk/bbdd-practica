@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "actualizado": "2026-09-17T20:22:14-0300",
+  "actualizado": "2026-09-19T11:58:49-0300",
   "soluciones": {
     "p4e6": {
       "sql": "select \n\tnombre_entrevistador, \n    ee.cod_evaluacion, \n    COUNT(*),\n    AVG(ee.resultado),\n    STD(ee.resultado)\nfrom entrevistas_evaluaciones ee\ninner join entrevistas ent on ent.nro_entrevista = ee.nro_entrevista\ngroup by ent.nombre_entrevistador, ee.cod_evaluacion\norder by COUNT(*);",
@@ -96,7 +96,7 @@
       "sql": "select * from empresas",
       "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-09-17T20:22:14-0300",
+      "actualizado": "2026-09-19T11:37:59-0300",
       "ultima_ejecucion": null
     },
     "p1e2": {
@@ -491,17 +491,205 @@
       "ultima_ejecucion": null
     },
     "p14e1": {
-      "sql": "",
-      "estado": "borrador",
+      "sql": "select nombre, email, condicion_iva\nfrom cliente\nwhere condicion_iva = \"Responsable Inscripto\"",
+      "estado": "resuelto",
       "notas": "",
-      "actualizado": "2026-09-17T20:06:42-0300",
+      "actualizado": "2026-09-19T11:01:33-0300",
       "ultima_ejecucion": null
     },
     "p14e2": {
-      "sql": "",
+      "sql": "select nombre, duracion_dias\nfrom excursion\nwhere duracion_dias > 1;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:02:06-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e3": {
+      "sql": "select id, estilo, capacidad\nfrom hospedaje\nwhere apto_mov_reducida = 1 and capacidad >= 4\norder by capacidad desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:03:26-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e4": {
+      "sql": "select nombre, valor_actual\nfrom servicio\nwhere valor_actual > 40000\norder by valor_actual desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:04:10-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e5": {
+      "sql": "select id_excursion, fecha_salida, cupo\nfrom salida\nwhere year(fecha_salida) = 2025 and cupo = 20\norder by fecha_salida;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:05:22-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e6": {
+      "sql": "select nombre, cuit_cuil\nfrom cliente\nwhere cuit_cuil like '27-%'\norder by nombre;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:06:11-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e7": {
+      "sql": "select nombre, apellido, tel\nfrom huesped\nwhere tel is null;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:06:49-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e8": {
+      "sql": "select id, fecha_inicio, fecha_fin, importe\nfrom estadia\nwhere fecha_inicio between 20250101 and 20250630 and fecha_pago is null\norder by fecha_inicio;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:08:57-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e9": {
+      "sql": "select nombre, detalle\nfrom excursion\nwhere nombre like '%Jusenkyo%' or detalle like '%Jusenkyo%';",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:10:21-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p14e10": {
+      "sql": "select nombre, descripcion\nfrom servicio\nwhere nombre like '%erm%' or descripcion like '%erm%';",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:13:28-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e11": {
+      "sql": "select distinct condicion_iva\nfrom cliente\norder by condicion_iva;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:17:43-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e12": {
+      "sql": "select id, estilo, metros_cuadrados\nfrom hospedaje\norder by metros_cuadrados desc\nlimit 10",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:19:29-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e13": {
+      "sql": "select nombre, apellido, fecha_nac\nfrom huesped\nwhere fecha_nac between 19950101 and 20001231\norder by fecha_nac;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:20:26-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e14": {
+      "sql": "select \n\tid_excursion, \n    fecha_salida,\n    costo_unitario,\n    recargo_huesped,\n    costo_unitario + recargo_huesped as cost_total\nfrom salida\norder by costo_unitario + recargo_huesped desc\nlimit 10;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:22:26-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e15": {
+      "sql": "select fecha, descripcion, importe\nfrom menu_diario\nwhere fecha = 20250103\norder by importe desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:23:35-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e16": {
+      "sql": "select nombre, condicion_iva \nfrom cliente\nwhere condicion_iva = \"Exento\" or condicion_iva = \"No Responsable\"\norder by nombre;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:24:09-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e17": {
+      "sql": "select id, dia_semana, hora_ini, hora_fin\nfrom turno\nwhere dia_semana in (6, 7) \norder by dia_semana, hora_ini;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:26:12-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e18": {
+      "sql": "select *\nfrom mantenimiento\nwhere fecha_fin_real > fecha_fin_planificada\norder by id_hospedaje;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:27:31-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e19": {
+      "sql": "select id, fecha_inicio, fecha_fin, importe, datediff(fecha_fin, fecha_inicio) as noches\nfrom estadia\nwhere datediff(fecha_fin, fecha_inicio) = 14\norder by importe desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:29:02-0300",
+      "ultima_ejecucion": null
+    },
+    "p14e20": {
+      "sql": "select nombre, apellido, upper(apellido) as apellido_mayus\nfrom empleado\norder by apellido;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:29:30-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e1": {
+      "sql": "select e.nombre as excursion, te.nombre as tipo\nfrom excursion e\ninner join tipo_excursion te on te.id = e.id_tipo_excursion\nwhere te.nombre = \"Termal\"\norder by e.nombre;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:32:55-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e2": {
+      "sql": "select e.id, c.nombre, e.importe\nfrom estadia e\ninner join cliente c on c.id = e.id_cliente\nwhere importe > 1200000\norder by importe desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:35:24-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e3": {
+      "sql": "select h.id, estilo, nombre\nfrom hospedaje h\ninner join tipo_habitacion th on th.id = h.id_tipo_habitacion\nwhere nombre = \"Suite\"\norder by h.id;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:39:32-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e4": {
+      "sql": "select e.nombre, s.fecha_salida, s.costo_unitario\nfrom excursion e\ninner join salida s on s.id_excursion = e.id\nwhere s.fecha_salida between 20250601 and 20250931\norder by fecha_salida;\n",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:42:25-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e5": {
+      "sql": "select nombre, apellido, dia_semana, hora_ini, hora_fin\nfrom empleado e\ninner join empleado_turno et on et.id_empleado = e.id\ninner join turno t on t.id = et.id_turno\nwhere et.anio = 2026 and et.mes = 1\norder by apellido, nombre;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:52:58-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e6": {
+      "sql": "select c.nombre, h.nombre, h.apellido, e.importe\nfrom estadia e\ninner join cliente c on c.id = e.id_cliente\ninner join estadia_huesped eh on eh.id_estadia = e.id\ninner join huesped h on h.id = eh.id_huesped\nwhere e.importe > 1300000\norder by importe desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:55:09-0300",
+      "ultima_ejecucion": null
+    },
+    "p15e7": {
+      "sql": "select s.nombre, e.id, e.importe\nfrom estadia e\ninner join servicio_estadia st on st.id_estadia = e.id\ninner join servicio s on s.id = st.id_servicio\nwhere e.importe > 1300000\norder by importe desc;",
+      "estado": "resuelto",
+      "notas": "",
+      "actualizado": "2026-09-19T11:58:32-0300",
+      "ultima_ejecucion": {
+        "ok": true,
+        "veredicto": "coincide"
+      }
+    },
+    "p15e8": {
+      "sql": "select h.id, h.estilo, ",
       "estado": "borrador",
       "notas": "",
-      "actualizado": "2026-09-17T20:20:44-0300",
+      "actualizado": "2026-09-19T11:58:49-0300",
       "ultima_ejecucion": null
     }
   }
